@@ -1010,6 +1010,10 @@ containing a value of this type.
         public static final int list_selector=0x7f020062;
     }
     public static final class id {
+        public static final int EmailEditText=0x7f050043;
+        public static final int PlanSaveTaxTextView=0x7f050042;
+        public static final int PlanSaveTax_Heading=0x7f050041;
+        public static final int SubmitButton=0x7f050044;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1041,8 +1045,8 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int lblListHeader=0x7f050043;
-        public static final int lblListItem=0x7f050044;
+        public static final int lblListHeader=0x7f050047;
+        public static final int lblListItem=0x7f050048;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int list_slidermenu=0x7f05003e;
@@ -1053,7 +1057,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int saveTaxLVExp=0x7f050041;
+        public static final int saveTaxLVExp=0x7f050045;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1077,7 +1081,7 @@ containing a value of this type.
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int webViewContactUs=0x7f05003f;
-        public static final int webViewTemrsOfUse=0x7f050042;
+        public static final int webViewTemrsOfUse=0x7f050046;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1145,6 +1149,9 @@ containing a value of this type.
         public static final int main=0x7f0d0000;
     }
     public static final class string {
+        public static final int PlanSaveTaxDetailedText=0x7f0a001a;
+        public static final int PlanSaveTaxHeading=0x7f0a0019;
+        public static final int SubmitButtonText=0x7f0a0013;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1189,14 +1196,16 @@ containing a value of this type.
         public static final int app_name=0x7f0a000d;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f0a0012;
+        public static final int desc_list_item_icon=0x7f0a0014;
         public static final int drawer_close=0x7f0a0011;
         public static final int drawer_open=0x7f0a0010;
+        public static final int email_hint=0x7f0a0018;
         public static final int hello_world=0x7f0a000f;
-        public static final int saveTaxLVExp=0x7f0a0016;
-        public static final int webViewContactUs=0x7f0a0015;
-        public static final int webViewSaveTax=0x7f0a0013;
-        public static final int webViewTemrsOfUse=0x7f0a0014;
+        public static final int saveTaxLVExp=0x7f0a001b;
+        public static final int title_activity_splash_screen=0x7f0a0012;
+        public static final int webViewContactUs=0x7f0a0017;
+        public static final int webViewSaveTax=0x7f0a0015;
+        public static final int webViewTemrsOfUse=0x7f0a0016;
     }
     public static final class style {
         /** 

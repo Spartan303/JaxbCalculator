@@ -6,6 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="SubmitButtonText">Submit</string>
+    
     
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
@@ -46,6 +49,22 @@
     <string name="webViewSaveTax">Save Tax</string>
     <string name="webViewTemrsOfUse">Acceptance of Terms</string>
     <string name="webViewContactUs">Contact Us</string>
+        <string name="email_hint">Email Address</string>
+    <string name="PlanSaveTaxHeading">Tax Planning </string>
+    <string name="PlanSaveTaxDetailedText">        	
+        	Carbonated.TV respects the privacy rights of our users and is
+			committed to protecting the information collected through its online
+			services and websites. We have adopted this privacy policy to explain
+			how we collect, store and use the information collected in connection
+			with our Online Services (the "Privacy Policy").
+			\n\n
+			Through the usage of the Carbonated.TV Website or downloading
+			from the Site, users agree to the usage and gathering of your
+			personal information (as hereunder described), all in respect to the
+			Terms and Conditions set hereunder. Carbonated.TV reserves the right to
+			change this Privacy Policy at any time and without notice, and it is.</string>
+    
+    
     
     <string name="saveTaxLVExp">Save Tex Expanable List View</string>
 
