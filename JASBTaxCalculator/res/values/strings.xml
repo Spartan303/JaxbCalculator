@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JASBTaxCalculator</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+    
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Calculate Tax</item>
+        <item >How to Save Tax</item>
+        <item >How to Plan to Save Tax</item>
+        <item >Acceptance of Terms</item>
+        <item >Contact Us</item>
+    </string-array>
+    
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_photos</item>
+        <item>@drawable/ic_communities</item>
+        <item>@drawable/ic_pages</item>
+        <item>@drawable/ic_whats_hot</item>
+    </array>
+    
+    <array name="save_tax_array">
+        <item>Working on the S3 image uploading (android) </item>
+        <item>Working with Naveen to create the media sharing framework in iOS </item>
+        <item>Working with team (Zeeshan + Umair + Noorain) on mBooks application </item>
+        <item>CTV android 2nd release targeted for tablets + Google analytics + important bugzilla issues </item>
+        <item>Need to sit with QA team for mobile testing document review</item>
+        <item>Create the mobile training material for both iOS + Android</item>
+        <item>Create the outline for an individual platform initially</item>
+        <item>Need more details about Image uploading on S3 from Umair Tariq </item>
+        <item>Provided the Amazon S3 details + UI flow description to Naveen</item>
+        <item>Working with iOS media sharing framework/library project with Naveen</item>
+    </array>
+    
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="webViewSaveTax">Save Tax</string>
+    <string name="webViewTemrsOfUse">Acceptance of Terms</string>
+    <string name="webViewContactUs">Contact Us</string>
+    
+    <string name="saveTaxLVExp">Save Tex Expanable List View</string>
+
+</resources>
