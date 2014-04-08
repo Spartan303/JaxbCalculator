@@ -127,7 +127,20 @@ public class SalariedTaxAPI implements TaxAPI {
 	public double getPensionFundDeduction(double pensionFund, int age,
 			double taxableIncome, double avgRateofTax) {
 
-		return 0;
+		// Limit 1: Amount of Contribution in Pension Fund = a 
+		// Limit 2: 20% of taxable income = b (if age <= 40)
+		// Formula: MIN(a, b) * avgRateofTax
+		
+		int limit = 20; // 20%
+		double taxableIncomePart = taxableIncome * ((double) limit/100);
+		
+		// limit 2 increased by 2% each year for age > 40
+		if(age >= 40) {
+			limit = limit + 2 * (age - 40);
+			taxableIncomePart = taxableIncome * ((double) limit/100);
+		}
+		
+		return Math.min(pensionFund, taxableIncomePart) * avgRateofTax;
 	}
 
 	@Override
