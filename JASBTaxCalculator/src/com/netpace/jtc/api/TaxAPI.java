@@ -43,23 +43,23 @@ public interface TaxAPI {
 	double getTaxSavingPercent(double actualTax, double tax);
 
 	//  Total Tax Payable after planning
-	double getPlannedTax(double tax, double taxSaving);
+	double getPlannedTax(double tax, double actualTax);
 	
 
 ////////////// Plan To Save Tax Calculations (yearly)   ///////////////
 
 	//  Zakat deductions
-	double getZakatDeduction(double zakat);
+	double getZakatDeduction(double zakat, double taxableIncome);
 
 	//  Charitable Donation Deductions
-	double getDonationDeduction(double donation);
+	double getDonationDeduction(double donation, double taxableIncome, double avgRateofTax);
 
 	//  Shares and Insurance Premium deductions
-	double getSharesInsuranceDeduction(double shares, double insurancePremium);
+	double getSharesInsuranceDeduction(double shares, double insurancePremium, double taxableIncome, double avgRateofTax);
 	
 	//  Pension fund deductions
-	double getPensionFundDeduction(double pensionFund, int age);	
+	double getPensionFundDeduction(double pensionFund, int age, double taxableIncome, double avgRateofTax);	
 
 	// double House loan interest deductions
-	double getHouseLoanInterestDeduction(double houseLoanInterest);
+	double getHouseLoanInterestDeduction(double houseLoanInterest, double taxableIncome, double avgRateofTax);
 }
