@@ -4,116 +4,145 @@ public class SalariedTaxAPI implements TaxAPI {
 
 	@Override
 	public double getTaxableIncome(double income, double zakat) {
-		// TODO Auto-generated method stub
-		return 0;
+		return income-zakat;
 	}
 
 	@Override
 	public double getExpectedIncome(double income, double increase) {
-		// TODO Auto-generated method stub
-		return 0;
+		return income+increase;
 	}
 
 	@Override
 	public double getExpectedTaxableIncome(double income, double increase,
 			double zakat) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return income+increase-zakat;
 	}
 
 	@Override
 	public double getIncreaseInTaxableIncome(double oldTaxableIncome,
 			double newTaxableIncome) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return newTaxableIncome-oldTaxableIncome;
 	}
 
 	@Override
 	public double getTax(double taxableIncome) {
-		// TODO Auto-generated method stub
+		
+//		Slab slab = findSlab();
+//		logic to calc tax using slab
 		return 0;
 	}
 
 	@Override
 	public double getIncreaseInTax(double oldTax, double newTax) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return newTax-oldTax;
 	}
 
 	@Override
 	public double getTakeHomeIncome(double taxableIncome, double tax) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return taxableIncome-tax;
 	}
 
 	@Override
 	public double getIncreaseInTakeHomeIncome(double oldTakeHomeIncome,
 			double newTakeHomeIncome) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return newTakeHomeIncome-oldTakeHomeIncome;
 	}
 
 	@Override
 	public double getAvgRateOfTax(double tax, double taxableIncome) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return Math.round(tax/taxableIncome);
 	}
 
 	@Override
 	public double getTaxSaving(double zakatDeduction, double donationDeduction,
 			double sharesInsuranceDeduction, double pensionFundDeduction,
 			double houseLoanInterestDeduction) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		double taxSaving = 	zakatDeduction + 
+							donationDeduction + 
+							sharesInsuranceDeduction + 
+							pensionFundDeduction + 
+							houseLoanInterestDeduction;
+		
+		return taxSaving;
 	}
 
 	@Override
 	public double getActualTax(double tax, double taxSaving) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return Math.min(tax, taxSaving);
 	}
 
 	@Override
 	public double getTaxSavingPercent(double actualTax, double tax) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return actualTax/tax * 100;
 	}
 
 	@Override
-	public double getPlannedTax(double tax, double taxSaving) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getPlannedTax(double tax, double actualTax) {
+
+		return tax-actualTax;
 	}
 
 	@Override
-	public double getZakatDeduction(double zakat) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getZakatDeduction(double zakat, double taxableIncome) {
+		return Math.min(zakat, taxableIncome);
 	}
-
+	
 	@Override
-	public double getDonationDeduction(double donation) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getDonationDeduction(double donation, double taxableIncome,
+			double avgRateofTax) {
+
+		// Limit 1: Amount of donation = a 
+		// Limit 2: 30% of taxable income = b
+		// Formula: MIN(a, b) * avgRateofTax
+		
+		return Math.min(donation, 0.3*taxableIncome) * avgRateofTax;
 	}
 
 	@Override
 	public double getSharesInsuranceDeduction(double shares,
-			double insurancePremium) {
-		// TODO Auto-generated method stub
+			double insurancePremium, double taxableIncome, double avgRateofTax) {
+
+		// Limit 1: Amount of Shares + Insurance = a 
+		// Limit 2: 20% of taxable income = b
+		// Limit 3: 1 Million per year = c
+		// Formula: MIN(a, b, c) * avgRateofTax
+		
+		double amountOfSharesAndInsurance = shares + insurancePremium;
+		double taxableIncomePart = taxableIncome * 0.2;
+		double CONSTANT_LIMIT = 1000000; // 1 million 
+		
+		return Math.min(amountOfSharesAndInsurance, Math.min(taxableIncomePart, CONSTANT_LIMIT)) * avgRateofTax;
+	}
+
+	@Override
+	public double getPensionFundDeduction(double pensionFund, int age,
+			double taxableIncome, double avgRateofTax) {
+
 		return 0;
 	}
 
 	@Override
-	public double getPensionFundDeduction(double pensionFund, int age) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public double getHouseLoanInterestDeduction(double houseLoanInterest,
+			double taxableIncome, double avgRateofTax) {
 
-	@Override
-	public double getHouseLoanInterestDeduction(double houseLoanInterest) {
-		// TODO Auto-generated method stub
-		return 0;
+		// Limit 1: Amount of Interest on House Loan = a 
+		// Limit 2: 50% of taxable income = b
+		// Limit 3: 75,000 per year
+		// Formula: MIN(a, b, c) * avgRateofTax
+		
+		double taxableIncomePart = taxableIncome * 0.5;
+		double CONSTANT_LIMIT = 1000000; // 1 million 
+		
+		return Math.min(houseLoanInterest, Math.min(taxableIncomePart, CONSTANT_LIMIT)) * avgRateofTax;
 	}
 
 }

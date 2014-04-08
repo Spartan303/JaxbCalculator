@@ -80,38 +80,41 @@ public class NonSalariedTaxAPI implements TaxAPI {
 	}
 
 	@Override
-	public double getPlannedTax(double tax, double taxSaving) {
+	public double getPlannedTax(double tax, double actualTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getZakatDeduction(double zakat) {
+	public double getZakatDeduction(double zakat, double taxableIncome) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getDonationDeduction(double donation) {
+	public double getDonationDeduction(double donation, double taxableIncome,
+			double avgRateofTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public double getSharesInsuranceDeduction(double shares,
-			double insurancePremium) {
+			double insurancePremium, double taxableIncome, double avgRateofTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getPensionFundDeduction(double pensionFund, int age) {
+	public double getPensionFundDeduction(double pensionFund, int age,
+			double taxableIncome, double avgRateofTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getHouseLoanInterestDeduction(double houseLoanInterest) {
+	public double getHouseLoanInterestDeduction(double houseLoanInterest,
+			double taxableIncome, double avgRateofTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
