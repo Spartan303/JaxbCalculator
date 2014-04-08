@@ -51,8 +51,8 @@ public interface TaxAPI {
 	double getExpectedAvgRateOfTax(double newTax, double newTaxableIncome);
 	
 	//  Tax Saving
-	double getTaxSavingMonthly(double zakat, double donation, double shares, double insurance, double pensionFund, double age, double houseLoanInterest);
-	double getTaxSavingYearly(double zakat, double donation, double shares, double insurance, double pensionFund, double age, double houseLoanInterest);
+	double getTaxSavingMonthly(double zakatDeduction, double donationDeduction, double sharesInsuranceDeduction, double pensionFundDeduction, double houseLoanInterestDeduction);
+	double getTaxSavingYearly(double zakatDeduction, double donationDeduction, double sharesInsuranceDeduction, double pensionFundDeduction, double houseLoanInterestDeduction);
 	
 	//  Actual Tax
 	double getActualTaxMonthly(double tax, double taxSaving);

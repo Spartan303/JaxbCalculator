@@ -143,21 +143,21 @@ public class NonSalariedTaxAPI implements TaxAPI {
 	}
 
 	@Override
-	public double getTaxSavingMonthly(double zakat, double donation,
-			double shares, double insurance, double pensionFund, double age,
-			double houseLoanInterest) {
+	public double getTaxSavingMonthly(double zakatDeduction,
+			double donationDeduction, double sharesInsuranceDeduction, 
+			double pensionFundDeduction, double houseLoanInterestDeduction) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getTaxSavingYearly(double zakat, double donation,
-			double shares, double insurance, double pensionFund, double age,
-			double houseLoanInterest) {
+	public double getTaxSavingYearly(double zakatDeduction,
+			double donationDeduction, double sharesInsuranceDeduction, 
+			double pensionFundDeduction, double houseLoanInterestDeduction) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+		
 	@Override
 	public double getActualTaxMonthly(double tax, double taxSaving) {
 		// TODO Auto-generated method stub
