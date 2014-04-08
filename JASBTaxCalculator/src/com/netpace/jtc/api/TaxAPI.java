@@ -5,44 +5,44 @@ public interface TaxAPI {
 //////////////// Tax Calculations and Intermediate Calculations  /////////////////
 
 	//  Taxable Income after allowable deductions
-	double getMonthlyTaxableIncome(double income, double zakat);
-	double getAnnualTaxableIncome(double income, double zakat);
+	double getTaxableIncomeMonthly(double income, double zakat);
+	double getTaxableIncomeYearly(double income, double zakat);
 	
-	//  Taxable Income after increase
-	double getMonthlyExpectedIncome(double income, double increase);
-	double getAnnualExpectedIncome(double income, double increase);
+	//  Income after increase
+	double getExpectedIncomeMonthly(double income, double increase);
+	double getExpectedIncomeYearly(double income, double increase);
 
 	//  Expected Taxable Income after expected increase
-	double getMonthlyExpectedTaxableIncome(double income, double increase, double zakat);
-	double getAnnualExpectedTaxableIncome(double income, double increase, double zakat);
+	double getExpectedTaxableIncomeMonthly(double income, double increase, double zakat);
+	double getExpectedTaxableIncomeYearly(double income, double increase, double zakat);
 
 	//  Increase in Taxable Income
-	double getMonthlyIncreaseInTaxableIncome(double oldTaxableIncome, double newTaxableIncome);
-	double getAnnualIncreaseInTaxableIncome(double oldTaxableIncome, double newTaxableIncome);
+	double getIncreaseInTaxableIncomeMonthly(double oldTaxableIncome, double newTaxableIncome);
+	double getIncreaseInTaxableIncomeYearly(double oldTaxableIncome, double newTaxableIncome);
 
 	//  Total tax payable
-	double getMonthlyTax(double taxableIncome);
-	double getAnnualTax(double taxableIncome);
+	double getTaxMonthly(double taxableIncome);
+	double getTaxYearly(double taxableIncome);
 	
 	//  Total tax payable after expected increase
-	double getMonthlyExpectedTax(double newTaxableIncome);
-	double getAnnualExpectedTax(double newTaxableIncome);
+	double getExpectedTaxMonthly(double newTaxableIncome);
+	double getExpectedTaxYearly(double newTaxableIncome);
 	
 	//  Increase in Tax after expected increase
-	double getMonthlyIncreaseInTax(double oldTax, double newTax);
-	double getAnnualIncreaseInTax(double oldTax, double newTax);
+	double getIncreaseInTaxMonthly(double oldTax, double newTax);
+	double getIncreaseInTaxYearly(double oldTax, double newTax);
 
 	// Take home salary
-	double getMonthlyTakeHomeIncome(double taxableIncome, double tax);
-	double getAnnualTakeHomeIncome(double taxableIncome, double tax);
+	double getTakeHomeIncomeMonthly(double taxableIncome, double tax);
+	double getTakeHomeIncomeYearly(double taxableIncome, double tax);
 	
 	// Expected Take home salary
-	double getMonthlyExpectedTakeHomeIncome(double newTaxableIncome, double newTax);
-	double getAnnualExpectedTakeHomeIncome(double newTaxableIncome, double newTax);
+	double getExpectedTakeHomeIncomeMonthly(double newTaxableIncome, double newTax);
+	double getExpectedTakeHomeIncomeYearly(double newTaxableIncome, double newTax);
 
 	//  Increase in take home Income
-	double getMonthlyIncreaseInTakeHomeIncome(double oldTakeHomeIncome, double newTakeHomeIncome);
-	double getAnnualIncreaseInTakeHomeIncome(double oldTakeHomeIncome, double newTakeHomeIncome);
+	double getIncreaseInTakeHomeIncomeMonthly(double oldTakeHomeIncome, double newTakeHomeIncome);
+	double getIncreaseInTakeHomeIncomeYearly(double oldTakeHomeIncome, double newTakeHomeIncome);
 
 	// Average rate of Tax
 	double getAvgRateOfTax(double tax, double taxableIncome);
@@ -51,24 +51,24 @@ public interface TaxAPI {
 	double getExpectedAvgRateOfTax(double newTax, double newTaxableIncome);
 	
 	//  Tax Saving
-	double getMonthlyTaxSaving(double zakat, double donation, double shares, double insurance, double pensionFund, double age, double houseLoanInterest);
-	double getAnnualTaxSaving(double zakat, double donation, double shares, double insurance, double pensionFund, double age, double houseLoanInterest);
+	double getTaxSavingMonthly(double zakat, double donation, double shares, double insurance, double pensionFund, double age, double houseLoanInterest);
+	double getTaxSavingYearly(double zakat, double donation, double shares, double insurance, double pensionFund, double age, double houseLoanInterest);
 	
 	//  Actual Tax
-	double getMonthlyActualTax(double tax, double taxSaving);
-	double getAnnualActualTax(double tax, double taxSaving);
+	double getActualTaxMonthly(double tax, double taxSaving);
+	double getActualTaxYearly(double tax, double taxSaving);
 
 	//  Tax Saving Percent
-	double getMonthlyTaxSavingPercent(double actualTax, double tax);
-	double getAnnualTaxSavingPercent(double actualTax, double tax);
+	double getTaxSavingPercentMonthly(double actualTax, double tax);
+	double getTaxSavingPercentYearly(double actualTax, double tax);
 
 	//  Total Tax Payable after planning
-	double getMonthlyPlannedTax(double tax, double taxSaving);
-	double getAnnualPlannedTax(double tax, double taxSaving);
+	double getPlannedTaxMonthly(double tax, double taxSaving);
+	double getPlannedTaxYearly(double tax, double taxSaving);
 	
 	//  Total Expected Tax Payable after planning
-	double getMonthlyExpectedPlannedTax(double newTax, double taxSaving);
-	double getAnnualExpectedPlannedTax(double newTax, double taxSaving);
+	double getExpectedPlannedTaxMonthly(double newTax, double taxSaving);
+	double getExpectedPlannedTaxYearly(double newTax, double taxSaving);
 
 ////////////// Plan To Save Tax Calculations (yearly)   ///////////////
 
