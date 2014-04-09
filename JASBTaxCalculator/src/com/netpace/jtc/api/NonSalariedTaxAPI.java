@@ -1,120 +1,59 @@
 package com.netpace.jtc.api;
 
-public class NonSalariedTaxAPI implements TaxAPI {
+public class NonSalariedTaxAPI extends TaxAPI {
 
 	@Override
-	public double getTaxableIncome(double income, double zakat) {
+	TaxResult getTaxCalculationResult(double income, double increase,
+			double zakat, double donation, double shares,
+			double insurancePremium, double pensionFund, int age,
+			double houseLoanInterest, InputType inputType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	TaxResult getTaxCalculationResult(double income, double increase,
+			double zakat, InputType inputType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	double getZakatDeduction(double zakat, double taxableIncome) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getExpectedIncome(double income, double increase) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getExpectedTaxableIncome(double income, double increase,
-			double zakat) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getIncreaseInTaxableIncome(double oldTaxableIncome,
-			double newTaxableIncome) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTax(double taxableIncome) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getIncreaseInTax(double oldTax, double newTax) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTakeHomeIncome(double taxableIncome, double tax) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getIncreaseInTakeHomeIncome(double oldTakeHomeIncome,
-			double newTakeHomeIncome) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getAvgRateOfTax(double tax, double taxableIncome) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTaxSaving(double zakatDeduction, double donationDeduction,
-			double sharesInsuranceDeduction, double pensionFundDeduction,
-			double houseLoanInterestDeduction) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getActualTax(double tax, double taxSaving) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getTaxSavingPercent(double actualTax, double tax) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getPlannedTax(double tax, double actualTax) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getZakatDeduction(double zakat, double taxableIncome) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getDonationDeduction(double donation, double taxableIncome,
+	double getDonationDeduction(double donation, double taxableIncome,
 			double avgRateofTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getSharesInsuranceDeduction(double shares,
-			double insurancePremium, double taxableIncome, double avgRateofTax) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getPensionFundDeduction(double pensionFund, int age,
+	double getSharesInsuranceDeduction(double shares, double insurancePremium,
 			double taxableIncome, double avgRateofTax) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public double getHouseLoanInterestDeduction(double houseLoanInterest,
+	double getPensionFundDeduction(double pensionFund, int age,
 			double taxableIncome, double avgRateofTax) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	double getHouseLoanInterestDeduction(double houseLoanInterest,
+			double taxableIncome, double avgRateofTax) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	double getTax(double taxableIncome) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

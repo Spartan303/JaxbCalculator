@@ -9,6 +9,9 @@ public abstract class TaxAPI {
 			double zakat, double donation, double shares,
 			double insurancePremium, double pensionFund, int age,
 			double houseLoanInterest, InputType inputType);
+	
+	abstract TaxResult getTaxCalculationResult(double income, double increase,
+			double zakat, InputType inputType);
 
 	// //////////// Plan To Save Tax Calculations (yearly) ///////////////
 
