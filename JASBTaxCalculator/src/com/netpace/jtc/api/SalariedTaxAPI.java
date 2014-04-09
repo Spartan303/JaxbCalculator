@@ -17,6 +17,8 @@ public class SalariedTaxAPI extends TaxAPI {
 		return result;
 	}
 
+	
+	// Input Type Only Decides income and increase values to be monthly and yearly 
 	@Override
 	public TaxResult getTaxCalculationResult(double income, double increase,
 			double zakat, double donation, double shares,
@@ -33,17 +35,37 @@ public class SalariedTaxAPI extends TaxAPI {
 		double yIncrease = 0;
 		double mIncrease = 0;
 
-		if (inputType == inputType.MONTHLY) {
+		// Input Type Only Decides income and increase values to be monthly and yearly   
+		if (inputType == InputType.MONTHLY) {
 			yIncome = toYearly(income);
 			mIncome = income;
+			
+			yIncrease = toYearly(increase);
+			mIncrease = increase;
+			
 		} else {
+			
 			yIncome = income;
 			mIncome = toMonthly(income);
+			
+			yIncrease = increase;
+			mIncrease = toMonthly(increase);
 		}
 		
 		
+		// Set the inputs to the Tax Result bean
+		result.setUiIncomeMonthly(mIncome);
+		result.setUiIncomeYearly(yIncome);
+		result.setUiMonthlyExpectedIncrease(mIncrease);
+		result.setUiYearlyExpectedIncrease(yIncrease);
+		result.setUiInsurance(insurancePremium);
+		result.setUiShares(shares);
+		result.setUiDonation(donation);
+		result.setUiPension(pensionFund);
+		result.setUiHouseLoanInterest(houseLoanInterest);
+		
 		// Taxable Salary after zakat allowable deduction
-		double yOldTaxableIncome = getTaxableIncome(income, zakat);
+		double yOldTaxableIncome = getTaxableIncome(yIncome, zakat);
 		double mOldTaxableIncome = toMonthly(yOldTaxableIncome);
 		result.setTaxableIncomeYearly(yOldTaxableIncome);
 		result.setTaxableIncomeMonthly(mOldTaxableIncome);

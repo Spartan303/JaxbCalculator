@@ -4,10 +4,11 @@ public class TaxResult {
 
 	private double uiMonthlyIncome;
 	private double uiYearlyIncome;
-	private double uiExpectedIncrease;
+	private double uiMonthlyExpectedIncrease;
+	private double uiYearlyExpectedIncrease;
 
 	private double uiZakat;
-	private double uiCharity;
+	private double uiDonation;
 	private double uiShares;
 	private double uiInsurance;
 	private double uiPension;
@@ -78,11 +79,17 @@ public class TaxResult {
 	public void setUiIncomeYearly(double uiYearlyIncome) {
 		this.uiYearlyIncome = uiYearlyIncome;
 	}
-	public double getUiExpectedIncrease() {
-		return uiExpectedIncrease;
+	public double getUiMonthlyExpectedIncrease() {
+		return uiMonthlyExpectedIncrease;
 	}
-	public void setUiExpectedIncrease(double uiExpectedIncrease) {
-		this.uiExpectedIncrease = uiExpectedIncrease;
+	public void setUiMonthlyExpectedIncrease(double uiMonthlyExpectedIncrease) {
+		this.uiMonthlyExpectedIncrease = uiMonthlyExpectedIncrease;
+	}
+	public double getUiYearlyMonthlyExpectedIncrease() {
+		return uiYearlyExpectedIncrease;
+	}
+	public void setUiYearlyExpectedIncrease(double uiYearlyExpectedIncrease) {
+		this.uiYearlyExpectedIncrease = uiYearlyExpectedIncrease;
 	}
 	public double getUiZakat() {
 		return uiZakat;
@@ -90,11 +97,11 @@ public class TaxResult {
 	public void setUiZakat(double uiZakat) {
 		this.uiZakat = uiZakat;
 	}
-	public double getUiCharity() {
-		return uiCharity;
+	public double getUiDonation() {
+		return uiDonation;
 	}
-	public void setUiCharity(double uiCharity) {
-		this.uiCharity = uiCharity;
+	public void setUiDonation(double uiDonation) {
+		this.uiDonation = uiDonation;
 	}
 	public double getUiShares() {
 		return uiShares;
