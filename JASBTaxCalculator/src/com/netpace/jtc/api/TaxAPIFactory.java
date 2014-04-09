@@ -1,6 +1,5 @@
 package com.netpace.jtc.api;
 
-import com.netpace.jtc.enums.TaxAPIType;
 
 public class TaxAPIFactory {
 
