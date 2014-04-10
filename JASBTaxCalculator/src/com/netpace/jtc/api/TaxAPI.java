@@ -129,7 +129,7 @@ public abstract class TaxAPI {
 
 	protected double toMonthly(double yearly) {
 
-		return yearly / 12;
+		return Math.round(yearly / 12);
 	}
 
 }

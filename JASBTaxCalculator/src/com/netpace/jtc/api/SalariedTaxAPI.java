@@ -3,21 +3,15 @@ package com.netpace.jtc.api;
 public class SalariedTaxAPI extends TaxAPI {
 
 	@Override
-	public double getTax(double taxableIncome) {
-
-		return 0;
-	}
-
-	@Override
 	public TaxResult getTaxCalculationResult(double income, double increase,
 			double zakat, InputType inputType) {
+		
 		TaxResult result = getTaxCalculationResult(income, increase, zakat, 0,
 				0, 0, 0, 0, 0, inputType);
 
 		return result;
 	}
 
-	
 	// Input Type Only Decides income and increase values to be monthly and yearly 
 	@Override
 	public TaxResult getTaxCalculationResult(double income, double increase,
@@ -25,23 +19,58 @@ public class SalariedTaxAPI extends TaxAPI {
 			double insurancePremium, double pensionFund, int age,
 			double houseLoanInterest, InputType inputType) {
 
-		// old means without increase in income
-		// new means after increase in income
-
-		TaxResult result = new TaxResult();
-
+// 		old means without increase in income
+// 		new means after increase in income
+		
+// =================================== Declaration Section With default values =========================================================
+		
+//		inputs
 		double yIncome = 0;
 		double mIncome = 0;
 		double yIncrease = 0;
 		double mIncrease = 0;
+		
+		
+//		With increase		
+		double yNewTaxableIncome = 0;
+		double mNewTaxableIncome = 0;
+		double yIncreaseInTaxableIncome = 0;
+		double mIncreaseInTaxableIncome = 0;
+		double yNewTax = 0;
+		double mNewTax = 0;
+		double yIncreaseInTax = 0;
+		double mIncreaseInTax = 0;
+		double yNewTakeHomeIncome = 0;
+		double mNewTakeHomeIncome = 0;
+		double yIncreaseInTakeHomeIncome = 0;
+		double mIncreaseInTakeHomeIncome = 0;
+		double newAvgRateofTax = 0;
+		
+//		Plan to save Tax	
+		double zakatDeduction = 0;
+		double donationDeduction = 0;
+		double pensionFundDeduction = 0;
+		double sharesInsuranceDeduction = 0;
+		double houseLoanInterestDeduction = 0;
+
+//		Analysis after planning		
+		double taxSaving = 0;
+		double actualTax = 0;
+		double taxSavingPercent = 0;
+		double yOldPlannedTax = 0;
+		double mOldPlannedTax = 0;
+		double yNewPlannedTax = 0;
+		double mNewPlannedTax = 0;
+
+//	============================== Congfiguring inputs monthly and yearly  =====================================		
 
 		// Input Type Only Decides income and increase values to be monthly and yearly   
 		if (inputType == InputType.MONTHLY) {
-			yIncome = toYearly(income);
-			mIncome = income;
+			yIncome = toYearly(income); // 60,000
+			mIncome = income; // 50,000
 			
-			yIncrease = toYearly(increase);
-			mIncrease = increase;
+			yIncrease = toYearly(increase); // 0
+			mIncrease = increase; // 0
 			
 		} else {
 			
@@ -53,137 +82,222 @@ public class SalariedTaxAPI extends TaxAPI {
 		}
 		
 		
-		// Set the inputs to the Tax Result bean
-		result.setUiIncomeMonthly(mIncome);
-		result.setUiIncomeYearly(yIncome);
-		result.setUiMonthlyExpectedIncrease(mIncrease);
-		result.setUiYearlyExpectedIncrease(yIncrease);
-		result.setUiInsurance(insurancePremium);
-		result.setUiShares(shares);
-		result.setUiDonation(donation);
-		result.setUiPension(pensionFund);
-		result.setUiHouseLoanInterest(houseLoanInterest);
+// ================================ Without Increase Calculation Section   =======================================
 		
 		// Taxable Salary after zakat allowable deduction
-		double yOldTaxableIncome = getTaxableIncome(yIncome, zakat);
-		double mOldTaxableIncome = toMonthly(yOldTaxableIncome);
-		result.setTaxableIncomeYearly(yOldTaxableIncome);
-		result.setTaxableIncomeMonthly(mOldTaxableIncome);
+		double yOldTaxableIncome = yIncome - zakat;  // 500,000 
+		double mOldTaxableIncome = toMonthly(yOldTaxableIncome); // 41,667
 
-		// Taxable Salary after increase and alloawable deduction
-		double yNewTaxableIncome = getExpectedTaxableIncome(income, increase,
-				zakat);
-		double mNewTaxableIncome = toMonthly(yNewTaxableIncome);
-		result.setExpectedTaxableIncomeYearly(yNewTaxableIncome);
-		result.setExpectedTaxableIncomeMonthly(mNewTaxableIncome);
-
-		// Increase in taxabe income after expected increase
-		double yIncreaseInTaxableIncome = getIncreaseInTaxableIncome(
-				yOldTaxableIncome, yNewTaxableIncome);
-		double mIncreaseInTaxableIncome = toMonthly(yIncreaseInTaxableIncome);
-		result.setIncreaseInTaxableIncomeYearly(yIncreaseInTaxableIncome);
-		result.setIncreaseInTaxableIncomeMonthly(mIncreaseInTaxableIncome);
-
+		
 		// Total Tax Payable 
-		double yOldTax = getTax(yOldTaxableIncome);
-		double mOldTax = toMonthly(yOldTax);
-		result.setTaxYearly(yOldTax);
-		result.setTaxMonthly(mOldTax);
-
-		// Total Tax Payable after expected increase
-		double yNewTax = getTax(yNewTaxableIncome);
-		double mNewTax = getTax(yNewTax);
-		result.setExpectedTaxYearly(yNewTax);
-		result.setExpectedTaxMonthly(mNewTax);
-
-		// Increase in tax after expected Increase
-		double yIncreaseInTax = getIncreaseInTax(yOldTax, yNewTax);
-		double mIncreaseInTax = toMonthly(yIncreaseInTax);
-		result.setIncreaseInTaxYearly(yIncreaseInTax);
-		result.setIncreaseInTaxMonthly(mIncreaseInTax);
+		double yOldTax = getTax(yOldTaxableIncome); // 5000
+		double mOldTax = toMonthly(yOldTax); // 417
 
 		
 		// Take Home Income
-		double yOldTakeHomeIncome = getTakeHomeIncome(yOldTaxableIncome, yOldTax);
-		double mOldTakeHomeIncome = toMonthly(yOldTakeHomeIncome);
-		result.setTakeHomeIncomeYearly(yOldTakeHomeIncome);
-		result.setTakeHomeIncomeMonthly(mOldTakeHomeIncome);
+		double yOldTakeHomeIncome = yOldTaxableIncome - yOldTax;  // 495,000
+		double mOldTakeHomeIncome = toMonthly(yOldTakeHomeIncome); // 41,250
+
 		
-		// Expected Take Home Income after expected increase
-		double yNewTakeHomeIncome = getTakeHomeIncome(yNewTaxableIncome, yNewTax);
-		double mNewTakeHomeIncome = toMonthly(yNewTakeHomeIncome);
-		result.setExpectedTakeHomeIncomeYearly(yNewTakeHomeIncome);
-		result.setExpectedTakeHomeIncomeMonthly(mNewTakeHomeIncome);
-
-		// Increase in take home income after expected increase
-		double yIncreaseInTakeHomeIncome = getIncreaseInTakeHomeIncome(
-				yOldTakeHomeIncome, yNewTakeHomeIncome);
-		double mIncreaseInTakeHomeIncome = toMonthly(yIncreaseInTakeHomeIncome);
-		result.setIncreaseInTakeHomeIncomeYearly(yIncreaseInTakeHomeIncome);
-		result.setIncreaseInTakeHomeIncomeMonthly(mIncreaseInTakeHomeIncome);
-
 		// Avg Rate of tax
-		double avgRateofTax = getAvgRateOfTax(yOldTax, yOldTaxableIncome);
-		result.setAvgRateOfTax(avgRateofTax);
+		double avgRateofTax = yOldTax/yOldTaxableIncome; // 1.00%
 
-		// Avg rate of tax after expected increase
-		double newAvgRateofTax = getAvgRateOfTax(yNewTax, yNewTaxableIncome);
-		result.setExpAvgRateOfTax(newAvgRateofTax);
+			
+// ============================= With Increase Calculation Section  =================================
+		
+		if(yIncrease > 0) {
+			
+			// Taxable Salary after increase and alloawable deduction
+			yNewTaxableIncome = getExpectedTaxableIncome(yIncome, yIncrease, zakat); 
+			mNewTaxableIncome = toMonthly(yNewTaxableIncome); 
+	
+	
+			// Increase in taxabe income after expected increase
+			yIncreaseInTaxableIncome = getIncreaseInTaxableIncome(
+					yOldTaxableIncome, yNewTaxableIncome);
+			mIncreaseInTaxableIncome = toMonthly(yIncreaseInTaxableIncome);
+	
+	
+			// Total Tax Payable after expected increase
+			yNewTax = getTax(yNewTaxableIncome); 
+			mNewTax = getTax(yNewTax);
+	
+	
+			// Increase in tax after expected Increase
+			yIncreaseInTax = getIncreaseInTax(yOldTax, yNewTax);
+			mIncreaseInTax = toMonthly(yIncreaseInTax);
+	
+			
+			// Expected Take Home Income after expected increase
+			yNewTakeHomeIncome = getTakeHomeIncome(yNewTaxableIncome, yNewTax);
+			mNewTakeHomeIncome = toMonthly(yNewTakeHomeIncome);
+	
+	
+			// Increase in take home income after expected increase
+			yIncreaseInTakeHomeIncome = getIncreaseInTakeHomeIncome(
+					yOldTakeHomeIncome, yNewTakeHomeIncome);
+			mIncreaseInTakeHomeIncome = toMonthly(yIncreaseInTakeHomeIncome);
+	
+	
+			// Avg rate of tax after expected increase
+			newAvgRateofTax = getAvgRateOfTax(yNewTax, yNewTaxableIncome);
+		
+		}
+		
+		else {
+			yNewTaxableIncome = yOldTaxableIncome;
+			mNewTaxableIncome = mOldTaxableIncome;
+			
+			yNewTax = yOldTax;
+			mNewTax = mOldTax;
+			
+			yNewTakeHomeIncome = yOldTakeHomeIncome;
+			mNewTakeHomeIncome = mOldTakeHomeIncome;
+			
+			newAvgRateofTax = avgRateofTax;
+			
+			// increase in taxable income, tax and take home income will be zero as new and old values are same;
+		}
+			
+		
+// ============================== Plan to Save Tax Calculation Section  =================================		
+		
+		if (zakat > 0) {
+			// zakat amount waiver using formula 
+			zakatDeduction = getZakatDeduction(zakat, yOldTaxableIncome);
+		}
 
-		// zakat amount waiver using formula 
-		double zakatDeduction = getZakatDeduction(zakat, yOldTaxableIncome);
-		result.setZakatDeduction(zakatDeduction);
+		if (donation > 0) {
+			// donation amount waiver using formula
+			donationDeduction = getDonationDeduction(donation,
+					yOldTaxableIncome, avgRateofTax);
+		}
+		
+		if (pensionFund > 0 ) {
+			// pension fund investment waiver using formula
+			pensionFundDeduction = getPensionFundDeduction(pensionFund, age,
+					yOldTaxableIncome, avgRateofTax);
+		}
+		
 
-		// donation amount waiver using formula
-		double donationDeduction = getDonationDeduction(donation,
-				yOldTaxableIncome, newAvgRateofTax);
-		result.setDonationDeduction(donationDeduction);
+		if (shares > 0 || insurancePremium > 0) {
+			// shares and insurance investment waiver using formula
+			sharesInsuranceDeduction = getSharesInsuranceDeduction(shares,
+					insurancePremium, mOldTaxableIncome, avgRateofTax);
+		}
+		
+		if(houseLoanInterest > 0) {
+			// house loan interest amount waiver using formula
+			houseLoanInterestDeduction = getHouseLoanInterestDeduction(
+					houseLoanInterest, mOldTaxableIncome, avgRateofTax);
+		}
+		
 
-		// pension fund investment waiver using formula
-		double pensionFundDeduction = getPensionFundDeduction(pensionFund, age,
-				yOldTaxableIncome, newAvgRateofTax);
-		result.setPensionDeduction(pensionFundDeduction);
-
-		// shares and insurance investment waiver using formula
-		double sharesInsuranceDeduction = getSharesInsuranceDeduction(shares,
-				insurancePremium, mOldTaxableIncome, newAvgRateofTax);
-		result.setShares_InsuranceDeduction(sharesInsuranceDeduction);
-
-		// house loan interest amount waiver using formula
-		double houseLoanInterestDeduction = getHouseLoanInterestDeduction(
-				houseLoanInterest, mOldTaxableIncome, newAvgRateofTax);
-		result.setHouseLoanInterestDeduction(houseLoanInterestDeduction);
-
+// =================================== Analysis Calculation Section   =======================================
 		// total tax saving
-		double taxSaving = getTaxSaving(zakatDeduction, donationDeduction,
+		taxSaving = getTaxSaving(zakatDeduction, donationDeduction,
 				sharesInsuranceDeduction, pensionFundDeduction,
 				houseLoanInterestDeduction);
-		result.setTotalTaxSaving(taxSaving);
+		
 
 		// actual tax 
-		double actualTax = getActualTax(yOldTax, taxSaving);
-		result.setActualTaxPayable(actualTax);
-
+		actualTax = getActualTax(yOldTax, taxSaving); // 0
+		
 		// Tax Saving Percentage
-		double taxSavingPercent = getTaxSavingPercent(actualTax, yOldTax);
-		result.setTaxSavingPercent(taxSavingPercent);  
-
+		taxSavingPercent = getTaxSavingPercent(actualTax, yOldTax); // 0
+		
 		// Tax Payable after Planning
-		double yOldPlannedTax = getPlannedTax(yOldTax, actualTax);
-		double mOldPlannedTax = toMonthly(yOldPlannedTax);
-		result.setPlannedTaxYearly(yOldPlannedTax);
-		result.setPlannedTaxMonthly(mOldPlannedTax);
+		yOldPlannedTax = getPlannedTax(yOldTax, actualTax); // 5000
+		mOldPlannedTax = toMonthly(yOldPlannedTax); // 417
 
 		// Tax Payable after Planning and expected increase in salary 
-		double yNewPlannedTax = getPlannedTax(yNewTax, actualTax);
-		double mNewPlannedTax = toYearly(yNewPlannedTax);
+		yNewPlannedTax = getPlannedTax(yNewTax, actualTax); // 5000
+		mNewPlannedTax = toYearly(yNewPlannedTax); // 417
+
+//=============================  Setter Section  ===================================================
+//		Set all the tax calculation results in result object to return		
+		
+		TaxResult result = new TaxResult();
+
+		//	UI input values				
+		result.setUiIncomeMonthly(mIncome); 
+		result.setUiIncomeYearly(yIncome); 
+		result.setUiMonthlyExpectedIncrease(mIncrease);    
+		result.setUiYearlyExpectedIncrease(yIncrease); 
+		result.setUiZakat(zakat); 
+		result.setUiInsurance(insurancePremium);  
+		result.setUiShares(shares); 
+		result.setUiDonation(donation); 
+		result.setUiPension(pensionFund);
+		result.setUiHouseLoanInterest(houseLoanInterest);
+
+		//	without increase in income
+		result.setTaxableIncomeYearly(yOldTaxableIncome);
+		result.setTaxableIncomeMonthly(mOldTaxableIncome); 
+		result.setTaxYearly(yOldTax);
+		result.setTaxMonthly(mOldTax);
+		result.setTakeHomeIncomeYearly(yOldTakeHomeIncome); 
+		result.setTakeHomeIncomeMonthly(mOldTakeHomeIncome);
+		result.setAvgRateOfTax(avgRateofTax); 
+		
+		//	With Increase in income
+		result.setExpectedTaxableIncomeYearly(yNewTaxableIncome); 
+		result.setExpectedTaxableIncomeMonthly(mNewTaxableIncome);
+		result.setIncreaseInTaxableIncomeYearly(yIncreaseInTaxableIncome);  
+		result.setIncreaseInTaxableIncomeMonthly(mIncreaseInTaxableIncome);
+		result.setExpectedTaxYearly(yNewTax);
+		result.setExpectedTaxMonthly(mNewTax);
+		result.setIncreaseInTaxYearly(yIncreaseInTax);
+		result.setIncreaseInTaxMonthly(mIncreaseInTax);
+		result.setExpectedTakeHomeIncomeYearly(yNewTakeHomeIncome);
+		result.setExpectedTakeHomeIncomeMonthly(mNewTakeHomeIncome);
+		result.setIncreaseInTakeHomeIncomeYearly(yIncreaseInTakeHomeIncome);
+		result.setIncreaseInTakeHomeIncomeMonthly(mIncreaseInTakeHomeIncome);
+		result.setExpAvgRateOfTax(newAvgRateofTax);
+		
+		// Plan to save Tax
+		result.setZakatDeduction(zakatDeduction);
+		result.setDonationDeduction(donationDeduction);
+		result.setPensionDeduction(pensionFundDeduction);
+		result.setShares_InsuranceDeduction(sharesInsuranceDeduction);
+		result.setHouseLoanInterestDeduction(houseLoanInterestDeduction);
+		
+		// Analysis
+		result.setTotalTaxSaving(taxSaving);
+		result.setActualTaxPayable(actualTax);
+		result.setTaxSavingPercent(taxSavingPercent);  
+		result.setPlannedTaxYearly(yOldPlannedTax);
+		result.setPlannedTaxMonthly(mOldPlannedTax);
 		result.setPlannedTaxYearly(mNewPlannedTax);
 		result.setPlannedTaxMonthly(mNewPlannedTax);
-	
+		
+// =============================================================================================
+
 		return result;
 	}
+// 	=========================== Tax Calculation ============================
+	
+	@Override
+	public double getTax(double taxableIncome) {
+		
+		// Slab slab = findSlab(taxableIncome);	// actual line 
+		Slab slab = new Slab(400001d, 75000d, 0d, 5f); // just for testing
+		
+		if (slab != null) {
+			double offset = slab.getOffsetValue();
+			double percent = slab.getPercentValue();
+			double exceedAmount = taxableIncome - slab.getStartValue();
+			double tax = offset + (exceedAmount *  percent);
+			
+			return tax;
+		}
+		
+		return 0;
+		
+	}
 
-	// //////////// Plan To Save Tax Calculations (yearly) ///////////////
+	
+//  =============== Plan To Save Tax Formuale (yearly)  ==================
 
 	// Zakat deductions
 	@Override
@@ -191,7 +305,7 @@ public class SalariedTaxAPI extends TaxAPI {
 
 		return Math.min(zakat, taxableIncome);
 	}
-
+	
 	// Charitable Donation Deductions
 	@Override
 	public double getDonationDeduction(double donation, double taxableIncome,
@@ -225,6 +339,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	// Pension fund deductions
+	@Override
 	public double getPensionFundDeduction(double pensionFund, int age,
 			double taxableIncome, double avgRateofTax) {
 
@@ -245,6 +360,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	// double House loan interest deductions
+	@Override
 	public double getHouseLoanInterestDeduction(double houseLoanInterest,
 			double taxableIncome, double avgRateofTax) {
 
@@ -260,5 +376,5 @@ public class SalariedTaxAPI extends TaxAPI {
 				Math.min(taxableIncomePart, CONSTANT_LIMIT))
 				* avgRateofTax;
 	}
-
+	
 }
