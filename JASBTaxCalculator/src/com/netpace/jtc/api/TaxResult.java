@@ -79,16 +79,16 @@ public class TaxResult {
 	public void setUiIncomeYearly(double uiYearlyIncome) {
 		this.uiYearlyIncome = uiYearlyIncome;
 	}
-	public double getUiMonthlyExpectedIncrease() {
+	public double getUiExpectedIncreaseMonthly() {
 		return uiMonthlyExpectedIncrease;
 	}
-	public void setUiMonthlyExpectedIncrease(double uiMonthlyExpectedIncrease) {
+	public void setUiExpectedIncreaseMonthly(double uiMonthlyExpectedIncrease) {
 		this.uiMonthlyExpectedIncrease = uiMonthlyExpectedIncrease;
 	}
-	public double getUiYearlyMonthlyExpectedIncrease() {
+	public double getUiExpectedIncreaseYearly() {
 		return uiYearlyExpectedIncrease;
 	}
-	public void setUiYearlyExpectedIncrease(double uiYearlyExpectedIncrease) {
+	public void setUiExpectedIncreaseYearly(double uiYearlyExpectedIncrease) {
 		this.uiYearlyExpectedIncrease = uiYearlyExpectedIncrease;
 	}
 	public double getUiZakat() {
