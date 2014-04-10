@@ -1,60 +1,6 @@
 package com.netpace.jtc.api;
 
-import android.graphics.YuvImage;
-
 public class SalariedTaxAPI extends TaxAPI {
-
-	@Override
-	void calcTax(TaxResult result) {
-		
-		double taxableIncome = result.getTaxableIncomeYearly();		
-		double tax = getTax(taxableIncome);
-		double yTakeHomeIncome = taxableIncome - tax;
-		
-		result.setTaxYearly(tax);
-		result.setTaxMonthly(toMonthly(tax));
-		
-		result.setTakeHomeIncomeYearly(yTakeHomeIncome);
-		result.setTakeHomeIncomeMonthly( toMonthly(yTakeHomeIncome) );
-	}
-	
-	private void calcImpactOfIncrement(TaxResult result) {
-
-		double newTaxableIncome = result.getExpectedTaxableIncomeYearly();
-		
-		double newTax = getTax(newTaxableIncome);
-		double oldTax = result.getTaxYearly();
-		double yIncreaseInTax = newTax - oldTax;
-		
-		double newTakeHomeIncome = newTaxableIncome - newTax;
-		double oldTakeHomeIncome = result.getTakeHomeIncomeYearly();
-		double yIncreaseInTakeHomeIncome = newTakeHomeIncome - oldTakeHomeIncome;
-		
-		result.setExpectedTaxYearly(newTax);
-		result.setTaxMonthly( toMonthly(newTax) );
-		
-		result.setIncreaseInTaxYearly(yIncreaseInTax);
-		result.setIncreaseInTaxMonthly( toMonthly(yIncreaseInTax) );
-		
-		result.setExpectedTakeHomeIncomeYearly(newTakeHomeIncome);
-		result.setExpectedTakeHomeIncomeMonthly( toMonthly(newTakeHomeIncome) );
-		
-		result.setIncreaseInTakeHomeIncomeYearly(yIncreaseInTakeHomeIncome);
-		result.setIncreaseInTakeHomeIncomeYearly( toMonthly(yIncreaseInTakeHomeIncome) );
-	}
-	
-	
-	private double getTax(double amount) {
-		// Slab slab = findSlab(taxableIncome);	// actual line 
-		Slab slab = new Slab(400001d, 75000d, 0d, 5f); // just for testing
-		
-		double offset = slab.getOffsetValue();
-		double percent = slab.getPercentValue();
-		double exceedAmount = amount - slab.getStartValue();
-		double tax = offset + exceedAmount * percent;
-		
-		return tax;
-	}
 
 	@Override
 	void calcZakatDeduction(TaxResult result) {
@@ -149,64 +95,183 @@ public class SalariedTaxAPI extends TaxAPI {
 
 		result.setHouseLoanInterestDeduction(houseLoanInterestDeduction);
 	}
+		
+	@Override
+	void calcTax(TaxResult result) {
+		
+		double taxableIncome = result.getTaxableIncomeYearly();		
+		double tax = getTax(taxableIncome);
+		double yTakeHomeIncome = taxableIncome - tax;
+		double avgRateOfTax = Math.round(tax/taxableIncome);
+		
+		result.setTaxYearly(tax);
+		result.setTaxMonthly(toMonthly(tax));
+		
+		result.setTakeHomeIncomeYearly(yTakeHomeIncome);
+		result.setTakeHomeIncomeMonthly( toMonthly(yTakeHomeIncome) );
+		
+		result.setAvgRateOfTax(avgRateOfTax);
+	}
 	
+	private void calcImpactOfIncrement(TaxResult result) {
+
+		double newTaxableIncome = result.getExpectedTaxableIncomeYearly();
+		
+		double newTax = getTax(newTaxableIncome);
+		double oldTax = result.getTaxYearly();
+		double yIncreaseInTax = newTax - oldTax;
+		
+		double newTakeHomeIncome = newTaxableIncome - newTax;
+		double oldTakeHomeIncome = result.getTakeHomeIncomeYearly();
+		double yIncreaseInTakeHomeIncome = newTakeHomeIncome - oldTakeHomeIncome;
+		
+		double newAvgRateOfTax = Math.round(newTax/newTaxableIncome);
+		
+		result.setExpectedTaxYearly(newTax);
+		result.setTaxMonthly( toMonthly(newTax) );
+		
+		result.setIncreaseInTaxYearly(yIncreaseInTax);
+		result.setIncreaseInTaxMonthly( toMonthly(yIncreaseInTax) );
+		
+		result.setExpectedTakeHomeIncomeYearly(newTakeHomeIncome);
+		result.setExpectedTakeHomeIncomeMonthly( toMonthly(newTakeHomeIncome) );
+		
+		result.setIncreaseInTakeHomeIncomeYearly(yIncreaseInTakeHomeIncome);
+		result.setIncreaseInTakeHomeIncomeYearly( toMonthly(yIncreaseInTakeHomeIncome) );
+		
+		result.setExpAvgRateOfTax(newAvgRateOfTax);
+	}
 	
+	private void calcPlanning(TaxResult result) {
+
+		calcZakatDeduction(result);
+		calcDonationDeduction(result);
+		calcPensionFundDeduction(result);
+		calcSharesInsuranceDeduction(result);
+		calcHouseLoanInterestDeduction(result);
+
+		calcAnalysis(result);
+	}
+	
+	private void calcAnalysis(TaxResult result) {
+		double zakatDeduction = result.getZakatDeduction();
+		double donationDeduction = result.getDonationDeduction();
+		double pensionFundDeduction = result.getPensionDeduction();
+		double sharesInsuranceDeduction = result.getShares_InsuranceDeduction();	
+		double houseLoanInterestDeduction = result.getHouseLoanInterestDeduction();
+		
+		double tax = result.getTaxYearly();
+		
+		double taxSaving = zakatDeduction + 
+							donationDeduction + 
+							pensionFundDeduction + 
+							sharesInsuranceDeduction + 
+							houseLoanInterestDeduction;
+		
+		double actualTax = Math.min(tax, taxSaving);
+		
+		double taxSavingPercent = actualTax/tax * 100;;
+		
+		double plannedTax = tax - actualTax;
+		
+		result.setTotalTaxSaving(taxSaving);
+		result.setTaxSavingPercent(taxSavingPercent);
+		result.setActualTaxPayable(actualTax);
+		result.setPlannedTaxYearly(plannedTax);
+		result.setPlannedTaxMonthly( toMonthly(plannedTax) );
+		
+	} 
+	
+	private double getTax(double amount) {
+		// Slab slab = findSlab(taxableIncome);	// actual line 
+		Slab slab = new Slab(400001d, 75000d, 0d, 5f); // just for testing
+		
+		double offset = slab.getOffsetValue();
+		double percent = slab.getPercentValue();
+		double exceedAmount = amount - slab.getStartValue();
+		double tax = offset + exceedAmount * percent;
+		
+		return tax;
+	}
+
+	private void setInputs(double income, double increase, InputType inputType, TaxResult result) {
+		
+		// ============================== Congfiguring inputs monthly and yearly  ====================================		
+		// Input Type Only Decides income and increase values to be monthly and yearly   
+		if (inputType == InputType.MONTHLY) {
+			result.setUiIncomeYearly( toYearly(income) ); // 60,000
+			result.setUiIncomeMonthly(income); // 50,000
+			
+			result.setUiExpectedIncreaseYearly(toYearly(increase)); // 0
+			result.setUiExpectedIncreaseMonthly(increase); // 0
+			
+			result.setTaxableIncomeMonthly(income+increase);
+			
+		} else if (inputType == InputType.YEARLY) {
+			result.setUiIncomeYearly(income); // 60,000
+			result.setUiIncomeMonthly( toMonthly(income) ); // 50,000
+			
+			result.setUiExpectedIncreaseYearly(toYearly(increase)); // 0
+			result.setUiExpectedIncreaseMonthly( toMonthly(increase) ); // 0
+			
+			result.setTaxableIncomeYearly(income+increase);
+		}
+	}
+
+	@Override
+	TaxResult calculateTax(double income, InputType inputType) {
+		
+		TaxResult result = new TaxResult();
+		
+		setInputs(income, 0, inputType, result);
+		
+		calcTax(result);
+		
+		return result;
+	}
+
+	@Override
+	TaxResult calculateImpactOfIncrement(double income, double increase, InputType inputType) {
+		
+		TaxResult result = new TaxResult();
+		
+		setInputs(income, increase, inputType, result);
+		
+		calcTax(result);
+		calcImpactOfIncrement(result);
+		
+		return result;
+	}
 	
 	@Override
-	TaxResult calculateTaxResult(double income, double increase, double zakat,
+	TaxResult calculateTaxPlanning(double income, double zakat,
 			double donation, double shares, double insurancePremium,
 			double pensionFund, int age, double houseLoanInterest,
 			InputType inputType) {
 		
 		TaxResult result = new TaxResult();
 		
-// ============================== Congfiguring inputs monthly and yearly  ====================================		
-
-			// Input Type Only Decides income and increase values to be monthly and yearly   
-			if (inputType == InputType.MONTHLY) {
-				result.setUiIncomeYearly( toYearly(income) ); // 60,000
-				result.setUiIncomeMonthly(income); // 50,000
-				
-				result.setUiExpectedIncreaseYearly(toYearly(increase)); // 0
-				result.setUiExpectedIncreaseMonthly(increase); // 0
-				
-			} else {
-				result.setUiIncomeYearly(income); // 60,000
-				result.setUiIncomeMonthly( toMonthly(income) ); // 50,000
-				
-				result.setUiExpectedIncreaseYearly(toYearly(increase)); // 0
-				result.setUiExpectedIncreaseMonthly( toMonthly(increase) ); // 0			
-			}
+		setInputs(income, 0, inputType, result);
 			
-			result.setUiZakat(zakat);
-			result.setUiDonation(donation);
-			result.setUiShares(shares);
-			result.setUiInsurance(insurancePremium);
-			result.setUiAge(age);
-			result.setUiHouseLoanInterest(houseLoanInterest);
+		result.setUiZakat(zakat);
+		result.setUiDonation(donation);
+		result.setUiShares(shares);
+		result.setUiInsurance(insurancePremium);
+		result.setUiAge(age);
+		result.setUiHouseLoanInterest(houseLoanInterest);
 			
-//  ===========================================================================================================
 		
-		// Set the taxable Income
+//		contiue from here
+		// Set the taxable Income again for planning because of zakat input
 		double yTaxableIncome = result.getUiIncomeYearly() - result.getUiZakat();
-		double mTaxableIncome = toMonthly(yTaxableIncome);
 		result.setTaxableIncomeYearly(yTaxableIncome);
-		
-		result.setTaxableIncomeMonthly(mTaxableIncome);
+		result.setTaxableIncomeMonthly( toMonthly(yTaxableIncome) );
 		
 		calcTax(result);
-		
+		calcPlanning(result);
+		calcAnalysis(result);
 
-		
-		
-		return null;
+		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

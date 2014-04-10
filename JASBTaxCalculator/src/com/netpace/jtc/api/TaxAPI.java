@@ -6,12 +6,15 @@ public abstract class TaxAPI {
 	// abstract methods
 	
 	
-	abstract TaxResult calculateTaxResult(double income, double increase,
+	abstract TaxResult calculateTaxPlanning(double income,
 			double zakat, double donation, double shares,
 			double insurancePremium, double pensionFund, int age,
 			double houseLoanInterest, InputType inputType);
 	
-
+	abstract TaxResult calculateTax(double income, InputType inputType);
+	
+	abstract TaxResult calculateImpactOfIncrement(double income, double increase, InputType inputType);
+	
 	// //////////// Plan To Save Tax Calculations (yearly) ///////////////
 
 	// Total tax payable
