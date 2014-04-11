@@ -3,22 +3,22 @@ package com.netpace.jtc.api;
 public class NonSalariedTaxAPI extends TaxAPI {
 
 	@Override
-	TaxResult calculateTaxPlanning(double income, double zakat,
-			double donation, double shares, double insurancePremium,
-			double pensionFund, int age, double houseLoanInterest,
+	TaxResult calculateTaxPlanning(Double income, Double zakat,
+			Double donation, Double shares, Double insurancePremium,
+			Double pensionFund, int age, Double houseLoanInterest,
 			InputType inputType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	TaxResult calculateTax(double income, InputType inputType) {
+	TaxResult calculateTax(Double income, InputType inputType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	TaxResult calculateImpactOfIncrement(double income, double increase,
+	TaxResult calculateImpactOfIncrement(Double income, Double increase,
 			InputType inputType) {
 		// TODO Auto-generated method stub
 		return null;

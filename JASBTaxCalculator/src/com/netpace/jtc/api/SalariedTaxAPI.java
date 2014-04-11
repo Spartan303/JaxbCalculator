@@ -5,8 +5,8 @@ public class SalariedTaxAPI extends TaxAPI {
 	@Override
 	void calcZakatDeduction(TaxResult result) {
 		
-		double zakat = result.getZakatDeduction();
-		double taxableIncome = result.getTaxableIncomeYearly();
+		Double zakat = result.getZakatDeduction();
+		Double taxableIncome = result.getTaxableIncomeYearly();
 		
 		result.setZakatDeduction(Math.min(zakat, taxableIncome));
 	}
@@ -18,33 +18,32 @@ public class SalariedTaxAPI extends TaxAPI {
 		// Limit 2: 30% of taxable income = b
 		// Formula: MIN(a, b) * avgRateofTax
 		
-		double avgRateofTax = result.getAvgRateOfTax();
-		double donation = result.getUiDonation();
-		double taxableIncome = result.getTaxableIncomeYearly();
-		double taxableIncomePart = 0.3 * taxableIncome;
+		Double avgRateofTax = result.getAvgRateOfTax();
+		Double donation = result.getUiDonation();
+		Double taxableIncome = result.getTaxableIncomeYearly();
+		Double taxableIncomePart = 0.3 * taxableIncome;
 		
-		result.setDonationDeduction(Math.min(donation, taxableIncomePart) * avgRateofTax);
-		
+		result.setDonationDeduction(Math.min(donation, taxableIncomePart) * avgRateofTax);		
 	}
 
 	@Override
 	void calcSharesInsuranceDeduction(TaxResult result) {
 
-		double shares = result.getUiShares();
-		double insurancePremium = result.getUiInsurance();
-		double taxableIncome = result.getTaxableIncomeYearly();
-		double avgRateofTax = result.getAvgRateOfTax();
+		Double shares = result.getUiShares();
+		Double insurancePremium = result.getUiInsurance();
+		Double taxableIncome = result.getTaxableIncomeYearly();
+		Double avgRateofTax = result.getAvgRateOfTax();
 		
 		// Limit 1: Amount of Shares + Insurance = a
 		// Limit 2: 20% of taxable income = b
 		// Limit 3: 1 Million per year = c
 		// Formula: MIN(a, b, c) * avgRateofTax
 
-		double amountOfSharesAndInsurance = shares + insurancePremium;
-		double taxableIncomePart = taxableIncome * 0.2;
-		double CONSTANT_LIMIT = 1000000; // 1 million
+		Double amountOfSharesAndInsurance = shares + insurancePremium;
+		Double taxableIncomePart = taxableIncome * 0.2;
+		Double CONSTANT_LIMIT = 1000000d; // 1 million
 
-		double shares_InsuranceDeduction = Math.min(amountOfSharesAndInsurance, Math.min(taxableIncomePart, CONSTANT_LIMIT)) * avgRateofTax;
+		Double shares_InsuranceDeduction = Math.min(amountOfSharesAndInsurance, Math.min(taxableIncomePart, CONSTANT_LIMIT)) * avgRateofTax;
 		
 		result.setShares_InsuranceDeduction(shares_InsuranceDeduction); 
 	}
@@ -53,17 +52,17 @@ public class SalariedTaxAPI extends TaxAPI {
 	void calcPensionFundDeduction(TaxResult result) {
 
 		
-		double pensionFund = result.getUiPension(); 
+		Double pensionFund = result.getUiPension(); 
 		int age = result.getUiAge();
-		double taxableIncome = result.getTaxableIncomeYearly(); 
-		double avgRateofTax = result.getAvgRateOfTax(); 
+		Double taxableIncome = result.getTaxableIncomeYearly(); 
+		Double avgRateofTax = result.getAvgRateOfTax(); 
 		
 		// Limit 1: Amount of Contribution in Pension Fund = a
 		// Limit 2: 20% of taxable income = b (if age <= 40)
 		// Formula: MIN(a, b) * avgRateofTax
 
 		int limit = 20; // 20%
-		double taxableIncomePart = taxableIncome * ((double) limit / 100);
+		Double taxableIncomePart = taxableIncome * ((double) limit / 100);
 
 		// limit 2 increased by 2% each year for age > 40
 		if (age >= 40) {
@@ -77,32 +76,32 @@ public class SalariedTaxAPI extends TaxAPI {
 	@Override
 	void calcHouseLoanInterestDeduction(TaxResult result) {
 		
-		double houseLoanInterest = result.getUiHouseLoanInterest();
-		double taxableIncome = result.getTaxableIncomeYearly(); 
-		double avgRateofTax = result.getAvgRateOfTax();
+		Double houseLoanInterest = result.getUiHouseLoanInterest();
+		Double taxableIncome = result.getTaxableIncomeYearly(); 
+		Double avgRateofTax = result.getAvgRateOfTax();
 
 		// Limit 1: Amount of Interest on House Loan = a
 		// Limit 2: 50% of taxable income = b
 		// Limit 3: 75,000 per year
 		// Formula: MIN(a, b, c) * avgRateofTax
 
-		double taxableIncomePart = taxableIncome * 0.5;
-		double CONSTANT_LIMIT = 1000000; // 1 million
+		Double taxableIncomePart = taxableIncome * 0.5;
+		Double CONSTANT_LIMIT = 1000000d; // 1 million
 		
-		double houseLoanInterestDeduction = Math.min(houseLoanInterest,
+		Double houseLoanInterestDeduction = Math.min(houseLoanInterest,
 				Math.min(taxableIncomePart, CONSTANT_LIMIT))
 				* avgRateofTax;
 
 		result.setHouseLoanInterestDeduction(houseLoanInterestDeduction);
 	}
-		
+
 	@Override
 	void calcTax(TaxResult result) {
 		
-		double taxableIncome = result.getTaxableIncomeYearly();		
-		double tax = getTax(taxableIncome);
-		double yTakeHomeIncome = taxableIncome - tax;
-		double avgRateOfTax = Math.round(tax/taxableIncome);
+		Double taxableIncome = result.getTaxableIncomeYearly();
+		Double tax = getTax(taxableIncome);
+		Double yTakeHomeIncome = taxableIncome - tax;
+		Double avgRateOfTax = (double) Math.round(tax/taxableIncome);
 		
 		result.setTaxYearly(tax);
 		result.setTaxMonthly(toMonthly(tax));
@@ -113,19 +112,34 @@ public class SalariedTaxAPI extends TaxAPI {
 		result.setAvgRateOfTax(avgRateOfTax);
 	}
 	
+	private Double getTax(Double amount) {
+		// Slab slab = findSlab(taxableIncome);	// actual line 
+		Slab slab = new Slab(400001d, 75000d, 0d, 5f); // just for testing
+		
+		Double offset = slab.getOffsetValue();
+		Double percent = (double) slab.getPercentValue();
+		Double exceedAmount = amount - slab.getStartValue();
+		Double tax = offset + exceedAmount * percent;
+		
+		return tax;
+	}
+		
+	
+//	============== Private Methods for Public Methods ===================
+	
 	private void calcImpactOfIncrement(TaxResult result) {
 
-		double newTaxableIncome = result.getExpectedTaxableIncomeYearly();
+		Double newTaxableIncome = result.getExpectedTaxableIncomeYearly();
 		
-		double newTax = getTax(newTaxableIncome);
-		double oldTax = result.getTaxYearly();
-		double yIncreaseInTax = newTax - oldTax;
+		Double newTax = getTax(newTaxableIncome);
+		Double oldTax = result.getTaxYearly();
+		Double yIncreaseInTax = newTax - oldTax;
 		
-		double newTakeHomeIncome = newTaxableIncome - newTax;
-		double oldTakeHomeIncome = result.getTakeHomeIncomeYearly();
-		double yIncreaseInTakeHomeIncome = newTakeHomeIncome - oldTakeHomeIncome;
+		Double newTakeHomeIncome = newTaxableIncome - newTax;
+		Double oldTakeHomeIncome = result.getTakeHomeIncomeYearly();
+		Double yIncreaseInTakeHomeIncome = newTakeHomeIncome - oldTakeHomeIncome;
 		
-		double newAvgRateOfTax = Math.round(newTax/newTaxableIncome);
+		Double newAvgRateOfTax = (double) Math.round(newTax/newTaxableIncome);
 		
 		result.setExpectedTaxYearly(newTax);
 		result.setTaxMonthly( toMonthly(newTax) );
@@ -154,25 +168,25 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 	
 	private void calcAnalysis(TaxResult result) {
-		double zakatDeduction = result.getZakatDeduction();
-		double donationDeduction = result.getDonationDeduction();
-		double pensionFundDeduction = result.getPensionDeduction();
-		double sharesInsuranceDeduction = result.getShares_InsuranceDeduction();	
-		double houseLoanInterestDeduction = result.getHouseLoanInterestDeduction();
+		Double zakatDeduction = result.getZakatDeduction();
+		Double donationDeduction = result.getDonationDeduction();
+		Double pensionFundDeduction = result.getPensionDeduction();
+		Double sharesInsuranceDeduction = result.getShares_InsuranceDeduction();	
+		Double houseLoanInterestDeduction = result.getHouseLoanInterestDeduction();
 		
-		double tax = result.getTaxYearly();
+		Double tax = result.getTaxYearly();
 		
-		double taxSaving = zakatDeduction + 
+		Double taxSaving = zakatDeduction + 
 							donationDeduction + 
 							pensionFundDeduction + 
 							sharesInsuranceDeduction + 
 							houseLoanInterestDeduction;
 		
-		double actualTax = Math.min(tax, taxSaving);
+		Double actualTax = Math.min(tax, taxSaving);
 		
-		double taxSavingPercent = actualTax/tax * 100;;
+		Double taxSavingPercent = actualTax/tax * 100;;
 		
-		double plannedTax = tax - actualTax;
+		Double plannedTax = tax - actualTax;
 		
 		result.setTotalTaxSaving(taxSaving);
 		result.setTaxSavingPercent(taxSavingPercent);
@@ -182,48 +196,46 @@ public class SalariedTaxAPI extends TaxAPI {
 		
 	} 
 	
-	private double getTax(double amount) {
-		// Slab slab = findSlab(taxableIncome);	// actual line 
-		Slab slab = new Slab(400001d, 75000d, 0d, 5f); // just for testing
-		
-		double offset = slab.getOffsetValue();
-		double percent = slab.getPercentValue();
-		double exceedAmount = amount - slab.getStartValue();
-		double tax = offset + exceedAmount * percent;
-		
-		return tax;
-	}
-
-	private void setInputs(double income, double increase, InputType inputType, TaxResult result) {
+	private void setInputs(Double income, Double increase, Double zakat, InputType inputType, TaxResult result) {
 		
 		// ============================== Congfiguring inputs monthly and yearly  ====================================		
 		// Input Type Only Decides income and increase values to be monthly and yearly   
 		if (inputType == InputType.MONTHLY) {
-			result.setUiIncomeYearly( toYearly(income) ); // 60,000
-			result.setUiIncomeMonthly(income); // 50,000
+			result.setUiIncomeYearly( toYearly(income) ); 
+			result.setUiIncomeMonthly(income);
 			
-			result.setUiExpectedIncreaseYearly(toYearly(increase)); // 0
-			result.setUiExpectedIncreaseMonthly(increase); // 0
+			result.setUiExpectedIncreaseYearly(toYearly(increase));
+			result.setUiExpectedIncreaseMonthly(increase);
 			
-			result.setTaxableIncomeMonthly(income+increase);
+			result.setTaxableIncomeYearly( toYearly(income-zakat) );
+			result.setTaxableIncomeMonthly(income-zakat);
+			
+			result.setExpectedTaxableIncomeMonthly(income+increase);
+			result.setExpectedTaxableIncomeYearly( toYearly(income+increase) );
 			
 		} else if (inputType == InputType.YEARLY) {
-			result.setUiIncomeYearly(income); // 60,000
-			result.setUiIncomeMonthly( toMonthly(income) ); // 50,000
+			result.setUiIncomeYearly(income);
+			result.setUiIncomeMonthly( toMonthly(income) );
 			
-			result.setUiExpectedIncreaseYearly(toYearly(increase)); // 0
-			result.setUiExpectedIncreaseMonthly( toMonthly(increase) ); // 0
+			result.setUiExpectedIncreaseYearly(toYearly(increase));
+			result.setUiExpectedIncreaseMonthly( toMonthly(increase) );
 			
-			result.setTaxableIncomeYearly(income+increase);
+			result.setTaxableIncomeYearly(income-zakat);
+			result.setTaxableIncomeMonthly( toMonthly(income-zakat) );
+			
+			result.setExpectedTaxableIncomeYearly(income+increase);
+			result.setExpectedTaxableIncomeMonthly( toMonthly(income+increase) );
 		}
 	}
 
+//	======================== public Methods Call from manager ====================
+	
 	@Override
-	TaxResult calculateTax(double income, InputType inputType) {
+	TaxResult calculateTax(Double income, InputType inputType) {
 		
 		TaxResult result = new TaxResult();
 		
-		setInputs(income, 0, inputType, result);
+		setInputs(income, 0d, 0d, inputType, result);
 		
 		calcTax(result);
 		
@@ -231,11 +243,11 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	TaxResult calculateImpactOfIncrement(double income, double increase, InputType inputType) {
+	TaxResult calculateImpactOfIncrement(Double income, Double increase, InputType inputType) {
 		
 		TaxResult result = new TaxResult();
 		
-		setInputs(income, increase, inputType, result);
+		setInputs(income, increase, 0d, inputType, result);
 		
 		calcTax(result);
 		calcImpactOfIncrement(result);
@@ -244,14 +256,14 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 	
 	@Override
-	TaxResult calculateTaxPlanning(double income, double zakat,
-			double donation, double shares, double insurancePremium,
-			double pensionFund, int age, double houseLoanInterest,
+	TaxResult calculateTaxPlanning(Double income, Double zakat,
+			Double donation, Double shares, Double insurancePremium,
+			Double pensionFund, int age, Double houseLoanInterest,
 			InputType inputType) {
 		
 		TaxResult result = new TaxResult();
 		
-		setInputs(income, 0, inputType, result);
+		setInputs(income, 0d, zakat, inputType, result);
 			
 		result.setUiZakat(zakat);
 		result.setUiDonation(donation);
@@ -259,13 +271,6 @@ public class SalariedTaxAPI extends TaxAPI {
 		result.setUiInsurance(insurancePremium);
 		result.setUiAge(age);
 		result.setUiHouseLoanInterest(houseLoanInterest);
-			
-		
-//		contiue from here
-		// Set the taxable Income again for planning because of zakat input
-		double yTaxableIncome = result.getUiIncomeYearly() - result.getUiZakat();
-		result.setTaxableIncomeYearly(yTaxableIncome);
-		result.setTaxableIncomeMonthly( toMonthly(yTaxableIncome) );
 		
 		calcTax(result);
 		calcPlanning(result);
@@ -273,5 +278,4 @@ public class SalariedTaxAPI extends TaxAPI {
 
 		return result;
 	}
-
 }

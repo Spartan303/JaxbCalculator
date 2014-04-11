@@ -2,123 +2,123 @@ package com.netpace.jtc.api;
 
 public class TaxResult {
 
-	private double uiMonthlyIncome;
-	private double uiYearlyIncome;
-	private double uiMonthlyExpectedIncrease;
-	private double uiYearlyExpectedIncrease;
+	private Double uiMonthlyIncome;
+	private Double uiYearlyIncome;
+	private Double uiMonthlyExpectedIncrease;
+	private Double uiYearlyExpectedIncrease;
 
-	private double uiZakat;
-	private double uiDonation;
-	private double uiShares;
-	private double uiInsurance;
-	private double uiPension;
+	private Double uiZakat;
+	private Double uiDonation;
+	private Double uiShares;
+	private Double uiInsurance;
+	private Double uiPension;
 	private int uiAge;
-	private double uiHouseLoanInterest;
+	private Double uiHouseLoanInterest;
 
-	private double cSlabStart;
-	private double cSlabEnd;
-	private double cSlabFixTax;
-	private double cSlabVarTax;
+	private Double cSlabStart;
+	private Double cSlabEnd;
+	private Double cSlabFixTax;
+	private Double cSlabVarTax;
 
-	private double yExpectedIncome;
-	private double mExpectedIncome;
+	private Double yExpectedIncome;
+	private Double mExpectedIncome;
 
-	private double yTaxableIncome;
-	private double mTaxableIncome;
-	private double yExpectedTaxableIncome;
-	private double mExpectedTaxableIncome;
+	private Double yTaxableIncome;
+	private Double mTaxableIncome;
+	private Double yExpectedTaxableIncome;
+	private Double mExpectedTaxableIncome;
 
-	private double yIncreaseInTaxableIncome;
-	private double mIncreaseInTaxableIncome;
+	private Double yIncreaseInTaxableIncome;
+	private Double mIncreaseInTaxableIncome;
 
-	private double yTax;
-	private double mTax;
-	private double yExpectedTax;
-	private double mExpectedTax;
+	private Double yTax;
+	private Double mTax;
+	private Double yExpectedTax;
+	private Double mExpectedTax;
 
-	private double yIncreaseInTax;
-	private double mIncreaseInTax;
+	private Double yIncreaseInTax;
+	private Double mIncreaseInTax;
 
-	private double yTakeHomeIncome;
-	private double mTakeHomeIncome;
-	private double yExpectedTakeHomeIncome;
-	private double mExpectedTakeHomeIncome;
+	private Double yTakeHomeIncome;
+	private Double mTakeHomeIncome;
+	private Double yExpectedTakeHomeIncome;
+	private Double mExpectedTakeHomeIncome;
 
-	private double yIncreaseInTakeHomeIncome;
-	private double mIncreaseInTakeHomeIncome;
+	private Double yIncreaseInTakeHomeIncome;
+	private Double mIncreaseInTakeHomeIncome;
 
-	private double avgRateOfTax;
-	private double expAvgRateOfTax;
+	private Double avgRateOfTax;
+	private Double expAvgRateOfTax;
 
-	private double zakatDeduction;
-	private double donationDeduction;
-	private double shares_InsuranceDeduction;
-	private double pensionDeduction;
-	private double houseLoanInterestDeduction;
-	private double totalTaxSaving;
+	private Double zakatDeduction;
+	private Double donationDeduction;
+	private Double shares_InsuranceDeduction;
+	private Double pensionDeduction;
+	private Double houseLoanInterestDeduction;
+	private Double totalTaxSaving;
 
-	private double actualTaxPayable;
+	private Double actualTaxPayable;
 
-	private double taxSavingPercent;
+	private Double taxSavingPercent;
 
-	private double yPlannedTax;
-	private double mPlannedTax;
-	private double yExpectedPlannedTax;
-	private double mExpectedPlannedTax;
+	private Double yPlannedTax;
+	private Double mPlannedTax;
+	private Double yExpectedPlannedTax;
+	private Double mExpectedPlannedTax;
 	
 	// UI values
-	public double getUiIncomeMonthly() {
+	public Double getUiIncomeMonthly() {
 		return uiMonthlyIncome;
 	}
-	public void setUiIncomeMonthly(double uiMonthlyIncome) {
+	public void setUiIncomeMonthly(Double uiMonthlyIncome) {
 		this.uiMonthlyIncome = uiMonthlyIncome;
 	}
-	public double getUiIncomeYearly() {
+	public Double getUiIncomeYearly() {
 		return uiYearlyIncome;
 	}
-	public void setUiIncomeYearly(double uiYearlyIncome) {
+	public void setUiIncomeYearly(Double uiYearlyIncome) {
 		this.uiYearlyIncome = uiYearlyIncome;
 	}
-	public double getUiExpectedIncreaseMonthly() {
+	public Double getUiExpectedIncreaseMonthly() {
 		return uiMonthlyExpectedIncrease;
 	}
-	public void setUiExpectedIncreaseMonthly(double uiMonthlyExpectedIncrease) {
+	public void setUiExpectedIncreaseMonthly(Double uiMonthlyExpectedIncrease) {
 		this.uiMonthlyExpectedIncrease = uiMonthlyExpectedIncrease;
 	}
-	public double getUiExpectedIncreaseYearly() {
+	public Double getUiExpectedIncreaseYearly() {
 		return uiYearlyExpectedIncrease;
 	}
-	public void setUiExpectedIncreaseYearly(double uiYearlyExpectedIncrease) {
+	public void setUiExpectedIncreaseYearly(Double uiYearlyExpectedIncrease) {
 		this.uiYearlyExpectedIncrease = uiYearlyExpectedIncrease;
 	}
-	public double getUiZakat() {
+	public Double getUiZakat() {
 		return uiZakat;
 	}
-	public void setUiZakat(double uiZakat) {
+	public void setUiZakat(Double uiZakat) {
 		this.uiZakat = uiZakat;
 	}
-	public double getUiDonation() {
+	public Double getUiDonation() {
 		return uiDonation;
 	}
-	public void setUiDonation(double uiDonation) {
+	public void setUiDonation(Double uiDonation) {
 		this.uiDonation = uiDonation;
 	}
-	public double getUiShares() {
+	public Double getUiShares() {
 		return uiShares;
 	}
-	public void setUiShares(double uiShares) {
+	public void setUiShares(Double uiShares) {
 		this.uiShares = uiShares;
 	}
-	public double getUiInsurance() {
+	public Double getUiInsurance() {
 		return uiInsurance;
 	}
-	public void setUiInsurance(double uiInsurance) {
+	public void setUiInsurance(Double uiInsurance) {
 		this.uiInsurance = uiInsurance;
 	}
-	public double getUiPension() {
+	public Double getUiPension() {
 		return uiPension;
 	}
-	public void setUiPension(double uiPension) {
+	public void setUiPension(Double uiPension) {
 		this.uiPension = uiPension;
 	}
 	public int getUiAge() {
@@ -127,248 +127,248 @@ public class TaxResult {
 	public void setUiAge(int uiAge) {
 		this.uiAge = uiAge;
 	}
-	public double getUiHouseLoanInterest() {
+	public Double getUiHouseLoanInterest() {
 		return uiHouseLoanInterest;
 	}
-	public void setUiHouseLoanInterest(double uiHouseLoanInterest) {
+	public void setUiHouseLoanInterest(Double uiHouseLoanInterest) {
 		this.uiHouseLoanInterest = uiHouseLoanInterest;
 	}
 	
 	// slab values
-	public double getcSlabStart() {
+	public Double getcSlabStart() {
 		return cSlabStart;
 	}
-	public void setcSlabStart(double cSlabStart) {
+	public void setcSlabStart(Double cSlabStart) {
 		this.cSlabStart = cSlabStart;
 	}
-	public double getcSlabEnd() {
+	public Double getcSlabEnd() {
 		return cSlabEnd;
 	}
-	public void setcSlabEnd(double cSlabEnd) {
+	public void setcSlabEnd(Double cSlabEnd) {
 		this.cSlabEnd = cSlabEnd;
 	}
-	public double getcSlabFixTax() {
+	public Double getcSlabFixTax() {
 		return cSlabFixTax;
 	}
-	public void setcSlabFixTax(double cSlabFixTax) {
+	public void setcSlabFixTax(Double cSlabFixTax) {
 		this.cSlabFixTax = cSlabFixTax;
 	}
-	public double getcSlabVarTax() {
+	public Double getcSlabVarTax() {
 		return cSlabVarTax;
 	}
-	public void setcSlabVarTax(double cSlabVarTax) {
+	public void setcSlabVarTax(Double cSlabVarTax) {
 		this.cSlabVarTax = cSlabVarTax;
 	}
 	
 	
 	// result values
 	
-	public double getExpectedIncomeYearly() {
+	public Double getExpectedIncomeYearly() {
 		return yExpectedIncome;
 	}
-	public void setExpectedIncomeYearly(double yExpectedIncome) {
+	public void setExpectedIncomeYearly(Double yExpectedIncome) {
 		this.yExpectedIncome = yExpectedIncome;
 	}
-	public double getExpectedIncomeMonthly() {
+	public Double getExpectedIncomeMonthly() {
 		return mExpectedIncome;
 	}
-	public void setExpectedIncomeMonthly(double mExpectedIncome) {
+	public void setExpectedIncomeMonthly(Double mExpectedIncome) {
 		this.mExpectedIncome = mExpectedIncome;
 	}
-	public double getTaxableIncomeYearly() {
+	public Double getTaxableIncomeYearly() {
 		return yTaxableIncome;
 	}
-	public void setTaxableIncomeYearly(double yTaxableIncome) {
+	public void setTaxableIncomeYearly(Double yTaxableIncome) {
 		this.yTaxableIncome = yTaxableIncome;
 	}
-	public double getTaxableIncomeMonthly() {
+	public Double getTaxableIncomeMonthly() {
 		return mTaxableIncome;
 	}
-	public void setTaxableIncomeMonthly(double mTaxableIncome) {
+	public void setTaxableIncomeMonthly(Double mTaxableIncome) {
 		this.mTaxableIncome = mTaxableIncome;
 	}
-	public double getExpectedTaxableIncomeYearly() {
+	public Double getExpectedTaxableIncomeYearly() {
 		return yExpectedTaxableIncome;
 	}
-	public void setExpectedTaxableIncomeYearly(double yExpectedTaxableIncome) {
+	public void setExpectedTaxableIncomeYearly(Double yExpectedTaxableIncome) {
 		this.yExpectedTaxableIncome = yExpectedTaxableIncome;
 	}
-	public double getExpectedTaxableIncomeMonthly() {
+	public Double getExpectedTaxableIncomeMonthly() {
 		return mExpectedTaxableIncome;
 	}
-	public void setExpectedTaxableIncomeMonthly(double mExpectedTaxableIncome) {
+	public void setExpectedTaxableIncomeMonthly(Double mExpectedTaxableIncome) {
 		this.mExpectedTaxableIncome = mExpectedTaxableIncome;
 	}
-	public double getIncreaseInTaxableIncomeYearly() {
+	public Double getIncreaseInTaxableIncomeYearly() {
 		return yIncreaseInTaxableIncome;
 	}
 	public void setIncreaseInTaxableIncomeYearly(
-			double yIncreaseInTaxableIncome) {
+			Double yIncreaseInTaxableIncome) {
 		this.yIncreaseInTaxableIncome = yIncreaseInTaxableIncome;
 	}
-	public double getIncreaseInTaxableIncomeMonthly() {
+	public Double getIncreaseInTaxableIncomeMonthly() {
 		return mIncreaseInTaxableIncome;
 	}
 	public void setIncreaseInTaxableIncomeMonthly(
-			double mIncreaseInTaxableIncome) {
+			Double mIncreaseInTaxableIncome) {
 		this.mIncreaseInTaxableIncome = mIncreaseInTaxableIncome;
 	}
-	public double getTaxYearly() {
+	public Double getTaxYearly() {
 		return yTax;
 	}
-	public void setTaxYearly(double yTax) {
+	public void setTaxYearly(Double yTax) {
 		this.yTax = yTax;
 	}
-	public double getTaxMonthly() {
+	public Double getTaxMonthly() {
 		return mTax;
 	}
-	public void setTaxMonthly(double mTax) {
+	public void setTaxMonthly(Double mTax) {
 		this.mTax = mTax;
 	}
-	public double getExpectedTaxYearly() {
+	public Double getExpectedTaxYearly() {
 		return yExpectedTax;
 	}
-	public void setExpectedTaxYearly(double yExpectedTax) {
+	public void setExpectedTaxYearly(Double yExpectedTax) {
 		this.yExpectedTax = yExpectedTax;
 	}
-	public double getExpectedTaxMonthly() {
+	public Double getExpectedTaxMonthly() {
 		return mExpectedTax;
 	}
-	public void setExpectedTaxMonthly(double mExpectedTax) {
+	public void setExpectedTaxMonthly(Double mExpectedTax) {
 		this.mExpectedTax = mExpectedTax;
 	}
-	public double getIncreaseInTaxYearly() {
+	public Double getIncreaseInTaxYearly() {
 		return yIncreaseInTax;
 	}
-	public void setIncreaseInTaxYearly(double yIncreaseInTax) {
+	public void setIncreaseInTaxYearly(Double yIncreaseInTax) {
 		this.yIncreaseInTax = yIncreaseInTax;
 	}
-	public double getIncreaseInTaxMonthly() {
+	public Double getIncreaseInTaxMonthly() {
 		return mIncreaseInTax;
 	}
-	public void setIncreaseInTaxMonthly(double mIncreaseInTax) {
+	public void setIncreaseInTaxMonthly(Double mIncreaseInTax) {
 		this.mIncreaseInTax = mIncreaseInTax;
 	}
-	public double getTakeHomeIncomeYearly() {
+	public Double getTakeHomeIncomeYearly() {
 		return yTakeHomeIncome;
 	}
-	public void setTakeHomeIncomeYearly(double yTakeHomeIncome) {
+	public void setTakeHomeIncomeYearly(Double yTakeHomeIncome) {
 		this.yTakeHomeIncome = yTakeHomeIncome;
 	}
-	public double getTakeHomeIncomeMonthly() {
+	public Double getTakeHomeIncomeMonthly() {
 		return mTakeHomeIncome;
 	}
-	public void setTakeHomeIncomeMonthly(double mTakeHomeIncome) {
+	public void setTakeHomeIncomeMonthly(Double mTakeHomeIncome) {
 		this.mTakeHomeIncome = mTakeHomeIncome;
 	}
-	public double getExpectedTakeHomeIncomeYearly() {
+	public Double getExpectedTakeHomeIncomeYearly() {
 		return yExpectedTakeHomeIncome;
 	}
-	public void setExpectedTakeHomeIncomeYearly(double yExpectedTakeHomeIncome) {
+	public void setExpectedTakeHomeIncomeYearly(Double yExpectedTakeHomeIncome) {
 		this.yExpectedTakeHomeIncome = yExpectedTakeHomeIncome;
 	}
-	public double getExpectedTakeHomeIncomeMonthly() {
+	public Double getExpectedTakeHomeIncomeMonthly() {
 		return mExpectedTakeHomeIncome;
 	}
-	public void setExpectedTakeHomeIncomeMonthly(double mExpectedTakeHomeIncome) {
+	public void setExpectedTakeHomeIncomeMonthly(Double mExpectedTakeHomeIncome) {
 		this.mExpectedTakeHomeIncome = mExpectedTakeHomeIncome;
 	}
-	public double getIncreaseInTakeHomeIncomeYearly() {
+	public Double getIncreaseInTakeHomeIncomeYearly() {
 		return yIncreaseInTakeHomeIncome;
 	}
 	public void setIncreaseInTakeHomeIncomeYearly(
-			double yIncreaseInTakeHomeIncome) {
+			Double yIncreaseInTakeHomeIncome) {
 		this.yIncreaseInTakeHomeIncome = yIncreaseInTakeHomeIncome;
 	}
-	public double getIncreaseInTakeHomeIncomeMonthly() {
+	public Double getIncreaseInTakeHomeIncomeMonthly() {
 		return mIncreaseInTakeHomeIncome;
 	}
 	public void setIncreaseInTakeHomeIncomeMonthly(
-			double mIncreaseInTakeHomeIncome) {
+			Double mIncreaseInTakeHomeIncome) {
 		this.mIncreaseInTakeHomeIncome = mIncreaseInTakeHomeIncome;
 	}
-	public double getAvgRateOfTax() {
+	public Double getAvgRateOfTax() {
 		return avgRateOfTax;
 	}
-	public void setAvgRateOfTax(double avgRateOfTax) {
+	public void setAvgRateOfTax(Double avgRateOfTax) {
 		this.avgRateOfTax = avgRateOfTax;
 	}
-	public double getExpAvgRateOfTax() {
+	public Double getExpAvgRateOfTax() {
 		return expAvgRateOfTax;
 	}
-	public void setExpAvgRateOfTax(double expAvgRateOfTax) {
+	public void setExpAvgRateOfTax(Double expAvgRateOfTax) {
 		this.expAvgRateOfTax = expAvgRateOfTax;
 	}
-	public double getZakatDeduction() {
+	public Double getZakatDeduction() {
 		return zakatDeduction;
 	}
-	public void setZakatDeduction(double zakatDeduction) {
+	public void setZakatDeduction(Double zakatDeduction) {
 		this.zakatDeduction = zakatDeduction;
 	}
-	public double getDonationDeduction() {
+	public Double getDonationDeduction() {
 		return donationDeduction;
 	}
-	public void setDonationDeduction(double donationDeduction) {
+	public void setDonationDeduction(Double donationDeduction) {
 		this.donationDeduction = donationDeduction;
 	}
-	public double getShares_InsuranceDeduction() {
+	public Double getShares_InsuranceDeduction() {
 		return shares_InsuranceDeduction;
 	}
-	public void setShares_InsuranceDeduction(double shares_InsuranceDeduction) {
+	public void setShares_InsuranceDeduction(Double shares_InsuranceDeduction) {
 		this.shares_InsuranceDeduction = shares_InsuranceDeduction;
 	}
-	public double getPensionDeduction() {
+	public Double getPensionDeduction() {
 		return pensionDeduction;
 	}
-	public void setPensionDeduction(double pensionDeduction) {
+	public void setPensionDeduction(Double pensionDeduction) {
 		this.pensionDeduction = pensionDeduction;
 	}
-	public double getHouseLoanInterestDeduction() {
+	public Double getHouseLoanInterestDeduction() {
 		return houseLoanInterestDeduction;
 	}
-	public void setHouseLoanInterestDeduction(double houseLoanInterestDeduction) {
+	public void setHouseLoanInterestDeduction(Double houseLoanInterestDeduction) {
 		this.houseLoanInterestDeduction = houseLoanInterestDeduction;
 	}
-	public double getTotalTaxSaving() {
+	public Double getTotalTaxSaving() {
 		return totalTaxSaving;
 	}
-	public void setTotalTaxSaving(double totalTaxSaving) {
+	public void setTotalTaxSaving(Double totalTaxSaving) {
 		this.totalTaxSaving = totalTaxSaving;
 	}
-	public double getActualTaxPayable() {
+	public Double getActualTaxPayable() {
 		return actualTaxPayable;
 	}
-	public void setActualTaxPayable(double actualTaxPayable) {
+	public void setActualTaxPayable(Double actualTaxPayable) {
 		this.actualTaxPayable = actualTaxPayable;
 	}
-	public double getTaxSavingPercent() {
+	public Double getTaxSavingPercent() {
 		return taxSavingPercent;
 	}
-	public void setTaxSavingPercent(double taxSavingPercent) {
+	public void setTaxSavingPercent(Double taxSavingPercent) {
 		this.taxSavingPercent = taxSavingPercent;
 	}
-	public double getPlannedTaxYearly() {
+	public Double getPlannedTaxYearly() {
 		return yPlannedTax;
 	}
-	public void setPlannedTaxYearly(double yPlannedTax) {
+	public void setPlannedTaxYearly(Double yPlannedTax) {
 		this.yPlannedTax = yPlannedTax;
 	}
-	public double getPlannedTaxMonthly() {
+	public Double getPlannedTaxMonthly() {
 		return mPlannedTax;
 	}
-	public void setPlannedTaxMonthly(double mPlannedTax) {
+	public void setPlannedTaxMonthly(Double mPlannedTax) {
 		this.mPlannedTax = mPlannedTax;
 	}
-	public double getExpectedPlannedTaxYearly() {
+	public Double getExpectedPlannedTaxYearly() {
 		return yExpectedPlannedTax;
 	}
-	public void setExpectedPlannedTaxYearly(double yExpectedPlannedTax) {
+	public void setExpectedPlannedTaxYearly(Double yExpectedPlannedTax) {
 		this.yExpectedPlannedTax = yExpectedPlannedTax;
 	}
-	public double getExpectedPlannedTaxMonthly() {
+	public Double getExpectedPlannedTaxMonthly() {
 		return mExpectedPlannedTax;
 	}
-	public void setExpectedPlannedTaxMonthly(double mExpectedPlannedTax) {
+	public void setExpectedPlannedTaxMonthly(Double mExpectedPlannedTax) {
 		this.mExpectedPlannedTax = mExpectedPlannedTax;
 	}
 }

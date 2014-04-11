@@ -15,4 +15,20 @@ public class TCManager {
 		return instance;
 	}
 
+	public TaxResult calculateTax(double income, InputType inputType,
+			TaxAPIType type) {
+
+		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type);
+
+		return taxAPI.calculateTax(income, inputType);
+	}
+
+	public TaxResult calculateImpactOfIncrement(double income, double increase,
+			InputType inputType, TaxAPIType type) {
+
+		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type);
+
+		return taxAPI.calculateImpactOfIncrement(income, increase, inputType);
+	}
+
 }

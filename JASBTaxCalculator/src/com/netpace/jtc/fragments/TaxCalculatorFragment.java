@@ -2,6 +2,7 @@ package com.netpace.jtc.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import com.netpace.jtc.api.TaxResult;
 
 public class TaxCalculatorFragment extends Fragment {
 	
+	private static final String TAG = "Tax-Calculator";
+
 	public TaxCalculatorFragment(){}
 	
 	@Override
@@ -29,15 +32,12 @@ public class TaxCalculatorFragment extends Fragment {
     }
 	
 	private void displayResult(TaxResult result) {
-		
+		Log.i(TAG, result.getTaxYearly().toString());
 	}
 
 	private TaxResult calculateResult() {
-        double income = 50000;
-        double increase = 0;
-        double zakat = 0;
-		return null;
-        
-//        return TCManager.getInstance().
+        Double income = 50000d;
+
+		return TCManager.getInstance().calculateTax(income, InputType.MONTHLY, TaxAPIType.SALARIED);
 	} 
 }

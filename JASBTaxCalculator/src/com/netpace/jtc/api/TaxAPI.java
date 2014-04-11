@@ -6,14 +6,14 @@ public abstract class TaxAPI {
 	// abstract methods
 	
 	
-	abstract TaxResult calculateTaxPlanning(double income,
-			double zakat, double donation, double shares,
-			double insurancePremium, double pensionFund, int age,
-			double houseLoanInterest, InputType inputType);
+	abstract TaxResult calculateTaxPlanning(Double income,
+			Double zakat, Double donation, Double shares,
+			Double insurancePremium, Double pensionFund, int age,
+			Double houseLoanInterest, InputType inputType);
 	
-	abstract TaxResult calculateTax(double income, InputType inputType);
+	abstract TaxResult calculateTax(Double income, InputType inputType);
 	
-	abstract TaxResult calculateImpactOfIncrement(double income, double increase, InputType inputType);
+	abstract TaxResult calculateImpactOfIncrement(Double income, Double increase, InputType inputType);
 	
 	// //////////// Plan To Save Tax Calculations (yearly) ///////////////
 
@@ -36,13 +36,13 @@ public abstract class TaxAPI {
 	abstract void calcHouseLoanInterestDeduction(TaxResult result);
 	
 	// Protected Utility Methods
-	protected double toYearly(double monthly) {
+	protected Double toYearly(Double monthly) {
 		return monthly * 12;
 	}
 
-	protected double toMonthly(double yearly) {
+	protected Double toMonthly(Double yearly) {
 
-		return Math.round(yearly / 12);
+		return (double) Math.round(yearly / 12);
 	}
 
 }
