@@ -1,7 +1,34 @@
 package com.netpace.jtc.api;
 
 public class SalariedTaxAPI extends TaxAPI {
+	
+	private static TaxSlabSheet slabSheet;
+	static String fileName_prefix = "Slabs_S_";
+	static Integer year;
 
+// ==================== Constructor ===========================
+	
+	public SalariedTaxAPI(int year) {
+		
+		SalariedTaxAPI.year = year; // to be correct if year changed
+		
+		if (slabSheet == null ||  SalariedTaxAPI.year != year)
+			SalariedTaxAPI.slabSheet = getSlabSheet(year);
+
+		
+	}
+	
+// ====================  Helper method to load sheet first time or when year is changed  ===========================
+	
+	private TaxSlabSheet getSlabSheet(int year) {
+		
+		  String sFileName = SalariedTaxAPI.fileName_prefix + SalariedTaxAPI.year.toString();
+		  
+		  return TaxSlabSheet.load(sFileName, year);
+	}
+	
+// ==================== Abstract methods implementation  ===========================	
+	
 	@Override
 	void calcZakatDeduction(TaxResult result) {
 		
@@ -101,7 +128,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		Double taxableIncome = result.getTaxableIncomeYearly();
 		Double tax = getTax(taxableIncome);
 		Double yTakeHomeIncome = taxableIncome - tax;
-		Double avgRateOfTax = (double) Math.round(tax/taxableIncome);
+		Double avgRateOfTax = (double) Math.round(tax/taxableIncome * 100);
 		
 		result.setTaxYearly(tax);
 		result.setTaxMonthly(toMonthly(tax));
@@ -111,22 +138,21 @@ public class SalariedTaxAPI extends TaxAPI {
 		
 		result.setAvgRateOfTax(avgRateOfTax);
 	}
+
+//	=============================== Private helper methods   =================================
 	
 	private Double getTax(Double amount) {
 		// Slab slab = findSlab(taxableIncome);	// actual line 
-		Slab slab = new Slab(400001d, 75000d, 0d, 5f); // just for testing
+		Slab slab = new Slab(2500001d, 3000000d, 262500d, 20f); // just for testing
 		
 		Double offset = slab.getOffsetValue();
 		Double percent = (double) slab.getPercentValue();
 		Double exceedAmount = amount - slab.getStartValue();
 		Double tax = offset + exceedAmount * percent;
 		
-		return tax;
+		return (double) Math.round(tax);
 	}
 		
-	
-//	============== Private Methods for Public Methods ===================
-	
 	private void calcImpactOfIncrement(TaxResult result) {
 
 		Double newTaxableIncome = result.getExpectedTaxableIncomeYearly();
@@ -139,7 +165,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		Double oldTakeHomeIncome = result.getTakeHomeIncomeYearly();
 		Double yIncreaseInTakeHomeIncome = newTakeHomeIncome - oldTakeHomeIncome;
 		
-		Double newAvgRateOfTax = (double) Math.round(newTax/newTaxableIncome);
+		Double newAvgRateOfTax = (double) Math.round(newTax/newTaxableIncome * 100);
 		
 		result.setExpectedTaxYearly(newTax);
 		result.setTaxMonthly( toMonthly(newTax) );
@@ -151,7 +177,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		result.setExpectedTakeHomeIncomeMonthly( toMonthly(newTakeHomeIncome) );
 		
 		result.setIncreaseInTakeHomeIncomeYearly(yIncreaseInTakeHomeIncome);
-		result.setIncreaseInTakeHomeIncomeYearly( toMonthly(yIncreaseInTakeHomeIncome) );
+		result.setIncreaseInTakeHomeIncomeMonthly( toMonthly(yIncreaseInTakeHomeIncome) );
 		
 		result.setExpAvgRateOfTax(newAvgRateOfTax);
 	}
@@ -217,7 +243,7 @@ public class SalariedTaxAPI extends TaxAPI {
 			result.setUiIncomeYearly(income);
 			result.setUiIncomeMonthly( toMonthly(income) );
 			
-			result.setUiExpectedIncreaseYearly(toYearly(increase));
+			result.setUiExpectedIncreaseYearly(increase);
 			result.setUiExpectedIncreaseMonthly( toMonthly(increase) );
 			
 			result.setTaxableIncomeYearly(income-zakat);
@@ -228,7 +254,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		}
 	}
 
-//	======================== public Methods Call from manager ====================
+//	===================== Abstract methods implemenations which are called from manager ==================
 	
 	@Override
 	TaxResult calculateTax(Double income, InputType inputType) {

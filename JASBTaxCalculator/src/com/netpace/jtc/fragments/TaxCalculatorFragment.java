@@ -14,30 +14,37 @@ import com.netpace.jtc.api.TaxAPIType;
 import com.netpace.jtc.api.TaxResult;
 
 public class TaxCalculatorFragment extends Fragment {
-	
+
 	private static final String TAG = "Tax-Calculator";
 
-	public TaxCalculatorFragment(){}
-	
+	public TaxCalculatorFragment() {
+		
+	}
+
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        View rootView = inflater.inflate(R.layout.fragment_tax_calculator, container, false);
-        
-        TaxResult result = calculateResult();
-        displayResult(result);
-        
-        return rootView;
-    }
-	
-	private void displayResult(TaxResult result) {
-		Log.i(TAG, result.getTaxYearly().toString());
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		View rootView = inflater.inflate(R.layout.fragment_tax_calculator,
+				container, false);
+
+		TaxResult result = calculateResult();
+
+		return rootView;
 	}
 
 	private TaxResult calculateResult() {
-        Double income = 50000d;
-
-		return TCManager.getInstance().calculateTax(income, InputType.MONTHLY, TaxAPIType.SALARIED);
-	} 
+		Double income = 2800000d;
+		Double zakat = 250000d;
+		Double donation = 10000d;
+		Double shares = 100000d;
+		Double insurancePremium = 20000d;
+		Double houseLoanInterest = 200000d;
+		Double pensionFund = 100000d;
+		int age = 46;
+		
+		return TCManager.getInstance().calculateTaxPlanning(income, zakat,
+				donation, shares, insurancePremium, pensionFund, age,
+				houseLoanInterest, InputType.YEARLY, TaxAPIType.SALARIED, 2014);
+	}
 }

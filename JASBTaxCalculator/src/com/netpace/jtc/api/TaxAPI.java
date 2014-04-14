@@ -15,12 +15,12 @@ public abstract class TaxAPI {
 	
 	abstract TaxResult calculateImpactOfIncrement(Double income, Double increase, InputType inputType);
 	
-	// //////////// Plan To Save Tax Calculations (yearly) ///////////////
+// 	========================  Plan To Save Tax Calculations (yearly) ============================
 
 	// Total tax payable
 	abstract void calcTax(TaxResult result);
 	
-	// Zakat deductions
+	// Zakat deductions 
 	abstract void calcZakatDeduction(TaxResult result);
 
 	// Charitable Donation Deductions
@@ -35,7 +35,8 @@ public abstract class TaxAPI {
 	// House loan interest deductions
 	abstract void calcHouseLoanInterestDeduction(TaxResult result);
 	
-	// Protected Utility Methods
+// 	=====================  Protected Utility Methods  =====================================
+	
 	protected Double toYearly(Double monthly) {
 		return monthly * 12;
 	}

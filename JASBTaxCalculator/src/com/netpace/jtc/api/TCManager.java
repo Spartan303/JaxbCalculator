@@ -15,20 +15,31 @@ public class TCManager {
 		return instance;
 	}
 
-	public TaxResult calculateTax(double income, InputType inputType,
-			TaxAPIType type) {
+	public TaxResult calculateTax(Double income, InputType inputType,
+			TaxAPIType type, int year) {
 
-		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type);
+		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type, year);
 
 		return taxAPI.calculateTax(income, inputType);
 	}
 
-	public TaxResult calculateImpactOfIncrement(double income, double increase,
-			InputType inputType, TaxAPIType type) {
+	public TaxResult calculateImpactOfIncrement(Double income, Double increase,
+			InputType inputType, TaxAPIType type, int year) {
 
-		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type);
+		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type, year);
 
 		return taxAPI.calculateImpactOfIncrement(income, increase, inputType);
 	}
 
+	public TaxResult calculateTaxPlanning(Double income, Double zakat,
+			Double donation, Double shares, Double insurancePremium,
+			Double pensionFund, int age, Double houseLoanInterest,
+			InputType inputType, TaxAPIType type, int year) {
+
+		TaxAPI taxAPI = mTaxAPIFactory.getTaxAPI(type, year);
+
+		return taxAPI.calculateTaxPlanning(income, zakat, donation, shares,
+				insurancePremium, pensionFund, age, houseLoanInterest,
+				inputType);
+	}
 }
