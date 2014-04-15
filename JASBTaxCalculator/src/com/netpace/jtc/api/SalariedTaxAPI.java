@@ -1,21 +1,19 @@
 package com.netpace.jtc.api;
 
+import java.util.Calendar;
+
 public class SalariedTaxAPI extends TaxAPI {
 	
 	private static TaxSlabSheet slabSheet;
 	static String fileName_prefix = "Slabs_S_";
-	static Integer year;
+	static Integer year = Calendar.getInstance().get(Calendar.YEAR);
 
 // ==================== Constructor ===========================
 	
 	public SalariedTaxAPI(int year) {
-		
-		SalariedTaxAPI.year = year; // to be correct if year changed
-		
 		if (slabSheet == null ||  SalariedTaxAPI.year != year)
 			SalariedTaxAPI.slabSheet = getSlabSheet(year);
-
-		
+		SalariedTaxAPI.year = year;
 	}
 	
 // ====================  Helper method to load sheet first time or when year is changed  ===========================
@@ -32,7 +30,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	@Override
 	void calcZakatDeduction(TaxResult result) {
 		
-		Double zakat = result.getZakatDeduction();
+		Double zakat = result.getUiZakat();
 		Double taxableIncome = result.getTaxableIncomeYearly();
 		
 		result.setZakatDeduction(Math.min(zakat, taxableIncome));
@@ -50,7 +48,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		Double taxableIncome = result.getTaxableIncomeYearly();
 		Double taxableIncomePart = 0.3 * taxableIncome;
 		
-		result.setDonationDeduction(Math.min(donation, taxableIncomePart) * avgRateofTax);		
+		result.setDonationDeduction(Math.min(donation, taxableIncomePart) * avgRateofTax/100d);		
 	}
 
 	@Override
@@ -70,7 +68,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		Double taxableIncomePart = taxableIncome * 0.2;
 		Double CONSTANT_LIMIT = 1000000d; // 1 million
 
-		Double shares_InsuranceDeduction = Math.min(amountOfSharesAndInsurance, Math.min(taxableIncomePart, CONSTANT_LIMIT)) * avgRateofTax;
+		Double shares_InsuranceDeduction = Math.min(amountOfSharesAndInsurance, Math.min(taxableIncomePart, CONSTANT_LIMIT)) * avgRateofTax/100d;
 		
 		result.setShares_InsuranceDeduction(shares_InsuranceDeduction); 
 	}
@@ -91,13 +89,17 @@ public class SalariedTaxAPI extends TaxAPI {
 		int limit = 20; // 20%
 		Double taxableIncomePart = taxableIncome * ((double) limit / 100);
 
-		// limit 2 increased by 2% each year for age > 40
-		if (age >= 40) {
+		// limit 2 increased by 2% each year for age >= 41 upto 50% of the taxable income
+		if (age >= 41 && age <= 55) {
 			limit = limit + 2 * (age - 40);
 			taxableIncomePart = taxableIncome * ((double) limit / 100);
 		}
-
-		result.setPensionDeduction(Math.min(pensionFund, taxableIncomePart) * avgRateofTax);
+		else if ( age > 55 ) {
+			limit = limit + 2 * (55-40);
+			taxableIncomePart = taxableIncome * ((double) limit / 100);
+		}
+		
+		result.setPensionDeduction(Math.min(pensionFund, taxableIncomePart) * avgRateofTax/100d);
 	}
 
 	@Override
@@ -117,7 +119,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		
 		Double houseLoanInterestDeduction = Math.min(houseLoanInterest,
 				Math.min(taxableIncomePart, CONSTANT_LIMIT))
-				* avgRateofTax;
+				* avgRateofTax/100d;
 
 		result.setHouseLoanInterestDeduction(houseLoanInterestDeduction);
 	}
@@ -202,8 +204,8 @@ public class SalariedTaxAPI extends TaxAPI {
 		
 		Double tax = result.getTaxYearly();
 		
-		Double taxSaving = zakatDeduction + 
-							donationDeduction + 
+		// zakat deduction is not the part of tax saving because it is 100% waiver 
+		Double taxSaving = 	donationDeduction + 
 							pensionFundDeduction + 
 							sharesInsuranceDeduction + 
 							houseLoanInterestDeduction;
@@ -233,11 +235,12 @@ public class SalariedTaxAPI extends TaxAPI {
 			result.setUiExpectedIncreaseYearly(toYearly(increase));
 			result.setUiExpectedIncreaseMonthly(increase);
 			
-			result.setTaxableIncomeYearly( toYearly(income-zakat) );
-			result.setTaxableIncomeMonthly(income-zakat);
+			result.setTaxableIncomeYearly( toYearly(income) - zakat );
+			result.setTaxableIncomeMonthly( income - toMonthly(zakat) );
 			
-			result.setExpectedTaxableIncomeMonthly(income+increase);
-			result.setExpectedTaxableIncomeYearly( toYearly(income+increase) );
+			result.setExpectedTaxableIncomeYearly( toYearly(income+increase) - zakat );
+			result.setExpectedTaxableIncomeMonthly( income+increase - toMonthly(zakat) );
+			
 			
 		} else if (inputType == InputType.YEARLY) {
 			result.setUiIncomeYearly(income);
@@ -249,8 +252,8 @@ public class SalariedTaxAPI extends TaxAPI {
 			result.setTaxableIncomeYearly(income-zakat);
 			result.setTaxableIncomeMonthly( toMonthly(income-zakat) );
 			
-			result.setExpectedTaxableIncomeYearly(income+increase);
-			result.setExpectedTaxableIncomeMonthly( toMonthly(income+increase) );
+			result.setExpectedTaxableIncomeYearly(income+increase-zakat);
+			result.setExpectedTaxableIncomeMonthly( toMonthly(income+increase-zakat) );
 		}
 	}
 
@@ -295,6 +298,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		result.setUiDonation(donation);
 		result.setUiShares(shares);
 		result.setUiInsurance(insurancePremium);
+		result.setUiPension(pensionFund);
 		result.setUiAge(age);
 		result.setUiHouseLoanInterest(houseLoanInterest);
 		
