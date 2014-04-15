@@ -1,6 +1,7 @@
 package com.netpace.jtc.api;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class SalariedTaxAPI extends TaxAPI {
 	
@@ -144,7 +145,9 @@ public class SalariedTaxAPI extends TaxAPI {
 //	=============================== Private helper methods   =================================
 	
 	private Double getTax(Double amount) {
-		// Slab slab = findSlab(taxableIncome);	// actual line 
+		
+//		Slab slab = findSlab(amount);	// actual line
+		
 		Slab slab = new Slab(2500001d, 3000000d, 262500d, 20f); // just for testing
 		
 		Double offset = slab.getOffsetValue();
@@ -155,6 +158,19 @@ public class SalariedTaxAPI extends TaxAPI {
 		return (double) Math.round(tax);
 	}
 		
+	private Slab findSlab(Double amount) {
+		List<Slab> slabs = SalariedTaxAPI.slabSheet.getSlabs();
+		Slab slab = null;
+		
+		for (int i = 0; i < slabs.size(); i++) {
+			slab = slabs.get(i);
+			if (amount >= slab.getStartValue() && amount <= slab.getEndValue()) {
+				break;
+			}
+		}
+		return slab;
+	}
+
 	private void calcImpactOfIncrement(TaxResult result) {
 
 		Double newTaxableIncome = result.getExpectedTaxableIncomeYearly();
@@ -168,9 +184,9 @@ public class SalariedTaxAPI extends TaxAPI {
 		Double yIncreaseInTakeHomeIncome = newTakeHomeIncome - oldTakeHomeIncome;
 		
 		Double newAvgRateOfTax = (double) Math.round(newTax/newTaxableIncome * 100);
-		
+				
 		result.setExpectedTaxYearly(newTax);
-		result.setTaxMonthly( toMonthly(newTax) );
+		result.setExpectedTaxMonthly( toMonthly(newTax) );
 		
 		result.setIncreaseInTaxYearly(yIncreaseInTax);
 		result.setIncreaseInTaxMonthly( toMonthly(yIncreaseInTax) );
@@ -212,7 +228,7 @@ public class SalariedTaxAPI extends TaxAPI {
 		
 		Double actualTax = Math.min(tax, taxSaving);
 		
-		Double taxSavingPercent = actualTax/tax * 100;;
+		Double taxSavingPercent = actualTax/tax * 100;
 		
 		Double plannedTax = tax - actualTax;
 		
@@ -241,6 +257,8 @@ public class SalariedTaxAPI extends TaxAPI {
 			result.setExpectedTaxableIncomeYearly( toYearly(income+increase) - zakat );
 			result.setExpectedTaxableIncomeMonthly( income+increase - toMonthly(zakat) );
 			
+			result.setIncreaseInTaxableIncomeYearly( toYearly(increase) );
+			result.setIncreaseInTaxableIncomeMonthly(increase);
 			
 		} else if (inputType == InputType.YEARLY) {
 			result.setUiIncomeYearly(income);
@@ -254,6 +272,9 @@ public class SalariedTaxAPI extends TaxAPI {
 			
 			result.setExpectedTaxableIncomeYearly(income+increase-zakat);
 			result.setExpectedTaxableIncomeMonthly( toMonthly(income+increase-zakat) );
+			
+			result.setIncreaseInTaxableIncomeYearly(increase);
+			result.setIncreaseInTaxableIncomeMonthly( toMonthly(increase) );
 		}
 	}
 
