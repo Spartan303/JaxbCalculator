@@ -21,9 +21,9 @@ public class SalariedTaxAPI extends TaxAPI {
 	
 	private TaxSlabSheet getSlabSheet(int year) {
 		
-		  String sFileName = SalariedTaxAPI.fileName_prefix + SalariedTaxAPI.year.toString();
+		String sFileName = SalariedTaxAPI.fileName_prefix + SalariedTaxAPI.year.toString() + ".csv";
 		  
-		  return TaxSlabSheet.load(sFileName, year);
+		return TaxSlabSheet.load(sFileName, year);
 	}
 	
 // ==================== Abstract methods implementation  ===========================	
@@ -145,10 +145,10 @@ public class SalariedTaxAPI extends TaxAPI {
 //	=============================== Private helper methods   =================================
 	
 	private Double getTax(Double amount) {
+				
+//		Slab slab = new Slab(2500001d, 3000000d, 262500d, 20f); // just for testing
 		
-//		Slab slab = findSlab(amount);	// actual line
-		
-		Slab slab = new Slab(2500001d, 3000000d, 262500d, 20f); // just for testing
+		Slab slab = findSlab(amount);	// actual line
 		
 		Double offset = slab.getOffsetValue();
 		Double percent = (double) slab.getPercentValue();

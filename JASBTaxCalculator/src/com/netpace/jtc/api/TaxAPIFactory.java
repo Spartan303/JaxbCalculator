@@ -7,7 +7,7 @@ public class TaxAPIFactory {
 
 		switch(type) {
 			case SALARIED : return new SalariedTaxAPI(year);
-			case NON_SALARIED : return new NonSalariedTaxAPI();
+			case NON_SALARIED : return new NonSalariedTaxAPI(year);
 			default : return null;
 		}
 	}

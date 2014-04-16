@@ -1,6 +1,29 @@
 package com.netpace.jtc.api;
 
+import java.util.Calendar;
+
 public class NonSalariedTaxAPI extends TaxAPI {
+	
+	private static TaxSlabSheet slabSheet;
+	static String fileName_prefix = "Slabs_NS_";
+	static Integer year = Calendar.getInstance().get(Calendar.YEAR);
+
+// ==================== Constructor ===========================
+	
+	public NonSalariedTaxAPI(int year) {
+		if (slabSheet == null ||  SalariedTaxAPI.year != year)
+			NonSalariedTaxAPI.slabSheet = getSlabSheet(year);
+		NonSalariedTaxAPI.year = year;
+	}
+	
+// ====================  Helper method to load sheet first time or when year is changed  ===========================
+	
+	private TaxSlabSheet getSlabSheet(int year) {
+		
+		String sFileName = NonSalariedTaxAPI.fileName_prefix + SalariedTaxAPI.year.toString() + ".csv";
+		  
+		return TaxSlabSheet.load(sFileName, year);
+	}
 
 	@Override
 	TaxResult calculateTaxPlanning(Double income, Double zakat,

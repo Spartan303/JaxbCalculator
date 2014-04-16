@@ -25,74 +25,108 @@ public class TestCase {
 	public static void main(String[] args) {
 		
 		TestCase testcase = new TestCase();
-		String choice = "";
+		String choice1 = "";
+		String choice2 = "";
 		
 		do {
 			
-			testcase.printMainMenu();
-			choice = testcase.inputString();
+			testcase.printCategory();
+			choice1 = testcase.inputString();
 			
-			switch (choice) {
-			case "1":
-				testcase.calculateTax(InputType.MONTHLY);
-				break;
-			case "2":
-				testcase.calculateTax(InputType.YEARLY);
-				break;
-			case "3":
-				testcase.calculateImpactOfIncrement(InputType.MONTHLY);
-				break;
-			case "4":
-				testcase.calculateImpactOfIncrement(InputType.YEARLY);
-				break;
-			case "5":
-				testcase.planToSaveTax();
-				break;
-			case "6":
-				System.exit(0);
-				break;
-			default:
-				break;
+			switch (choice1) {
+				case "1":
+					break;
+				case "2":
+					break;
+				default:
+					System.out.println("Invalid Choice :-(");
+					continue;
+			}
+						
+			testcase.printMainMenu();
+			choice2 = testcase.inputString();
+			
+			switch (choice2) {
+				case "1":
+					testcase.calculateTax(InputType.MONTHLY, choice1);
+					break;
+				case "2":
+					testcase.calculateTax(InputType.YEARLY, choice1);
+					break;
+				case "3":
+					testcase.calculateImpactOfIncrement(InputType.MONTHLY, choice1);
+					break;
+				case "4":
+					testcase.calculateImpactOfIncrement(InputType.YEARLY, choice1);
+					break;
+				case "5":
+					testcase.planToSaveTax(choice1);
+					break;
+				case "6":
+					System.out.println("Exiting...");
+					System.out.println("::::::::::Application End::::::::::");
+					System.exit(0);
+				default:
+					System.out.println("Invalid Choice :-(");
+					continue;
 			}
 			
-		} while(choice != "6");
+		} while(true);
 	}
 	
-	private void calculateTax(InputType inputType) {
+	private void printCategory() {
+		System.out.println("::::::::::::::: Income Tax Calculator ::::::::::::::");
+		System.out.println("Select Category");
+		
+		System.out.println("1- Salaried");
+		System.out.println("2- Non-Salaried");
+	}
+
+	private void calculateTax(InputType inputType, String choice1) {
 		
 		resetInputs();
 		inputIncome(inputType);
 		
-		TaxResult result = TCManager.getInstance().calculateTax(income, inputType, TaxAPIType.SALARIED, 2014);
+		TaxResult result = null;
 		
-		System.out.println("Taxable Salary Yearly : " + result.getTaxableIncomeYearly());
-		System.out.println("Taxable Salary Monthly : " + result.getTaxableIncomeMonthly());
+		if(choice1.equals("1"))
+			result = TCManager.getInstance().calculateTax(income, inputType, TaxAPIType.SALARIED, 2014);
+		else if(choice1.equals("2"))
+			result = TCManager.getInstance().calculateTax(income, inputType, TaxAPIType.NON_SALARIED, 2014);
+		
+		System.out.println("Taxable Income Yearly : " + result.getTaxableIncomeYearly());
+		System.out.println("Taxable Income Monthly : " + result.getTaxableIncomeMonthly());
 		
 		System.out.println("Total Tax Payable Yearly : " + result.getTaxYearly());
 		System.out.println("Total Tax Payable Monthly : " + result.getTaxMonthly());
 		
-		System.out.println("Take Home Salary Yearly : " + result.getTakeHomeIncomeYearly());
-		System.out.println("Take Home Salary Monthly : " + result.getTakeHomeIncomeMonthly());
+		System.out.println("Take Home Income Yearly : " + result.getTakeHomeIncomeYearly());
+		System.out.println("Take Home Income Monthly : " + result.getTakeHomeIncomeMonthly());
 		
 		System.out.println("Average Rate of Tax : " + result.getAvgRateOfTax() + "%");
 	}
 	
-	private void calculateImpactOfIncrement(InputType inputType) {
+	private void calculateImpactOfIncrement(InputType inputType, String choice1) {
 		
 		resetInputs();
 		inputIncome(inputType);
 		inputIncrease(inputType);
 		
-		TaxResult result = TCManager.getInstance().calculateImpactOfIncrement(income, increase, inputType, TaxAPIType.SALARIED, 2014);
+		TaxResult result = null;
 		
-		System.out.println("Taxable Salary Yearly : " + result.getTaxableIncomeYearly());
-		System.out.println("Taxable Salary Monthly : " + result.getTaxableIncomeMonthly());
+		if(choice1.equals("1"))
+			result = TCManager.getInstance().calculateImpactOfIncrement(income, increase, inputType, TaxAPIType.SALARIED, 2014);
+		else if(choice1.equals("2"))
+			result = TCManager.getInstance().calculateImpactOfIncrement(income, increase, inputType, TaxAPIType.NON_SALARIED, 2014);		
 		
-		System.out.println("Expected Taxable Salary Yearly : " + result.getExpectedTaxableIncomeYearly());
-		System.out.println("Expected Taxable Salary Monthly : " + result.getExpectedTaxableIncomeMonthly());
+		System.out.println("Taxable Income Yearly : " + result.getTaxableIncomeYearly());
+		System.out.println("Taxable Income Monthly : " + result.getTaxableIncomeMonthly());
 		
-		System.out.println("Increase In Taxable Salary Yearly : " + result.getIncreaseInTaxableIncomeYearly());
-		System.out.println("Increase In Taxable Salary Monthly : " + result.getIncreaseInTaxableIncomeMonthly());
+		System.out.println("Expected Taxable Income Yearly : " + result.getExpectedTaxableIncomeYearly());
+		System.out.println("Expected Taxable Income Monthly : " + result.getExpectedTaxableIncomeMonthly());
+		
+		System.out.println("Increase In Taxable Income Yearly : " + result.getIncreaseInTaxableIncomeYearly());
+		System.out.println("Increase In Taxable Income Monthly : " + result.getIncreaseInTaxableIncomeMonthly());
 		
 		System.out.println("Total Tax Payable Yearly : " + result.getTaxYearly());
 		System.out.println("Total Tax Payable Monthly : " + result.getTaxMonthly());
@@ -103,14 +137,14 @@ public class TestCase {
 		System.out.println("Increase In Tax Payable Yearly : " + result.getIncreaseInTaxYearly());
 		System.out.println("Increase In Tax Payable Monthly : " + result.getIncreaseInTaxMonthly());
 		
-		System.out.println("Take Home Salary Yearly : " + result.getTakeHomeIncomeYearly());
-		System.out.println("Take Home Salary Monthly : " + result.getTakeHomeIncomeMonthly());
+		System.out.println("Take Home Income Yearly : " + result.getTakeHomeIncomeYearly());
+		System.out.println("Take Home Income Monthly : " + result.getTakeHomeIncomeMonthly());
 		
-		System.out.println("Expected Take Home Salary Yearly : " + result.getExpectedTakeHomeIncomeYearly());
-		System.out.println("Expected Take Home Salary Monthly : " + result.getExpectedTakeHomeIncomeMonthly());
+		System.out.println("Expected Take Home Income Yearly : " + result.getExpectedTakeHomeIncomeYearly());
+		System.out.println("Expected Take Home Income Monthly : " + result.getExpectedTakeHomeIncomeMonthly());
 		
-		System.out.println("Increase In Take Home Salary Yearly : " + result.getIncreaseInTakeHomeIncomeYearly());
-		System.out.println("Increase In Take Home Salary Monthly : " + result.getIncreaseInTakeHomeIncomeMonthly());
+		System.out.println("Increase In Take Home Income Yearly : " + result.getIncreaseInTakeHomeIncomeYearly());
+		System.out.println("Increase In Take Home Income Monthly : " + result.getIncreaseInTakeHomeIncomeMonthly());
 		
 		System.out.println("Average Rate of Tax : " + result.getAvgRateOfTax() + "%");
 		
@@ -118,7 +152,7 @@ public class TestCase {
 		
 	}
 	
-	private void planToSaveTax() {
+	private void planToSaveTax(String choice1) {
 		resetInputs();
 		
 		inputIncome(InputType.YEARLY);
@@ -131,23 +165,31 @@ public class TestCase {
 		inputPension();
 		inputHouseLoanInterest();
 		
+		TaxResult result = null;
 		
-		TaxResult result = TCManager.getInstance().calculateTaxPlanning(income, 
-				zakat, donation, shares, insurancePremium, 
-				pensionFund, age, houseLoanInterest, InputType.YEARLY, 
-				TaxAPIType.SALARIED, 2014);
+		if(choice1.equals("1"))
+			result = TCManager.getInstance().calculateTaxPlanning(income, 
+					zakat, donation, shares, insurancePremium, 
+					pensionFund, age, houseLoanInterest, InputType.YEARLY, 
+					TaxAPIType.SALARIED, 2014);
+		else if(choice1.equals("2"))
+			result = TCManager.getInstance().calculateTaxPlanning(income, 
+					zakat, donation, shares, insurancePremium, 
+					pensionFund, age, houseLoanInterest, InputType.YEARLY, 
+					TaxAPIType.NON_SALARIED, 2014);
 		
-		System.out.println("Salary Yearly : " + result.getUiIncomeYearly());
-		System.out.println("Salary Monthly : " + result.getUiIncomeMonthly());
 		
-		System.out.println("Taxable Salary Yearly : " + result.getTaxableIncomeYearly());
-		System.out.println("Taxable Salary Monthly : " + result.getTaxableIncomeMonthly());
+		System.out.println("Income Yearly : " + result.getUiIncomeYearly());
+		System.out.println("Income Monthly : " + result.getUiIncomeMonthly());
+		
+		System.out.println("Taxable Income Yearly : " + result.getTaxableIncomeYearly());
+		System.out.println("Taxable Income Monthly : " + result.getTaxableIncomeMonthly());
 		
 		System.out.println("Total Tax Payable Yearly : " + result.getTaxYearly());
 		System.out.println("Total Tax Payable Monthly : " + result.getTaxMonthly());
 		
-		System.out.println("Take Home Salary Yearly : " + result.getTakeHomeIncomeYearly());
-		System.out.println("Take Home Salary Monthly : " + result.getTakeHomeIncomeMonthly());
+		System.out.println("Take Home Income Yearly : " + result.getTakeHomeIncomeYearly());
+		System.out.println("Take Home Income Monthly : " + result.getTakeHomeIncomeMonthly());
 		
 		System.out.println("Average Rate of Tax : " + result.getAvgRateOfTax());
 		
@@ -163,9 +205,7 @@ public class TestCase {
 	}
 	
 	private void printMainMenu() {
-		
-		System.out.println("::::::::::::::: Income Tax Calculator ::::::::::::::");
-		
+				
 		System.out.println("Main Menu");
 		
 		System.out.println("1- Calculate Tax Monthly");
@@ -182,9 +222,9 @@ public class TestCase {
 	private void inputIncome(InputType inputType) {
 		
 		if(inputType == InputType.YEARLY) {
-			System.out.println("Enter Yearly Salary :  ");
+			System.out.println("Enter Yearly Income :  ");
 		} else if (inputType == InputType.MONTHLY) {
-			System.out.println("Enter Monthly Salary :  ");
+			System.out.println("Enter Monthly Income :  ");
 		}
 		
 		income = inputDouble();
@@ -193,9 +233,9 @@ public class TestCase {
 	private void inputIncrease(InputType inputType) {
 		
 		if(inputType == InputType.YEARLY) {
-			System.out.println("Enter Yearly Salary :  ");
+			System.out.println("Enter Yearly Increase In Income :  ");
 		} else if (inputType == InputType.MONTHLY) {
-			System.out.println("Enter Monthly Salary :  ");
+			System.out.println("Enter Monthly Increase In Income :  ");
 		}
 		
 		increase = inputDouble();
