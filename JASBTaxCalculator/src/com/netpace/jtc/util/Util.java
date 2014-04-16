@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +32,11 @@ public class Util {
 //			br = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName)));
 
 //			Just for Console Application
-// ==============================================================================================================================			
-			fileName = "C:\\Users\\Umair\\android_workspace\\BlueZorro\\JaxbCalculator\\JASBTaxCalculator\\assets\\" + fileName;
+// ==============================================================================================================================
+			fileName = "C:\\slabs\\" + fileName;
 			FileReader fr = new FileReader(new File(fileName));
 			br = new BufferedReader(fr);
 //===============================================================================================================================
-			
 			
 			br.readLine(); // skip this line for columns heading
 			

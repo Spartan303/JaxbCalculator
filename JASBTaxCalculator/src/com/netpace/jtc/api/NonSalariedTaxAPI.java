@@ -50,11 +50,6 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		taxResult.setUiAge(age);
 		taxResult.setUiHouseLoanInterest(houseLoanInterest);
 		
-/*		taxResult.setcSlabStart(0);
-		taxResult.setcSlabEnd(0);
-		taxResult.setcSlabFixTax(0);
-		taxResult.setcSlabVarTax(0);*/
-		
 		taxResult.setTaxableIncomeYearly( taxResult.getUiIncomeYearly() - zakat );
 		taxResult.setTaxableIncomeMonthly( (double) Math.round(taxResult.getTaxableIncomeYearly() / 12) );
 		
@@ -65,7 +60,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		
 		taxResult.setAvgRateOfTax( (double) Math.round( taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly()) );
 		
-		//calcZakatDeduction(taxResult);
+		calcZakatDeduction(taxResult);
 		calcDonationDeduction(taxResult);
 		calcSharesInsuranceDeduction(taxResult);
 		calcPensionFundDeduction(taxResult);
@@ -103,11 +98,6 @@ public class NonSalariedTaxAPI extends TaxAPI {
 			taxResult.setUiIncomeYearly(income);
 		}
 		
-/*		taxResult.setcSlabStart(0);
-		taxResult.setcSlabEnd(0);
-		taxResult.setcSlabFixTax(0);
-		taxResult.setcSlabVarTax(0);
-		*/
 		taxResult.setTaxableIncomeYearly( taxResult.getUiIncomeYearly() );
 		taxResult.setTaxableIncomeMonthly( (double) Math.round(taxResult.getTaxableIncomeYearly() / 12) );
 		
@@ -142,11 +132,6 @@ public class NonSalariedTaxAPI extends TaxAPI {
 			taxResult.setExpectedIncomeYearly( income + increase );
 		}
 		
-/*		taxResult.setcSlabStart(0);
-		taxResult.setcSlabEnd(0);
-		taxResult.setcSlabFixTax(0);
-		taxResult.setcSlabVarTax(0);*/
-		
 		taxResult.setTaxableIncomeYearly( taxResult.getUiIncomeYearly() );
 		taxResult.setTaxableIncomeMonthly( (double) Math.round(taxResult.getTaxableIncomeYearly() / 12) );
 		taxResult.setExpectedTaxableIncomeYearly( taxResult.getExpectedIncomeYearly() );
@@ -177,6 +162,8 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	@Override
 	void calcTax(TaxResult result) {
 		
+		setSlabs(result);
+		
 		Double tax = result.getcSlabFixTax() + 
 				( (result.getTaxableIncomeYearly()-result.getcSlabStart()-1) * (result.getcSlabVarTax()/100) );
 		
@@ -192,7 +179,10 @@ public class NonSalariedTaxAPI extends TaxAPI {
 
 	@Override
 	void calcZakatDeduction(TaxResult result) {
-		// TODO Auto-generated method stub
+		Double zakatDeduction = Math.min(result.getUiZakat(), result.getUiIncomeYearly())
+		        * (result.getAvgRateOfTax()/100);
+		  
+		  result.setZakatDeduction(zakatDeduction);
 		
 	}
 
@@ -242,4 +232,23 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		
 		result.setHouseLoanInterestDeduction(houseLoanInterestDeduction);
 	}
+	
+	private void setSlabs(TaxResult result){
+		
+		Double taxableIncome = result.getTaxableIncomeYearly();
+		
+		for (Slab slab: slabSheet.getSlabs()) {
+			
+			if ( (taxableIncome>=slab.getStartValue() && taxableIncome<=slab.getEndValue()) 
+					||  (slab.getEndValue() == 0)) {
+				
+				result.setcSlabStart( slab.getStartValue() );
+				result.setcSlabEnd( slab.getEndValue() );
+				result.setcSlabFixTax( slab.getOffsetValue() );
+				result.setcSlabVarTax( (double)slab.getPercentValue() );
+				break;
+			}
+		}
+	}
+
 }
