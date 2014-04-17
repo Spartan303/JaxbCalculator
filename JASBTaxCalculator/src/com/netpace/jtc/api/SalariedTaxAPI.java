@@ -6,30 +6,30 @@ import java.util.List;
 public class SalariedTaxAPI extends TaxAPI {
 	
 	private static TaxSlabSheet slabSheet;
-	static String fileName_prefix = "Slabs_S_";
-	static Integer year = Calendar.getInstance().get(Calendar.YEAR);
+	private static String fileName_prefix = "Slabs_S_";
+	private static Integer year = Calendar.getInstance().get(Calendar.YEAR);
 
 // ==================== Constructor ===========================
 	
-	public SalariedTaxAPI(int year) {
-		if (slabSheet == null ||  SalariedTaxAPI.year != year)
-			SalariedTaxAPI.slabSheet = getSlabSheet(year);
-		SalariedTaxAPI.year = year;
+	public SalariedTaxAPI(int uiYear) {
+		if (slabSheet == null ||  year != uiYear)
+			SalariedTaxAPI.slabSheet = getSlabSheet(uiYear);
+		year = uiYear;
 	}
 	
 // ====================  Helper method to load sheet first time or when year is changed  ===========================
 	
-	private TaxSlabSheet getSlabSheet(int year) {
+	private TaxSlabSheet getSlabSheet(int uiYear) {
 		
-		String sFileName = SalariedTaxAPI.fileName_prefix + SalariedTaxAPI.year.toString() + ".csv";
+		String sFileName = fileName_prefix + year.toString() + ".csv";
 		  
-		return TaxSlabSheet.load(sFileName, year);
+		return TaxSlabSheet.load(sFileName, uiYear);
 	}
 	
 // ==================== Abstract methods implementation  ===========================	
 	
 	@Override
-	void calcZakatDeduction(TaxResult result) {
+	public void calcZakatDeduction(TaxResult result) {
 		
 		Double zakat = result.getUiZakat();
 		Double taxableIncome = result.getTaxableIncomeYearly();
@@ -38,7 +38,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcDonationDeduction(TaxResult result) {
+	public void calcDonationDeduction(TaxResult result) {
 		
 		// Limit 1: Amount of donation = a
 		// Limit 2: 30% of taxable income = b
@@ -53,7 +53,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcSharesInsuranceDeduction(TaxResult result) {
+	public void calcSharesInsuranceDeduction(TaxResult result) {
 
 		Double shares = result.getUiShares();
 		Double insurancePremium = result.getUiInsurance();
@@ -75,7 +75,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcPensionFundDeduction(TaxResult result) {
+	public void calcPensionFundDeduction(TaxResult result) {
 
 		
 		Double pensionFund = result.getUiPension(); 
@@ -104,7 +104,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcHouseLoanInterestDeduction(TaxResult result) {
+	public void calcHouseLoanInterestDeduction(TaxResult result) {
 		
 		Double houseLoanInterest = result.getUiHouseLoanInterest();
 		Double taxableIncome = result.getTaxableIncomeYearly(); 
@@ -126,7 +126,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcTax(TaxResult result) {
+	public void calcTax(TaxResult result) {
 		
 		Double taxableIncome = result.getTaxableIncomeYearly();
 		Double tax = getTax(taxableIncome);
@@ -281,7 +281,7 @@ public class SalariedTaxAPI extends TaxAPI {
 //	===================== Abstract methods implemenations which are called from manager ==================
 	
 	@Override
-	TaxResult calculateTax(Double income, InputType inputType) {
+	public TaxResult calculateTax(Double income, InputType inputType) {
 		
 		TaxResult result = new TaxResult();
 		
@@ -293,7 +293,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	TaxResult calculateImpactOfIncrement(Double income, Double increase, InputType inputType) {
+	public TaxResult calculateImpactOfIncrement(Double income, Double increase, InputType inputType) {
 		
 		TaxResult result = new TaxResult();
 		
@@ -306,7 +306,7 @@ public class SalariedTaxAPI extends TaxAPI {
 	}
 	
 	@Override
-	TaxResult calculateTaxPlanning(Double income, Double zakat,
+	public TaxResult calculateTaxPlanning(Double income, Double zakat,
 			Double donation, Double shares, Double insurancePremium,
 			Double pensionFund, int age, Double houseLoanInterest,
 			InputType inputType) {

@@ -5,28 +5,28 @@ import java.util.Calendar;
 public class NonSalariedTaxAPI extends TaxAPI {
 	
 	private static TaxSlabSheet slabSheet;
-	static String fileName_prefix = "Slabs_NS_";
-	static Integer year = Calendar.getInstance().get(Calendar.YEAR);
+	private static String fileName_prefix = "Slabs_NS_";
+	private static Integer year = Calendar.getInstance().get(Calendar.YEAR);
 
 // ==================== Constructor ===========================
-	
-	public NonSalariedTaxAPI(int year) {
-		if (slabSheet == null ||  SalariedTaxAPI.year != year)
-			NonSalariedTaxAPI.slabSheet = getSlabSheet(year);
-		NonSalariedTaxAPI.year = year;
+
+	public NonSalariedTaxAPI(int uiYear) {
+		if (slabSheet == null ||  year != uiYear)
+			NonSalariedTaxAPI.slabSheet = getSlabSheet(uiYear);
+		year = uiYear;
 	}
 	
 // ====================  Helper method to load sheet first time or when year is changed  ===========================
 	
-	private TaxSlabSheet getSlabSheet(int year) {
+	private TaxSlabSheet getSlabSheet(int uiYear) {
 		
-		String sFileName = NonSalariedTaxAPI.fileName_prefix + SalariedTaxAPI.year.toString() + ".csv";
+		String sFileName = fileName_prefix + year.toString() + ".csv";
 		  
-		return TaxSlabSheet.load(sFileName, year);
+		return TaxSlabSheet.load(sFileName, uiYear);
 	}
-
+		
 	@Override
-	TaxResult calculateTaxPlanning(Double income, Double zakat,
+	public TaxResult calculateTaxPlanning(Double income, Double zakat,
 			Double donation, Double shares, Double insurancePremium,
 			Double pensionFund, int age, Double houseLoanInterest,
 			InputType inputType) {
@@ -85,7 +85,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	TaxResult calculateTax(Double income, InputType inputType) {
+	public TaxResult calculateTax(Double income, InputType inputType) {
 		
 		TaxResult taxResult = new TaxResult();
 		
@@ -112,7 +112,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	TaxResult calculateImpactOfIncrement(Double income, Double increase,
+	public TaxResult calculateImpactOfIncrement(Double income, Double increase,
 			InputType inputType) {
 		
 		TaxResult taxResult = new TaxResult();
@@ -160,7 +160,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcTax(TaxResult result) {
+	public void calcTax(TaxResult result) {
 		
 		setSlabs(result);
 		
@@ -180,7 +180,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcZakatDeduction(TaxResult result) {
+	public void calcZakatDeduction(TaxResult result) {
 		Double zakatDeduction = Math.min(result.getUiZakat(), result.getUiIncomeYearly())
 		        * (result.getAvgRateOfTax()/100);
 		  
@@ -189,7 +189,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcDonationDeduction(TaxResult result) {
+	public void calcDonationDeduction(TaxResult result) {
 		
 		Double donationDeduction = Math.min(result.getUiDonation(), (result.getTaxableIncomeYearly()*(30/100)))
 									* (result.getAvgRateOfTax()/100);
@@ -198,7 +198,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcSharesInsuranceDeduction(TaxResult result) {
+	public void calcSharesInsuranceDeduction(TaxResult result) {
 		
 		Double shares_InsuranceDeduction = Math.min((result.getUiShares() + result.getUiInsurance()), 1000000) 
 											* (result.getAvgRateOfTax()/100);
@@ -206,7 +206,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcPensionFundDeduction(TaxResult result) {
+	public void calcPensionFundDeduction(TaxResult result) {
 		
 		Double limit2 = 0d;
 		int age = result.getUiAge();
@@ -227,7 +227,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 	}
 
 	@Override
-	void calcHouseLoanInterestDeduction(TaxResult result) {
+	public void calcHouseLoanInterestDeduction(TaxResult result) {
 		
 		Double houseLoanInterestDeduction = Math.min(result.getUiHouseLoanInterest(), result.getTaxableIncomeYearly()*(50/100)) 
 											* (result.getAvgRateOfTax()/100);
@@ -247,7 +247,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 				result.setcSlabStart( slab.getStartValue() );
 				result.setcSlabEnd( slab.getEndValue() );
 				result.setcSlabFixTax( slab.getOffsetValue() );
-				result.setcSlabVarTax( (double)slab.getPercentValue() );
+				result.setcSlabVarTax( slab.getPercentValue()*100 );
 				break;
 			}
 		}

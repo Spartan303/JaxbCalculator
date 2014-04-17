@@ -18,7 +18,7 @@ public class TaxResult {
 	private Double cSlabStart;
 	private Double cSlabEnd;
 	private Double cSlabFixTax;
-	private Double cSlabVarTax;
+	private Float cSlabVarTax;
 
 	private Double yExpectedIncome;
 	private Double mExpectedIncome;
@@ -153,10 +153,10 @@ public class TaxResult {
 	public void setcSlabFixTax(Double cSlabFixTax) {
 		this.cSlabFixTax = cSlabFixTax;
 	}
-	public Double getcSlabVarTax() {
+	public Float getcSlabVarTax() {
 		return cSlabVarTax;
 	}
-	public void setcSlabVarTax(Double cSlabVarTax) {
+	public void setcSlabVarTax(Float cSlabVarTax) {
 		this.cSlabVarTax = cSlabVarTax;
 	}
 	
