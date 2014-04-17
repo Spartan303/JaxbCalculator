@@ -58,7 +58,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		taxResult.setTakeHomeIncomeYearly( taxResult.getTaxableIncomeYearly() - taxResult.getTaxYearly() );
 		taxResult.setTakeHomeIncomeMonthly(	taxResult.getTaxableIncomeMonthly() - taxResult.getTaxMonthly() );
 		
-		taxResult.setAvgRateOfTax( (double) Math.round( taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly()) );
+		taxResult.setAvgRateOfTax( (double) Math.round( (taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly())*100) );
 		
 		calcZakatDeduction(taxResult);
 		calcDonationDeduction(taxResult);
@@ -76,7 +76,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		
 		taxResult.setActualTaxPayable( Math.min(taxResult.getTaxYearly(), taxResult.getTotalTaxSaving()) );
 		
-		taxResult.setTaxSavingPercent( taxResult.getActualTaxPayable() / taxResult.getTaxYearly() );
+		taxResult.setTaxSavingPercent( (double) Math.round((taxResult.getActualTaxPayable()/taxResult.getTaxYearly())*100) );
 		
 		taxResult.setPlannedTaxYearly( taxResult.getTaxYearly() - taxResult.getActualTaxPayable() );
 		taxResult.setPlannedTaxMonthly( toMonthly(taxResult.getPlannedTaxYearly()) );
@@ -106,7 +106,7 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		taxResult.setTakeHomeIncomeYearly( taxResult.getTaxableIncomeYearly() - taxResult.getTaxYearly() );
 		taxResult.setTakeHomeIncomeMonthly(	taxResult.getTaxableIncomeMonthly() - taxResult.getTaxMonthly() );
 		
-		taxResult.setAvgRateOfTax( (double) Math.round( taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly()) );
+		taxResult.setAvgRateOfTax( (double) Math.round( (taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly())*100 ));
 		
 		return taxResult;
 	}
@@ -153,8 +153,8 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		taxResult.setIncreaseInTakeHomeIncomeYearly( taxResult.getExpectedTakeHomeIncomeYearly() - taxResult.getTakeHomeIncomeYearly() );
 		taxResult.setIncreaseInTakeHomeIncomeMonthly( taxResult.getExpectedTakeHomeIncomeMonthly() - taxResult.getTakeHomeIncomeMonthly() );
 		
-		taxResult.setAvgRateOfTax( (double) Math.round( taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly()) );
-		taxResult.setExpAvgRateOfTax( (double) Math.round( taxResult.getExpectedTaxYearly()/taxResult.getExpectedTaxableIncomeYearly()) );
+		taxResult.setAvgRateOfTax( (double) Math.round( (taxResult.getTaxYearly()/taxResult.getTaxableIncomeYearly())*100) );
+		taxResult.setExpAvgRateOfTax( (double) Math.round( (taxResult.getExpectedTaxYearly()/taxResult.getExpectedTaxableIncomeYearly())*100) );
 		
 		return taxResult;
 	}
@@ -167,14 +167,16 @@ public class NonSalariedTaxAPI extends TaxAPI {
 		Double tax = result.getcSlabFixTax() + 
 				( (result.getTaxableIncomeYearly()-result.getcSlabStart()-1) * (result.getcSlabVarTax()/100) );
 		
-		result.setTaxYearly( tax );
+		result.setTaxYearly( (double) Math.round(tax) );
 		result.setTaxMonthly( (double) Math.round(tax/12) );
 		
-		Double expectedTax = result.getcSlabFixTax() + 
-				( (result.getExpectedTaxableIncomeYearly()-result.getcSlabStart()-1) * (result.getcSlabVarTax()/100) );
-		
-		result.setExpectedTaxYearly( expectedTax );
-		result.setExpectedTaxMonthly( (double) Math.round(result.getExpectedTaxYearly()/12) );
+		if (result.getExpectedTaxableIncomeYearly() != null) {
+			Double expectedTax = result.getcSlabFixTax() + 
+					( (result.getExpectedTaxableIncomeYearly()-result.getcSlabStart()-1) * (result.getcSlabVarTax()/100) );
+			
+			result.setExpectedTaxYearly( (double) Math.round(expectedTax) );
+			result.setExpectedTaxMonthly( (double) Math.round(result.getExpectedTaxYearly()/12) );
+		}
 	}
 
 	@Override
@@ -250,5 +252,4 @@ public class NonSalariedTaxAPI extends TaxAPI {
 			}
 		}
 	}
-
 }
