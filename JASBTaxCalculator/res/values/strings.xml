@@ -67,5 +67,10 @@
     
     
     <string name="saveTaxLVExp">Save Tex Expanable List View</string>
+    
+    
+<!--     Tax Calculator Fragment Strings -->
+	<string name="tab_annually">Annually</string>
+	<string name="tab_monthly">Monthly</string>
 
 </resources>
