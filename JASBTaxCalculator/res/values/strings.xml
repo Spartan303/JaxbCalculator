@@ -72,5 +72,8 @@
 <!--     Tax Calculator Fragment Strings -->
 	<string name="tab_annually">Annually</string>
 	<string name="tab_monthly">Monthly</string>
+	<string name="btn_calculate">Calculate</string>
+	<string name="header_tax_calculator">Tax Calculator</string>
+	
 
 </resources>
