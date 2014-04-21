@@ -759,6 +759,14 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int titleTextStyle=0x7f010026;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int typeface=0x7f01006a;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -804,16 +812,24 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070009;
+        public static final int abc_search_url_text_holo=0x7f070011;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
-        public static final int counter_text_bg=0x7f070007;
-        public static final int counter_text_color=0x7f070008;
-        public static final int list_background=0x7f070004;
-        public static final int list_background_pressed=0x7f070005;
-        public static final int list_divider=0x7f070006;
-        public static final int list_item_title=0x7f070003;
+        public static final int androidColorBlack=0x7f07000f;
+        public static final int androidColorBlue=0x7f07000a;
+        public static final int androidColorGreen=0x7f07000d;
+        public static final int androidColorPurple=0x7f07000c;
+        public static final int androidColorRed=0x7f07000b;
+        public static final int androidColorWhite=0x7f070010;
+        public static final int androidColorYellow=0x7f07000e;
+        public static final int appBgColor=0x7f070003;
+        public static final int counter_text_bg=0x7f070008;
+        public static final int counter_text_color=0x7f070009;
+        public static final int list_background=0x7f070005;
+        public static final int list_background_pressed=0x7f070006;
+        public static final int list_divider=0x7f070007;
+        public static final int list_item_title=0x7f070004;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -997,24 +1013,29 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int bg_calculator_tax=0x7f020057;
-        public static final int counter_bg=0x7f020058;
-        public static final int ic_communities=0x7f020059;
-        public static final int ic_drawer=0x7f02005a;
-        public static final int ic_home=0x7f02005b;
-        public static final int ic_launcher=0x7f02005c;
-        public static final int ic_pages=0x7f02005d;
-        public static final int ic_people=0x7f02005e;
-        public static final int ic_photos=0x7f02005f;
-        public static final int ic_whats_hot=0x7f020060;
-        public static final int list_item_bg_normal=0x7f020061;
-        public static final int list_item_bg_pressed=0x7f020062;
-        public static final int list_selector=0x7f020063;
-        public static final int tab_focused=0x7f020064;
-        public static final int tab_pressed=0x7f020065;
-        public static final int tab_selected=0x7f020066;
-        public static final int tab_selector=0x7f020067;
-        public static final int tab_text_selector=0x7f020068;
-        public static final int tab_unselected=0x7f020069;
+        public static final int calculate_btn=0x7f020058;
+        public static final int counter_bg=0x7f020059;
+        public static final int ic_communities=0x7f02005a;
+        public static final int ic_drawer=0x7f02005b;
+        public static final int ic_home=0x7f02005c;
+        public static final int ic_launcher=0x7f02005d;
+        public static final int ic_pages=0x7f02005e;
+        public static final int ic_people=0x7f02005f;
+        public static final int ic_photos=0x7f020060;
+        public static final int ic_whats_hot=0x7f020061;
+        public static final int list_item_bg_normal=0x7f020062;
+        public static final int list_item_bg_pressed=0x7f020063;
+        public static final int list_selector=0x7f020064;
+        public static final int square_box_bg=0x7f020065;
+        public static final int tab_active=0x7f020066;
+        public static final int tab_bg_selected=0x7f020067;
+        public static final int tab_bg_selector=0x7f020068;
+        public static final int tab_bg_unselected=0x7f020069;
+        public static final int tab_focused=0x7f02006a;
+        public static final int tab_inactive=0x7f02006b;
+        public static final int tab_pressed=0x7f02006c;
+        public static final int tab_text_selector=0x7f02006d;
+        public static final int txt_email=0x7f02006e;
     }
     public static final class id {
         public static final int EmailEditText=0x7f050043;
@@ -1035,12 +1056,14 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int calcTaxButton=0x7f050047;
+        public static final int bg_calculate_tax=0x7f050048;
+        public static final int calc_tax_button=0x7f05004a;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
+        public static final int display_content=0x7f050047;
         public static final int drawer_layout=0x7f05003c;
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050030;
@@ -1048,12 +1071,13 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int frame_container=0x7f05003d;
+        public static final int header=0x7f050049;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int incomeEditText=0x7f050046;
+        public static final int income_text=0x7f050046;
         public static final int lblListHeader=0x7f05004c;
         public static final int lblListItem=0x7f05004d;
         public static final int listMode=0x7f050001;
@@ -1066,6 +1090,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
+        public static final int rounded_corners=0x7f050050;
         public static final int saveTaxLVExp=0x7f050045;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
@@ -1084,10 +1109,8 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
-        public static final int tab_annually=0x7f050048;
-        public static final int tab_monthly=0x7f050049;
-        public static final int tabs_fragment=0x7f05004a;
-        public static final int text=0x7f05004e;
+        public static final int tabsLayout=0x7f05004e;
+        public static final int tabsText=0x7f05004f;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int txtLabel=0x7f050040;
@@ -1152,7 +1175,7 @@ containing a value of this type.
         public static final int fragment_home=0x7f03001a;
         public static final int fragment_plan_save_tax=0x7f03001b;
         public static final int fragment_save_tax=0x7f03001c;
-        public static final int fragment_tab_content=0x7f03001d;
+        public static final int fragment_tab_calculation=0x7f03001d;
         public static final int fragment_tabs=0x7f03001e;
         public static final int fragment_tax_calculator=0x7f03001f;
         public static final int fragment_terms=0x7f030020;
@@ -1210,12 +1233,14 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_settings=0x7f0a000e;
         public static final int app_name=0x7f0a000d;
+        public static final int btn_calculate=0x7f0a001e;
         /**  Content Description 
          */
         public static final int desc_list_item_icon=0x7f0a0014;
         public static final int drawer_close=0x7f0a0011;
         public static final int drawer_open=0x7f0a0010;
         public static final int email_hint=0x7f0a0018;
+        public static final int header_tax_calculator=0x7f0a001f;
         public static final int hello_world=0x7f0a000f;
         public static final int saveTaxLVExp=0x7f0a001b;
         /**      Tax Calculator Fragment Strings 
@@ -1347,6 +1372,7 @@ containing a value of this type.
         /**  Base platform-dependent theme providing a light-themed activity. 
          */
         public static final int Theme_Base_Light=0x7f0b007d;
+        public static final int Transparent=0x7f0b0086;
         /**  Styles in here can be extended for customisation in your application. Each utilises
          one of the Base styles. If Holo themes are available on the current platform version
          they will be used instead of the compat styles. 
@@ -1441,6 +1467,7 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b000a;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0009;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0022;
+        public static final int calculate_btn=0x7f0b0085;
     }
     public static final class styleable {
         /**  ============================================ 
@@ -2903,6 +2930,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.netpace.jtc:popupMenuStyle
         */
         public static final int Theme_popupMenuStyle = 2;
+        /** Attributes that can be used with a TypefaceTextView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #TypefaceTextView_typeface com.netpace.jtc:typeface}</code></td><td></td></tr>
+           </table>
+           @see #TypefaceTextView_typeface
+         */
+        public static final int[] TypefaceTextView = {
+            0x7f01006a
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.netpace.jtc.R.attr#typeface}
+          attribute's value can be found in the {@link #TypefaceTextView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.netpace.jtc:typeface
+        */
+        public static final int TypefaceTextView_typeface = 0;
         /** Attributes that can be used with a View.
            <p>Includes the following attributes:</p>
            <table>
