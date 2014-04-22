@@ -10,13 +10,14 @@
     <string name="SubmitButtonText">Submit</string>
     
     
-    <!-- Nav Drawer Menu Items -->
+     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item >Home</item>
         <item >Calculate Tax</item>
+        <item >Impact of Increment</item>
         <item >How to Save Tax</item>
-        <item >How to Plan to Save Tax</item>
-        <item >Acceptance of Terms</item>
+        <item >How to Save Tax</item>
+        <item >Plan to Save Tax</item>
         <item >Contact Us</item>
     </string-array>
     
@@ -24,11 +25,12 @@
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
-        <item>@drawable/ic_photos</item>
-        <item>@drawable/ic_communities</item>
-        <item>@drawable/ic_pages</item>
-        <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/ic_calculatetax</item>
+        <item>@drawable/ic_increaseimpact</item>
+        <item>@drawable/ic_savetax_1</item>
+        <item>@drawable/ic_savetax_2</item>
+        <item>@drawable/ic_plantosavetax</item>
+        <item>@drawable/ic_contact</item>
     </array>
     
     <array name="save_tax_array">
