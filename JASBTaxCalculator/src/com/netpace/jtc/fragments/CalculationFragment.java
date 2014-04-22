@@ -1,17 +1,12 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
-import com.netpace.jtc.api.InputType;
-import com.netpace.jtc.api.TCManager;
-import com.netpace.jtc.api.TaxAPIType;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 public class CalculationFragment extends Fragment {
@@ -23,7 +18,7 @@ public class CalculationFragment extends Fragment {
 	private String mTag;
 
 	private EditText mIncomeEditText;
-	private Double income;
+//	private Double income;
 
 	public CalculationFragment() {	}
 

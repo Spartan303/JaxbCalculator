@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="@drawable/tab_active" >
+        android:background="@drawable/tab_content_active" >
 
         <TabWidget
             android:id="@android:id/tabs"

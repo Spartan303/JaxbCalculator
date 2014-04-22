@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBgColor" >
+
+    <FrameLayout
+        android:id="@+id/bg_calculate_tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_calculator_tax" />
+
+    <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/header_tax_impact"
+        android:textColor="@color/androidColorWhite"
+        android:textSize="20sp"
+        custom:typeface="TradeGothicLT" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        layout="@layout/fragment_tabs" />
+
+    <Button
+        android:id="@+id/calc_tax_button"
+        style="@style/calculate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="55dp"
+        android:text="@string/btn_calculate" />
+
+</RelativeLayout>

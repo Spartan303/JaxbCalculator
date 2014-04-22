@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="appBgColor">#192B4A</color>
+    <color name="appBgColor">#18243c</color>
+    <color name="textColorHint">#5a6272</color>
+    
     
     
     <color name="list_item_title">#fff</color>

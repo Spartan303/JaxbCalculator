@@ -20,6 +20,7 @@ import android.widget.ListView;
 
 import com.netpace.jtc.R;
 import com.netpace.jtc.adapters.NavDrawerListAdapter;
+import com.netpace.jtc.fragments.ImpactOfIncrementFragment;
 import com.netpace.jtc.fragments.PlanSaveTaxFragment;
 import com.netpace.jtc.fragments.TaxCalculatorFragment;
 import com.netpace.jtc.fragments.HomeFragment;
@@ -179,7 +180,7 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new TaxCalculatorFragment();
 			break;
 		case 2:
-			fragment = new SaveTaxFragment();
+			fragment = new ImpactOfIncrementFragment();
 			break;
 		case 3:
 			fragment = new PlanSaveTaxFragment();

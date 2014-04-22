@@ -1,9 +1,6 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
-import com.netpace.jtc.api.InputType;
-import com.netpace.jtc.api.TCManager;
-import com.netpace.jtc.api.TaxAPIType;
 import com.netpace.jtc.ui.TypefaceTextView;
 
 import android.content.Context;
