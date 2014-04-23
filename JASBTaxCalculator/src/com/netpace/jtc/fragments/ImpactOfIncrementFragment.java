@@ -44,7 +44,7 @@ public class ImpactOfIncrementFragment extends Fragment implements OnTabChangeLi
 		setupTab(new TextView(getActivity()), TAB_ANNUALLY);
 		setupTab(new TextView(getActivity()), TAB_MONTHLY);
 		
-		mCalcImpactButton = (Button) mRootView.findViewById(R.id.calc_tax_button);
+		mCalcImpactButton = (Button) mRootView.findViewById(R.id.calc_impact_button);
 		mCalcImpactButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override

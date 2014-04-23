@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:padding="15dp"
         android:text="@string/header_tax_impact"
@@ -25,22 +25,32 @@
         android:textSize="20sp"
         custom:typeface="TradeGothicLT" />
 
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/tab_container"
         android:layout_below="@id/header"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"
-        layout="@layout/fragment_tabs" />
-
-    <Button
-        android:id="@+id/calc_tax_button"
-        style="@style/calculate_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+		android:layout_centerHorizontal="true" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/fragment_tabs" />
+    </LinearLayout>
+
+    <com.netpace.jtc.ui.TypefaceButton
+        android:id="@+id/calc_impact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tab_container"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="55dp"
-        android:text="@string/btn_calculate" />
+        android:background="@drawable/calculate_btn"
+        android:gravity="center"
+        android:text="@string/btn_calculate"
+        android:textColor="@color/androidColorWhite"
+        android:textSize="22sp"
+        custom:typeface="TradeGothicLT" />
 
 </RelativeLayout>

@@ -2,6 +2,7 @@
 <resources>
     <color name="appBgColor">#18243c</color>
     <color name="textColorHint">#5a6272</color>
+    <color name="calculate_btn">#2d5983</color>
     
     
     

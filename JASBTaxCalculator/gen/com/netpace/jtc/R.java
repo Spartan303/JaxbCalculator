@@ -812,24 +812,25 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070012;
+        public static final int abc_search_url_text_holo=0x7f070013;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
-        public static final int androidColorBlack=0x7f070010;
-        public static final int androidColorBlue=0x7f07000b;
-        public static final int androidColorGreen=0x7f07000e;
-        public static final int androidColorPurple=0x7f07000d;
-        public static final int androidColorRed=0x7f07000c;
-        public static final int androidColorWhite=0x7f070011;
-        public static final int androidColorYellow=0x7f07000f;
+        public static final int androidColorBlack=0x7f070011;
+        public static final int androidColorBlue=0x7f07000c;
+        public static final int androidColorGreen=0x7f07000f;
+        public static final int androidColorPurple=0x7f07000e;
+        public static final int androidColorRed=0x7f07000d;
+        public static final int androidColorWhite=0x7f070012;
+        public static final int androidColorYellow=0x7f070010;
         public static final int appBgColor=0x7f070003;
-        public static final int counter_text_bg=0x7f070009;
-        public static final int counter_text_color=0x7f07000a;
-        public static final int list_background=0x7f070006;
-        public static final int list_background_pressed=0x7f070007;
-        public static final int list_divider=0x7f070008;
-        public static final int list_item_title=0x7f070005;
+        public static final int calculate_btn=0x7f070005;
+        public static final int counter_text_bg=0x7f07000a;
+        public static final int counter_text_color=0x7f07000b;
+        public static final int list_background=0x7f070007;
+        public static final int list_background_pressed=0x7f070008;
+        public static final int list_divider=0x7f070009;
+        public static final int list_item_title=0x7f070006;
         public static final int textColorHint=0x7f070004;
     }
     public static final class dimen {
@@ -1061,7 +1062,8 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int bg_calculate_tax=0x7f050049;
-        public static final int calc_tax_button=0x7f05004b;
+        public static final int calc_impact_button=0x7f05004d;
+        public static final int calc_tax_button=0x7f05004c;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
@@ -1083,8 +1085,8 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int income_text=0x7f050046;
         public static final int increment_text=0x7f050047;
-        public static final int lblListHeader=0x7f05004d;
-        public static final int lblListItem=0x7f05004e;
+        public static final int lblListHeader=0x7f05004f;
+        public static final int lblListItem=0x7f050050;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int list_slidermenu=0x7f05003e;
@@ -1095,7 +1097,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int rounded_corners=0x7f050051;
+        public static final int rounded_corners=0x7f050053;
         public static final int saveTaxLVExp=0x7f050045;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
@@ -1114,15 +1116,16 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
-        public static final int tabsLayout=0x7f05004f;
-        public static final int tabsText=0x7f050050;
+        public static final int tab_container=0x7f05004b;
+        public static final int tabsLayout=0x7f050051;
+        public static final int tabsText=0x7f050052;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int txtLabel=0x7f050040;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int webViewContactUs=0x7f05003f;
-        public static final int webViewTemrsOfUse=0x7f05004c;
+        public static final int webViewTemrsOfUse=0x7f05004e;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1380,7 +1383,7 @@ containing a value of this type.
         /**  Base platform-dependent theme providing a light-themed activity. 
          */
         public static final int Theme_Base_Light=0x7f0b007d;
-        public static final int Transparent=0x7f0b0086;
+        public static final int Transparent=0x7f0b0085;
         /**  Styles in here can be extended for customisation in your application. Each utilises
          one of the Base styles. If Holo themes are available on the current platform version
          they will be used instead of the compat styles. 
@@ -1475,7 +1478,6 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b000a;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b0009;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0022;
-        public static final int calculate_btn=0x7f0b0085;
     }
     public static final class styleable {
         /**  ============================================ 

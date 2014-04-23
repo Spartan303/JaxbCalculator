@@ -17,14 +17,6 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-    
-	<style name="calculate_btn" parent="@android:style/Widget.Button">
- 		<item name="android:textColor">@color/androidColorWhite</item>
- 		<item name="android:textSize">24sp</item>
- 		<item name="android:gravity">center</item>
- 		<item  name="android:background">@drawable/calculate_btn</item>
-	</style>
-	
 	
 	<style name="Transparent" parent="@android:style/Theme.Translucent.NoTitleBar">
         <item name="android:windowNoTitle">true</item>
