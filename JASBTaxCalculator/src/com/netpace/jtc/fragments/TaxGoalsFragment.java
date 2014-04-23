@@ -1,12 +1,9 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
-import com.netpace.jtc.activity.MainActivity;
-import com.netpace.jtc.activity.TaxGoalsActivity;
 import com.netpace.jtc.ui.TypefaceTextView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,16 +11,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 
-public class TaxCalculatorFragment extends Fragment implements OnTabChangeListener {
-
-	private static final String TAG = "Tax-Calculator";
+public class TaxGoalsFragment extends Fragment implements OnTabChangeListener {
+	
+	private static final String TAG = "Tax-Goals";
 	
 	public static final String TAB_ANNUALLY = "Annually";
 	public static final String TAB_MONTHLY = "Monthly";
@@ -32,38 +28,22 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 	private TabHost mTabHost;
 	private int mCurrentTab;
 	
-	private Button mCalcTaxButton;
-	
-	public TaxCalculatorFragment() { }
-	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        mRootView = inflater.inflate(R.layout.fragment_tax_calculator, container, false);
-        
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		mRootView = inflater.inflate(R.layout.fragment_tax_result,
+				container, false);
+		
 		mTabHost = (TabHost) mRootView.findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 
 		setupTab(new TextView(getActivity()), TAB_ANNUALLY);
 		setupTab(new TextView(getActivity()), TAB_MONTHLY);
 		
-		mCalcTaxButton = (Button) mRootView.findViewById(R.id.calc_tax_button);
-		mCalcTaxButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-//				calculateTax();
-
-				Intent intent = new Intent(getActivity(), TaxGoalsActivity.class);
-				startActivity(intent);
-			}
-		});
 		
-        return mRootView;
-    }
-	
+		return mRootView;
+	}
+
 	private void setupTab(final View view, final String tag) {
 		View tabview = createTabView(mTabHost.getContext(), tag);
 	        TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview).setContent(new TabContentFactory() {
@@ -114,11 +94,11 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 		Bundle args = new Bundle();
 
 		if(tabId == TAB_MONTHLY) {
-			fragment = new CalculationFragment();
+			fragment = new GoalsFragment();
 			args.putString("tabId", tabId);
 		}
 		else if(tabId == TAB_ANNUALLY) {
-			fragment = new CalculationFragment();
+			fragment = new GoalsFragment();
 			args.putString("tabId", tabId);
 		}
 		
@@ -129,6 +109,4 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 				.replace(R.id.display_content, fragment)
 				.commit();
 	}
-
-
 }

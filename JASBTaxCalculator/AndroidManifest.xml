@@ -24,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.netpace.jtc.activity.TaxGoalsActivity"
+            android:label="@string/title_activity_tax_result" >
+        </activity>
     </application>
 
 </manifest>

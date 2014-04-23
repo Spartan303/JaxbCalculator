@@ -52,7 +52,7 @@ public class ImpactOfIncrementFragment extends Fragment implements OnTabChangeLi
 
 //				calculateTax();
 
-				Fragment fragment =  new ResultFragment();
+				Fragment fragment =  new TaxGoalsFragment();
 				FragmentManager fm = getChildFragmentManager();
 				fm.beginTransaction().replace(R.id.frame_container, fragment).commit();
 			}

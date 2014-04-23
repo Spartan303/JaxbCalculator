@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBgColor"
+    tools:context="com.netpace.jtc.TaxResultActivity$PlaceholderFragment" >
+
+    <FrameLayout
+        android:id="@+id/bg_tax_goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_tax_goals" />
+
+    <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/header_tax_goals"
+        android:textColor="@color/androidColorWhite"
+        android:textSize="20sp"
+        custom:typeface="TradeGothicLT" />
+
+    <LinearLayout
+        android:id="@+id/tab_container"
+        android:layout_below="@id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+		android:layout_centerHorizontal="true" >
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/fragment_tabs" />
+    </LinearLayout>
+
+</RelativeLayout>

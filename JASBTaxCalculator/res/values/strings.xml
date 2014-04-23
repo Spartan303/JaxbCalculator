@@ -8,19 +8,18 @@
     <string name="drawer_close">Slider Menu Closed</string>
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
     <string name="SubmitButtonText">Submit</string>
-    
-    
-     <!-- Nav Drawer Menu Items -->
+
+    <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Calculate Tax</item>
-        <item >Impact of Increment</item>
-        <item >How to Save Tax</item>
-        <item >How to Save Tax</item>
-        <item >Plan to Save Tax</item>
-        <item >Contact Us</item>
+        <item>Home</item>
+        <item>Calculate Tax</item>
+        <item>Impact of Increment</item>
+        <item>How to Save Tax</item>
+        <item>How to Save Tax</item>
+        <item>Plan to Save Tax</item>
+        <item>Contact Us</item>
     </string-array>
-    
+
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
@@ -32,7 +31,6 @@
         <item>@drawable/ic_plantosavetax</item>
         <item>@drawable/ic_contact</item>
     </array>
-    
     <array name="save_tax_array">
         <item>Working on the S3 image uploading (android) </item>
         <item>Working with Naveen to create the media sharing framework in iOS </item>
@@ -45,16 +43,15 @@
         <item>Provided the Amazon S3 details + UI flow description to Naveen</item>
         <item>Working with iOS media sharing framework/library project with Naveen</item>
     </array>
-    
+
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="webViewSaveTax">Save Tax</string>
     <string name="webViewTemrsOfUse">Acceptance of Terms</string>
     <string name="webViewContactUs">Contact Us</string>
-        <string name="email_hint">Email Address</string>
+    <string name="email_hint">Email Address</string>
     <string name="PlanSaveTaxHeading">Tax Planning </string>
-    <string name="PlanSaveTaxDetailedText">        	
-        	Carbonated.TV respects the privacy rights of our users and is
+    <string name="PlanSaveTaxDetailedText">        	Carbonated.TV respects the privacy rights of our users and is
 			committed to protecting the information collected through its online
 			services and websites. We have adopted this privacy policy to explain
 			how we collect, store and use the information collected in connection
@@ -65,18 +62,15 @@
 			personal information (as hereunder described), all in respect to the
 			Terms and Conditions set hereunder. Carbonated.TV reserves the right to
 			change this Privacy Policy at any time and without notice, and it is.</string>
-    
-    
-    
     <string name="saveTaxLVExp">Save Tex Expanable List View</string>
-    
-    
-<!--     Tax Calculator Fragment Strings -->
-	<string name="tab_annually">Annually</string>
-	<string name="tab_monthly">Monthly</string>
-	<string name="btn_calculate">Calculate</string>
-	<string name="header_tax_calculator">Tax Calculator</string>
-	<string name="header_tax_impact">Impact Of Increment </string>
-	
+
+    <!-- Tax Calculator Fragment Strings -->
+    <string name="tab_annually">Annually</string>
+    <string name="tab_monthly">Monthly</string>
+    <string name="btn_calculate">Calculate</string>
+    <string name="header_tax_calculator">Tax Calculator</string>
+    <string name="header_tax_impact">Impact Of Increment </string>
+    <string name="header_tax_goals">Tax Goals</string>
+    <string name="title_activity_tax_result">TaxResultActivity</string>
 
 </resources>

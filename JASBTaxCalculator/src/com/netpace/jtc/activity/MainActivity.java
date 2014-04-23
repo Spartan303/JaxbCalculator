@@ -2,31 +2,29 @@ package com.netpace.jtc.activity;
 
 import java.util.ArrayList;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.netpace.jtc.R;
 import com.netpace.jtc.adapters.NavDrawerListAdapter;
+import com.netpace.jtc.fragments.ContactUsFragment;
+import com.netpace.jtc.fragments.HomeFragment;
 import com.netpace.jtc.fragments.ImpactOfIncrementFragment;
 import com.netpace.jtc.fragments.PlanSaveTaxFragment;
 import com.netpace.jtc.fragments.TaxCalculatorFragment;
-import com.netpace.jtc.fragments.HomeFragment;
 import com.netpace.jtc.fragments.TermsFragment;
-import com.netpace.jtc.fragments.SaveTaxFragment;
-import com.netpace.jtc.fragments.ContactUsFragment;
 import com.netpace.jtc.model.NavDrawerItem;
 
 public class MainActivity extends ActionBarActivity {
