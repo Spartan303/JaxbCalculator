@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -14,9 +15,8 @@
         android:background="@drawable/txt_input"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:textColor="@android:color/white"
-        custom:typeface="TradeGothicLT"
-        android:textColorHint="@color/textColorHint" >
-    </com.netpace.jtc.ui.TypefaceEditText>
+        android:textColor="@color/numbers_text_color"
+        android:textColorHint="@color/textColorHint"
+        custom:typeface="TradeGothicLT" />
 
 </LinearLayout>

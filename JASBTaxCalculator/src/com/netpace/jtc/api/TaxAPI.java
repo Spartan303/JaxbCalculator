@@ -37,7 +37,7 @@ public abstract class TaxAPI {
 // 	=====================  Protected Utility Methods  =====================================
 	
 	protected Double toYearly(Double monthly) {
-		return monthly * 12;
+		return (double) Math.round(monthly * 12);
 	}
 
 	protected Double toMonthly(Double yearly) {

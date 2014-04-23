@@ -812,25 +812,26 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070013;
+        public static final int abc_search_url_text_holo=0x7f070014;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
-        public static final int androidColorBlack=0x7f070011;
-        public static final int androidColorBlue=0x7f07000c;
-        public static final int androidColorGreen=0x7f07000f;
-        public static final int androidColorPurple=0x7f07000e;
-        public static final int androidColorRed=0x7f07000d;
-        public static final int androidColorWhite=0x7f070012;
-        public static final int androidColorYellow=0x7f070010;
+        public static final int androidColorBlack=0x7f070012;
+        public static final int androidColorBlue=0x7f07000d;
+        public static final int androidColorGreen=0x7f070010;
+        public static final int androidColorPurple=0x7f07000f;
+        public static final int androidColorRed=0x7f07000e;
+        public static final int androidColorWhite=0x7f070013;
+        public static final int androidColorYellow=0x7f070011;
         public static final int appBgColor=0x7f070003;
         public static final int calculate_btn=0x7f070005;
-        public static final int counter_text_bg=0x7f07000a;
-        public static final int counter_text_color=0x7f07000b;
-        public static final int list_background=0x7f070007;
-        public static final int list_background_pressed=0x7f070008;
-        public static final int list_divider=0x7f070009;
-        public static final int list_item_title=0x7f070006;
+        public static final int counter_text_bg=0x7f07000b;
+        public static final int counter_text_color=0x7f07000c;
+        public static final int list_background=0x7f070008;
+        public static final int list_background_pressed=0x7f070009;
+        public static final int list_divider=0x7f07000a;
+        public static final int list_item_title=0x7f070007;
+        public static final int numbers_text_color=0x7f070006;
         public static final int textColorHint=0x7f070004;
     }
     public static final class dimen {

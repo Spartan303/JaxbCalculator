@@ -1,13 +1,13 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
+import com.netpace.jtc.ui.TypefaceEditText;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 public class CalculationFragment extends Fragment {
 
@@ -17,7 +17,7 @@ public class CalculationFragment extends Fragment {
 	private View mRootView;
 	private String mTag;
 
-	private EditText mIncomeEditText;
+	private TypefaceEditText mIncomeEditText;
 //	private Double income;
 
 	public CalculationFragment() {	}
@@ -40,7 +40,7 @@ public class CalculationFragment extends Fragment {
 	}
 
 	private void initUIComponents() {
-		mIncomeEditText = (EditText) mRootView.findViewById(R.id.income_text);
+		mIncomeEditText = (TypefaceEditText) mRootView.findViewById(R.id.income_text);
 		setHint();
 	}
 

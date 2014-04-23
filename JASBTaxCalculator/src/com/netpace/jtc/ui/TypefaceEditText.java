@@ -32,7 +32,7 @@ public class TypefaceEditText extends EditText {
 
 				if (typeface == null) {
 					typeface = Typeface.createFromAsset(context.getAssets(),
-							String.format("fonts/%s_0.otf", typefaceName));
+							String.format("fonts/%s.ttf", typefaceName));
 
 					// Cache the Typeface object
 					sTypefaceCache.put(typefaceName, typeface);

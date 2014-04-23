@@ -243,7 +243,13 @@ public class SalariedTaxAPI extends TaxAPI {
 	private void setInputs(Double income, Double increase, Double zakat, InputType inputType, TaxResult result) {
 		
 		// ============================== Congfiguring inputs monthly and yearly  ====================================		
-		// Input Type Only Decides income and increase values to be monthly and yearly   
+		// Input Type Only Decides income and increase values to be monthly and yearly
+		
+		// To Round off the decimal values input by user 
+		income = (double) Math.round(income);
+		increase = (double) Math.round(increase);
+		zakat = (double) Math.round(zakat);
+		
 		if (inputType == InputType.MONTHLY) {
 			result.setUiIncomeYearly( toYearly(income) ); 
 			result.setUiIncomeMonthly(income);
@@ -312,6 +318,14 @@ public class SalariedTaxAPI extends TaxAPI {
 			InputType inputType) {
 		
 		TaxResult result = new TaxResult();
+		
+		// To Round off the decimal values input by user 
+		zakat = (double) Math.round(zakat);
+		donation = (double) Math.round(donation);
+		shares = (double) Math.round(shares);
+		insurancePremium = (double) Math.round(insurancePremium);
+		pensionFund = (double) Math.round(pensionFund);
+		houseLoanInterest = (double) Math.round(houseLoanInterest);
 		
 		setInputs(income, 0d, zakat, inputType, result);
 			
