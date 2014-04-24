@@ -3,6 +3,8 @@ package com.netpace.jtc.fragments;
 import com.netpace.jtc.R;
 import com.netpace.jtc.activity.MainActivity;
 import com.netpace.jtc.activity.TaxGoalsActivity;
+import com.netpace.jtc.api.TCManager;
+import com.netpace.jtc.api.TaxResult;
 import com.netpace.jtc.ui.TypefaceTextView;
 
 import android.content.Context;
@@ -34,6 +36,8 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 	
 	private Button mCalcTaxButton;
 	
+	private TaxResult mTaxResult;
+	
 	public TaxCalculatorFragment() { }
 	
 	@Override
@@ -54,10 +58,16 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 			@Override
 			public void onClick(View v) {
 
-//				calculateTax();
+				mRootView.findViewById(R.id.tab_container).findViewById(R.id.income_text);
+				mTaxResult = calculateTax();
 
 				Intent intent = new Intent(getActivity(), TaxGoalsActivity.class);
 				startActivity(intent);
+			}
+
+			private TaxResult calculateTax() {
+//				TCManager.getInstance().calculateTax(income, inputType, type, year);
+				return null;
 			}
 		});
 		
@@ -128,7 +138,6 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 		fm.beginTransaction()
 				.replace(R.id.display_content, fragment)
 				.commit();
+		
 	}
-
-
 }

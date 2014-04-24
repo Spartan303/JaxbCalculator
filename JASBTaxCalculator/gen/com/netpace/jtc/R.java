@@ -824,14 +824,14 @@ containing a value of this type.
         public static final int androidColorWhite=0x7f070013;
         public static final int androidColorYellow=0x7f070011;
         public static final int appBgColor=0x7f070003;
-        public static final int calculate_btn=0x7f070005;
         public static final int counter_text_bg=0x7f07000b;
         public static final int counter_text_color=0x7f07000c;
         public static final int list_background=0x7f070008;
         public static final int list_background_pressed=0x7f070009;
         public static final int list_divider=0x7f07000a;
         public static final int list_item_title=0x7f070007;
-        public static final int numbers_text_color=0x7f070006;
+        public static final int number_textview_color=0x7f070006;
+        public static final int row_textview_color=0x7f070005;
         public static final int textColorHint=0x7f070004;
     }
     public static final class dimen {
@@ -1068,7 +1068,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050057;
+        public static final int action_settings=0x7f050059;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1100,6 +1100,7 @@ containing a value of this type.
         public static final int increment_text=0x7f050049;
         public static final int lblListHeader=0x7f050052;
         public static final int lblListItem=0x7f050053;
+        public static final int left_textView=0x7f050056;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int list_slidermenu=0x7f05003e;
@@ -1110,7 +1111,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int rounded_corners=0x7f050056;
+        public static final int right_textView=0x7f050057;
+        public static final int rounded_corners=0x7f050058;
         public static final int saveTaxLVExp=0x7f050046;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;

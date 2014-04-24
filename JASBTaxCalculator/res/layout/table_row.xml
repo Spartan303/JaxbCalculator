@@ -7,15 +7,15 @@
     android:orientation="horizontal" >
 
     <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/left_textView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:gravity="center"
-		android:minLines="2"
         android:padding="10dp"
-        android:text="Taxable Income"
-        android:textColor="@color/androidColorWhite"
+        android:textColor="@color/row_textview_color"
         android:textSize="18sp"
+        android:ellipsize="middle"
         custom:typeface="TradeGothicLT" />
 
     <ImageView
@@ -26,15 +26,14 @@
         android:src="@drawable/vertical_divider" />
 
     <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/right_textView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:gravity="center"
-
         android:padding="10dp"
-        android:text="600,000"
-        android:textColor="@color/androidColorWhite"
-        android:textSize="18sp"
+        android:textColor="@color/number_textview_color"
+        android:textSize="22sp"
         custom:typeface="TradeGothicLT" />
 
 </TableRow>

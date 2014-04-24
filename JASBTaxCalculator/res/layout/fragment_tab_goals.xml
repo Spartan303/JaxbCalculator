@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:stretchColumns="*" >
 		
-        <include layout="@layout/table_row"/>
+<!--         Adding dynamically -->
+<!--         <include layout="@layout/table_row"/> -->
         
     </TableLayout>
 

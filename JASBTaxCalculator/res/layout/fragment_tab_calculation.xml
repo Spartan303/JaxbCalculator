@@ -15,8 +15,10 @@
         android:background="@drawable/txt_input"
         android:gravity="center"
         android:inputType="numberDecimal"
-        android:textColor="@color/numbers_text_color"
+        android:textColor="@color/number_textview_color"
         android:textColorHint="@color/textColorHint"
         custom:typeface="TradeGothicLT" />
+    
+    
 
 </LinearLayout>
