@@ -1,7 +1,13 @@
 package com.netpace.jtc.api;
 
-public class TaxResult {
+import java.io.Serializable;
 
+public class TaxResult implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2919139350868360658L;
 	private Double uiMonthlyIncome;
 	private Double uiYearlyIncome;
 	private Double uiMonthlyExpectedIncrease;

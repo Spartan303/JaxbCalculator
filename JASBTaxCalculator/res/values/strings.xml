@@ -72,5 +72,8 @@
     <string name="header_tax_impact">Impact Of Increment </string>
     <string name="header_tax_goals">Tax Goals</string>
     <string name="title_activity_tax_result">TaxResultActivity</string>
+    
+    <string name="type_tax_goals">Salaried Indivisuals</string>
+    
 
 </resources>

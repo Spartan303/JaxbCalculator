@@ -1,6 +1,7 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
+import com.netpace.jtc.constants.AppConstants;
 import com.netpace.jtc.ui.TypefaceEditText;
 
 import android.os.Bundle;
@@ -11,14 +12,10 @@ import android.view.ViewGroup;
 
 public class CalculationFragment extends Fragment {
 
-	public static final String TAB_MONTHLY = "Monthly";
-	public static final String TAB_ANNUALLY = "Annually";
-
 	private View mRootView;
 	private String mTag;
 
 	private TypefaceEditText mIncomeEditText;
-//	private Double income;
 
 	public CalculationFragment() {	}
 
@@ -45,9 +42,13 @@ public class CalculationFragment extends Fragment {
 	}
 
 	private void setHint() {
-		if(mTag.equals(TAB_MONTHLY)) 
+		if(mTag.equals(AppConstants.TAB_MONTHLY)) 
 			mIncomeEditText.setHint("Enter Monthly Taxbale Income");
-		else if(mTag.equals(TAB_ANNUALLY)) 
+		else if(mTag.equals(AppConstants.TAB_ANNUALLY)) 
 			mIncomeEditText.setHint("Enter Annual Taxable Income");
+	}
+	
+	public TypefaceEditText getIncomeTextField() {
+		return mIncomeEditText;
 	}
 }

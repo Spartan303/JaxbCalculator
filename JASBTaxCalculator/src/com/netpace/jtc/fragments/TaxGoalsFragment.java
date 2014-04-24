@@ -1,6 +1,8 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
+import com.netpace.jtc.api.TaxResult;
+import com.netpace.jtc.constants.AppConstants;
 import com.netpace.jtc.ui.TypefaceTextView;
 
 import android.content.Context;
@@ -28,10 +30,19 @@ public class TaxGoalsFragment extends Fragment implements OnTabChangeListener {
 	private TabHost mTabHost;
 	private int mCurrentTab;
 	
+	TaxResult mTaxResult;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mTaxResult = (TaxResult) getArguments().getSerializable(AppConstants.TAX_RESULT);
+		
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.fragment_tax_result,
+		mRootView = inflater.inflate(R.layout.fragment_tax_goals,
 				container, false);
 		
 		mTabHost = (TabHost) mRootView.findViewById(android.R.id.tabhost);
@@ -102,7 +113,11 @@ public class TaxGoalsFragment extends Fragment implements OnTabChangeListener {
 			args.putString("tabId", tabId);
 		}
 		
+		// send the tax result 
+		args.putSerializable(AppConstants.TAX_RESULT, mTaxResult);
+		
 		fragment.setArguments(args);
+		
 
 		FragmentManager fm = getFragmentManager();
 		fm.beginTransaction()

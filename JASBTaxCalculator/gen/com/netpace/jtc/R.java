@@ -15,6 +15,10 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040003;
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
+        public static final int appear=0x7f040006;
+        public static final int disappear=0x7f040007;
+        public static final int hold=0x7f040008;
+        public static final int rotate=0x7f040009;
     }
     public static final class array {
         /**  Nav Drawer List Item Icons 
@@ -1068,13 +1072,13 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050059;
+        public static final int action_settings=0x7f05005a;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int bg_calculate_tax=0x7f05004b;
-        public static final int bg_tax_goals=0x7f050050;
-        public static final int calc_impact_button=0x7f05004f;
+        public static final int bg_tax_goals=0x7f05004f;
+        public static final int calc_impact_button=0x7f050051;
         public static final int calc_tax_button=0x7f05004e;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
@@ -1098,9 +1102,9 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int income_text=0x7f050047;
         public static final int increment_text=0x7f050049;
-        public static final int lblListHeader=0x7f050052;
-        public static final int lblListItem=0x7f050053;
-        public static final int left_textView=0x7f050056;
+        public static final int lblListHeader=0x7f050053;
+        public static final int lblListItem=0x7f050054;
+        public static final int left_textView=0x7f050057;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int list_slidermenu=0x7f05003e;
@@ -1111,8 +1115,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int right_textView=0x7f050057;
-        public static final int rounded_corners=0x7f050058;
+        public static final int right_textView=0x7f050058;
+        public static final int rounded_corners=0x7f050059;
         public static final int saveTaxLVExp=0x7f050046;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
@@ -1133,15 +1137,16 @@ containing a value of this type.
         public static final int tabMode=0x7f050002;
         public static final int tab_container=0x7f05004d;
         public static final int tablelayout=0x7f050048;
-        public static final int tabsLayout=0x7f050054;
-        public static final int tabsText=0x7f050055;
+        public static final int tabsLayout=0x7f050055;
+        public static final int tabsText=0x7f050056;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int txtLabel=0x7f050041;
+        public static final int type_heading=0x7f050050;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int webViewContactUs=0x7f050040;
-        public static final int webViewTemrsOfUse=0x7f050051;
+        public static final int webViewTemrsOfUse=0x7f050052;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1205,8 +1210,8 @@ containing a value of this type.
         public static final int fragment_tab_impact=0x7f030020;
         public static final int fragment_tabs=0x7f030021;
         public static final int fragment_tax_calculator=0x7f030022;
-        public static final int fragment_tax_impact=0x7f030023;
-        public static final int fragment_tax_result=0x7f030024;
+        public static final int fragment_tax_goals=0x7f030023;
+        public static final int fragment_tax_impact=0x7f030024;
         public static final int fragment_terms=0x7f030025;
         public static final int save_tax_list_group=0x7f030026;
         public static final int save_tax_list_item=0x7f030027;
@@ -1282,6 +1287,7 @@ containing a value of this type.
         public static final int tab_monthly=0x7f0a001d;
         public static final int title_activity_splash_screen=0x7f0a0012;
         public static final int title_activity_tax_result=0x7f0a0022;
+        public static final int type_tax_goals=0x7f0a0023;
         public static final int webViewContactUs=0x7f0a0017;
         public static final int webViewSaveTax=0x7f0a0015;
         public static final int webViewTemrsOfUse=0x7f0a0016;

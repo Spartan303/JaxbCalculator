@@ -18,20 +18,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
-        android:padding="15dp"
         android:text="@string/header_tax_goals"
         android:textColor="@color/androidColorWhite"
         android:textSize="20sp"
         custom:typeface="TradeGothicLT" />
+    
+	<com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/type_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/type_tax_goals"
+        android:textColor="@color/androidColorWhite"
+        android:textSize="16sp"
+        custom:typeface="TradeGothicLT" />
 
     <LinearLayout
         android:id="@+id/tab_container"
-        android:layout_below="@id/header"
+        android:layout_below="@id/type_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
 		android:layout_centerHorizontal="true" >
 
         <include

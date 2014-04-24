@@ -1,11 +1,8 @@
 package com.netpace.jtc.util;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +17,7 @@ public class Util {
 	public static List<Slab> getSlabsFromCSV(String fileName)
 	{
 //		Uncomment it for android application		
-//		Context context = ApplicationManager.getAppContext();
+		Context context = ApplicationManager.getAppContext();
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
@@ -28,18 +25,17 @@ public class Util {
 		
 		try {
 			
-//			For Android Application
-//			br = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName)));
-
-//			Just for Console Application
 // ==============================================================================================================================
-			fileName = "C:\\slabs\\" + fileName;
-			FileReader fr = new FileReader(new File(fileName));
-			br = new BufferedReader(fr);
+//			Just for Console Application
+//			fileName = "C:\\slabs\\" + fileName;
+//			FileReader fr = new FileReader(new File(fileName));
+//			br = new BufferedReader(fr);
 //===============================================================================================================================
+
+//			For Android Application
+			br = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName)));
 			
 			br.readLine(); // skip this line for columns heading
-			
 			while ((line = br.readLine()) != null) {
 				Slab slab = new Slab();
 				String[] bracket = line.split(cvsSplitBy);

@@ -1,14 +1,6 @@
 package com.netpace.jtc.fragments;
 
-import com.netpace.jtc.R;
-import com.netpace.jtc.activity.MainActivity;
-import com.netpace.jtc.activity.TaxGoalsActivity;
-import com.netpace.jtc.api.TCManager;
-import com.netpace.jtc.api.TaxResult;
-import com.netpace.jtc.ui.TypefaceTextView;
-
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,73 +11,113 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TextView;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
 
-public class TaxCalculatorFragment extends Fragment implements OnTabChangeListener {
+import com.netpace.jtc.R;
+import com.netpace.jtc.api.InputType;
+import com.netpace.jtc.api.TCManager;
+import com.netpace.jtc.api.TaxAPIType;
+import com.netpace.jtc.api.TaxResult;
+import com.netpace.jtc.constants.AppConstants;
+import com.netpace.jtc.controller.NavigationController;
+import com.netpace.jtc.ui.TypefaceEditText;
+import com.netpace.jtc.ui.TypefaceTextView;
+
+public class TaxCalculatorFragment extends Fragment implements
+		OnTabChangeListener {
 
 	private static final String TAG = "Tax-Calculator";
-	
-	public static final String TAB_ANNUALLY = "Annually";
-	public static final String TAB_MONTHLY = "Monthly";
 
 	private View mRootView;
 	private TabHost mTabHost;
 	private int mCurrentTab;
-	
+
 	private Button mCalcTaxButton;
-	
+
 	private TaxResult mTaxResult;
-	
-	public TaxCalculatorFragment() { }
-	
+	private Double income;
+
+	public TaxCalculatorFragment() {
+	}
+
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        mRootView = inflater.inflate(R.layout.fragment_tax_calculator, container, false);
-        
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		mRootView = inflater.inflate(R.layout.fragment_tax_calculator,
+				container, false);
+
 		mTabHost = (TabHost) mRootView.findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 
-		setupTab(new TextView(getActivity()), TAB_ANNUALLY);
-		setupTab(new TextView(getActivity()), TAB_MONTHLY);
-		
+		setupTab(new TextView(getActivity()), AppConstants.TAB_ANNUALLY);
+		setupTab(new TextView(getActivity()), AppConstants.TAB_MONTHLY);
+
 		mCalcTaxButton = (Button) mRootView.findViewById(R.id.calc_tax_button);
 		mCalcTaxButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				mRootView.findViewById(R.id.tab_container).findViewById(R.id.income_text);
-				mTaxResult = calculateTax();
+				CalculationFragment frag = (CalculationFragment) getFragmentManager()
+						.findFragmentById(R.id.display_content);
 
-				Intent intent = new Intent(getActivity(), TaxGoalsActivity.class);
-				startActivity(intent);
+				if (frag != null) {
+					TypefaceEditText incomeTxtField = frag.getIncomeTextField();
+					income = getValue(incomeTxtField);
+					if (income <= 0) {
+						incomeTxtField.setError("Invalid Input");
+					} else {
+						mTaxResult = calculateTax();
+
+						NavigationController.getInstance()
+								.startTaxGoalsActivity(getActivity(),
+										mTaxResult);
+					}
+				}
+			}
+
+			private Double getValue(TypefaceEditText incomeTxtField) {
+				// if blank txtField Value then 0 value else convert to Double
+				// value and return
+				return (incomeTxtField.getText().toString().equals("")) ? 0d
+						: Double.parseDouble(incomeTxtField.getText()
+								.toString());
 			}
 
 			private TaxResult calculateTax() {
-//				TCManager.getInstance().calculateTax(income, inputType, type, year);
-				return null;
+
+				if (mCurrentTab == 0) {
+					return TCManager.getInstance().calculateTax(income,
+							InputType.YEARLY, TaxAPIType.SALARIED, 2014);
+				} else {
+					return TCManager.getInstance().calculateTax(income,
+							InputType.MONTHLY, TaxAPIType.SALARIED, 2014);
+				}
 			}
 		});
-		
-        return mRootView;
-    }
-	
+
+		return mRootView;
+	}
+
 	private void setupTab(final View view, final String tag) {
 		View tabview = createTabView(mTabHost.getContext(), tag);
-	        TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview).setContent(new TabContentFactory() {
-			public View createTabContent(String tag) {return view;}
-		});
+		TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview)
+				.setContent(new TabContentFactory() {
+					public View createTabContent(String tag) {
+						return view;
+					}
+				});
 
 		mTabHost.addTab(setContent);
 	}
 
 	private static View createTabView(final Context context, final String text) {
 		View view = LayoutInflater.from(context).inflate(R.layout.tab, null);
-		TypefaceTextView tv = (TypefaceTextView) view.findViewById(R.id.tabsText);
+		TypefaceTextView tv = (TypefaceTextView) view
+				.findViewById(R.id.tabsText);
 		tv.setText(text);
 		return view;
 	}
@@ -97,20 +129,20 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 
 		mTabHost.setOnTabChangedListener(this);
 		mTabHost.setCurrentTab(mCurrentTab);
-		
+
 		// manually start loading stuff in the first tab
-		updateTab(TAB_ANNUALLY, R.id.display_content);
+		updateTab(AppConstants.TAB_ANNUALLY, R.id.display_content);
 	}
 
 	@Override
 	public void onTabChanged(String tabId) {
 		Log.d(TAG, "onTabChanged(): tabId=" + tabId);
-		if (TAB_ANNUALLY.equals(tabId)) {
+		if (AppConstants.TAB_ANNUALLY.equals(tabId)) {
 			updateTab(tabId, R.id.display_content);
 			mCurrentTab = 0;
 			return;
 		}
-		if (TAB_MONTHLY.equals(tabId)) {
+		if (AppConstants.TAB_MONTHLY.equals(tabId)) {
 			updateTab(tabId, R.id.display_content);
 			mCurrentTab = 1;
 			return;
@@ -123,21 +155,18 @@ public class TaxCalculatorFragment extends Fragment implements OnTabChangeListen
 		Fragment fragment = null;
 		Bundle args = new Bundle();
 
-		if(tabId == TAB_MONTHLY) {
+		if (tabId.equals(AppConstants.TAB_MONTHLY)) {
+			fragment = new CalculationFragment();
+			args.putString("tabId", tabId);
+		} else if (tabId.equals(AppConstants.TAB_ANNUALLY)) {
 			fragment = new CalculationFragment();
 			args.putString("tabId", tabId);
 		}
-		else if(tabId == TAB_ANNUALLY) {
-			fragment = new CalculationFragment();
-			args.putString("tabId", tabId);
-		}
-		
+
 		fragment.setArguments(args);
 
 		FragmentManager fm = getFragmentManager();
-		fm.beginTransaction()
-				.replace(R.id.display_content, fragment)
-				.commit();
-		
+		fm.beginTransaction().replace(R.id.display_content, fragment).commit();
+
 	}
 }
