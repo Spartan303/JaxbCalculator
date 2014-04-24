@@ -17,7 +17,7 @@
         <activity
             android:name="com.netpace.jtc.activity.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light" >
+            android:theme="@style/Transparent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

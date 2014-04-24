@@ -3,11 +3,11 @@ package com.netpace.jtc.activity;
 
 import java.util.Date;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
@@ -22,7 +22,7 @@ import com.netpace.jtc.model.Version;
  * @author Deminem
  *
  */
-public class SplashActivity extends Activity {
+public class SplashActivity extends FragmentActivity {
 
 	protected static final String TAG = SplashActivity.class.getSimpleName();
 
@@ -44,7 +44,7 @@ public class SplashActivity extends Activity {
 
 		printAppHashKey();
 		
-		//this.data = (MyStateSaver) getLastCustomNonConfigurationInstance();
+		this.data = (MyStateSaver) getLastCustomNonConfigurationInstance();
 		if (this.data == null) {
 			this.data = new MyStateSaver();
 		}
@@ -128,6 +128,7 @@ public class SplashActivity extends Activity {
 		
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
+		finish();
 	}
 	
 	/**

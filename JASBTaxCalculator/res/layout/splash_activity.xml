@@ -11,7 +11,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:src="@drawable/splash_logo" />
+        android:src="@drawable/splash_logo"
+        android:contentDescription="@string/buildVersion" />
 
     <TextView
         android:id="@+id/build_version"
@@ -19,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:gravity="center"
-        android:layout_below="@+id/imgLogo"
-        android:text="Build Version 1.0"
+        android:layout_alignParentBottom="true"
+        android:text="@string/buildVersion"
         android:textColor="#454545"
         android:textSize="12sp" />
     
