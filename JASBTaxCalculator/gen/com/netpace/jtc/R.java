@@ -1043,18 +1043,20 @@ containing a value of this type.
         public static final int list_item_bg_pressed=0x7f020067;
         public static final int list_selector=0x7f020068;
         public static final int row_bg=0x7f020069;
-        public static final int square_box_bg=0x7f02006a;
-        public static final int tab_active=0x7f02006b;
-        public static final int tab_bg_selected=0x7f02006c;
-        public static final int tab_bg_selector=0x7f02006d;
-        public static final int tab_bg_unselected=0x7f02006e;
-        public static final int tab_content_active=0x7f02006f;
-        public static final int tab_focused=0x7f020070;
-        public static final int tab_inactive=0x7f020071;
-        public static final int tab_pressed=0x7f020072;
-        public static final int tab_text_selector=0x7f020073;
-        public static final int txt_input=0x7f020074;
-        public static final int vertical_divider=0x7f020075;
+        public static final int splash_bg=0x7f02006a;
+        public static final int splash_logo=0x7f02006b;
+        public static final int square_box_bg=0x7f02006c;
+        public static final int tab_active=0x7f02006d;
+        public static final int tab_bg_selected=0x7f02006e;
+        public static final int tab_bg_selector=0x7f02006f;
+        public static final int tab_bg_unselected=0x7f020070;
+        public static final int tab_content_active=0x7f020071;
+        public static final int tab_focused=0x7f020072;
+        public static final int tab_inactive=0x7f020073;
+        public static final int tab_pressed=0x7f020074;
+        public static final int tab_text_selector=0x7f020075;
+        public static final int txt_input=0x7f020076;
+        public static final int vertical_divider=0x7f020077;
     }
     public static final class id {
         public static final int EmailEditText=0x7f050044;
@@ -1072,12 +1074,13 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05005a;
+        public static final int action_settings=0x7f05005c;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int bg_calculate_tax=0x7f05004b;
         public static final int bg_tax_goals=0x7f05004f;
+        public static final int build_version=0x7f050056;
         public static final int calc_impact_button=0x7f050051;
         public static final int calc_tax_button=0x7f05004e;
         public static final int checkbox=0x7f05002d;
@@ -1100,11 +1103,12 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
+        public static final int imgLogo=0x7f050055;
         public static final int income_text=0x7f050047;
         public static final int increment_text=0x7f050049;
         public static final int lblListHeader=0x7f050053;
         public static final int lblListItem=0x7f050054;
-        public static final int left_textView=0x7f050057;
+        public static final int left_textView=0x7f050059;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int list_slidermenu=0x7f05003e;
@@ -1115,8 +1119,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int right_textView=0x7f050058;
-        public static final int rounded_corners=0x7f050059;
+        public static final int right_textView=0x7f05005a;
+        public static final int rounded_corners=0x7f05005b;
         public static final int saveTaxLVExp=0x7f050046;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
@@ -1137,8 +1141,8 @@ containing a value of this type.
         public static final int tabMode=0x7f050002;
         public static final int tab_container=0x7f05004d;
         public static final int tablelayout=0x7f050048;
-        public static final int tabsLayout=0x7f050055;
-        public static final int tabsText=0x7f050056;
+        public static final int tabsLayout=0x7f050057;
+        public static final int tabsText=0x7f050058;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int txtLabel=0x7f050041;
@@ -1215,18 +1219,19 @@ containing a value of this type.
         public static final int fragment_terms=0x7f030025;
         public static final int save_tax_list_group=0x7f030026;
         public static final int save_tax_list_item=0x7f030027;
-        public static final int support_simple_spinner_dropdown_item=0x7f030028;
-        public static final int tab=0x7f030029;
-        public static final int table_row=0x7f03002a;
+        public static final int splash_activity=0x7f030028;
+        public static final int support_simple_spinner_dropdown_item=0x7f030029;
+        public static final int tab=0x7f03002a;
+        public static final int table_row=0x7f03002b;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
         public static final int tax_result=0x7f0d0001;
     }
     public static final class string {
-        public static final int PlanSaveTaxDetailedText=0x7f0a001a;
-        public static final int PlanSaveTaxHeading=0x7f0a0019;
-        public static final int SubmitButtonText=0x7f0a0013;
+        public static final int PlanSaveTaxDetailedText=0x7f0a001b;
+        public static final int PlanSaveTaxHeading=0x7f0a001a;
+        public static final int SubmitButtonText=0x7f0a0014;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1267,30 +1272,31 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_settings=0x7f0a000e;
-        public static final int app_name=0x7f0a000d;
-        public static final int btn_calculate=0x7f0a001e;
+        public static final int action_settings=0x7f0a000f;
+        public static final int app_name=0x7f0a000e;
+        public static final int btn_calculate=0x7f0a001f;
+        public static final int buildVersion=0x7f0a000d;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f0a0014;
-        public static final int drawer_close=0x7f0a0011;
-        public static final int drawer_open=0x7f0a0010;
-        public static final int email_hint=0x7f0a0018;
-        public static final int header_tax_calculator=0x7f0a001f;
-        public static final int header_tax_goals=0x7f0a0021;
-        public static final int header_tax_impact=0x7f0a0020;
-        public static final int hello_world=0x7f0a000f;
-        public static final int saveTaxLVExp=0x7f0a001b;
+        public static final int desc_list_item_icon=0x7f0a0015;
+        public static final int drawer_close=0x7f0a0012;
+        public static final int drawer_open=0x7f0a0011;
+        public static final int email_hint=0x7f0a0019;
+        public static final int header_tax_calculator=0x7f0a0020;
+        public static final int header_tax_goals=0x7f0a0022;
+        public static final int header_tax_impact=0x7f0a0021;
+        public static final int hello_world=0x7f0a0010;
+        public static final int saveTaxLVExp=0x7f0a001c;
         /**  Tax Calculator Fragment Strings 
          */
-        public static final int tab_annually=0x7f0a001c;
-        public static final int tab_monthly=0x7f0a001d;
-        public static final int title_activity_splash_screen=0x7f0a0012;
-        public static final int title_activity_tax_result=0x7f0a0022;
-        public static final int type_tax_goals=0x7f0a0023;
-        public static final int webViewContactUs=0x7f0a0017;
-        public static final int webViewSaveTax=0x7f0a0015;
-        public static final int webViewTemrsOfUse=0x7f0a0016;
+        public static final int tab_annually=0x7f0a001d;
+        public static final int tab_monthly=0x7f0a001e;
+        public static final int title_activity_splash_screen=0x7f0a0013;
+        public static final int title_activity_tax_result=0x7f0a0023;
+        public static final int type_tax_goals=0x7f0a0024;
+        public static final int webViewContactUs=0x7f0a0018;
+        public static final int webViewSaveTax=0x7f0a0016;
+        public static final int webViewTemrsOfUse=0x7f0a0017;
     }
     public static final class style {
         /** 

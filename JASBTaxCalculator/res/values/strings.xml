@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="buildVersion">Build Version 1.0</string>
     <string name="app_name">JASBTaxCalculator</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
@@ -73,7 +74,6 @@
     <string name="header_tax_goals">Tax Goals</string>
     <string name="title_activity_tax_result">TaxResultActivity</string>
     
-    <string name="type_tax_goals">Salaried Indivisuals</string>
-    
+	<string name="type_tax_goals">Salaried Indivisuals</string>
 
 </resources>

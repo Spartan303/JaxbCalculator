@@ -1,6 +1,7 @@
 package com.netpace.jtc.util;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,6 +15,11 @@ import com.netpace.jtc.init.ApplicationManager;
 
 public class Util {
 
+	public static boolean fileExistance(Context ctx, String fname) {
+	    File file = ctx.getFileStreamPath(fname);
+	    return file.exists();
+	}
+	
 	public static List<Slab> getSlabsFromCSV(String fileName)
 	{
 //		Uncomment it for android application		
@@ -25,17 +31,19 @@ public class Util {
 		
 		try {
 			
+//			For Android Application
+			br = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName)));
+
+
 // ==============================================================================================================================
 //			Just for Console Application
 //			fileName = "C:\\slabs\\" + fileName;
 //			FileReader fr = new FileReader(new File(fileName));
 //			br = new BufferedReader(fr);
 //===============================================================================================================================
-
-//			For Android Application
-			br = new BufferedReader(new InputStreamReader(context.getAssets().open(fileName)));
 			
 			br.readLine(); // skip this line for columns heading
+			
 			while ((line = br.readLine()) != null) {
 				Slab slab = new Slab();
 				String[] bracket = line.split(cvsSplitBy);
