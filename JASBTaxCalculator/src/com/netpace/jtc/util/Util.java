@@ -5,18 +5,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 
 import com.netpace.jtc.api.Slab;
-import com.netpace.jtc.init.ApplicationManager;
 
 public class Util {
 
+	public static boolean fileExistance(Context ctx, String fname) {
+	    File file = ctx.getFileStreamPath(fname);
+	    return file.exists();
+	}
+	
 	public static List<Slab> getSlabsFromCSV(String fileName)
 	{
 //		Uncomment it for android application		
