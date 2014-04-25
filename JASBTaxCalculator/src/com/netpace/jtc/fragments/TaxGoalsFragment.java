@@ -105,11 +105,11 @@ public class TaxGoalsFragment extends Fragment implements OnTabChangeListener {
 		Bundle args = new Bundle();
 
 		if(tabId == TAB_MONTHLY) {
-			fragment = new GoalsFragment();
+			fragment = new TaxGoalsTabFragment();
 			args.putString("tabId", tabId);
 		}
 		else if(tabId == TAB_ANNUALLY) {
-			fragment = new GoalsFragment();
+			fragment = new TaxGoalsTabFragment();
 			args.putString("tabId", tabId);
 		}
 		

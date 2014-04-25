@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:gravity="center"
-        android:text="@string/header_tax_goals"
+        android:text="@string/header_impact_goals"
         android:textColor="@color/androidColorWhite"
         android:textSize="20sp"
         custom:typeface="TradeGothicLT" />

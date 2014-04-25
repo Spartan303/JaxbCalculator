@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-public class GoalsFragment extends Fragment {
+public class TaxGoalsTabFragment extends Fragment {
 
 	private static int NO_OF_ROWS = 0;
 
@@ -40,7 +40,7 @@ public class GoalsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		mRootView = inflater.inflate(R.layout.fragment_tab_goals, null);
+		mRootView = inflater.inflate(R.layout.fragment_tab_tax_goals, null);
 		mTableLayout = (TableLayout) mRootView
 				.findViewById(R.id.tablelayout);
 		

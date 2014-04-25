@@ -1,12 +1,8 @@
 package com.netpace.jtc.fragments;
 
 import com.netpace.jtc.R;
-import com.netpace.jtc.api.InputType;
-import com.netpace.jtc.api.TCManager;
-import com.netpace.jtc.api.TaxAPIType;
 import com.netpace.jtc.api.TaxResult;
-import com.netpace.jtc.controller.NavigationController;
-import com.netpace.jtc.ui.TypefaceEditText;
+import com.netpace.jtc.constants.AppConstants;
 import com.netpace.jtc.ui.TypefaceTextView;
 
 import android.content.Context;
@@ -17,15 +13,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TabHost;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 
-public class ImpactOfIncrementFragment extends Fragment implements OnTabChangeListener {
-	private static final String TAG = "Impact-Of-Increment";
+public class ImpactGoalsFragment extends Fragment implements OnTabChangeListener {
+	
+	private static final String TAG = "Impact-Goals-Fragment";
 	
 	public static final String TAB_ANNUALLY = "Annually";
 	public static final String TAB_MONTHLY = "Monthly";
@@ -34,77 +30,31 @@ public class ImpactOfIncrementFragment extends Fragment implements OnTabChangeLi
 	private TabHost mTabHost;
 	private int mCurrentTab;
 	
-	private Button mCalcImpactButton;
-	
-	private Double income;
-	private Double increment;
-	private TaxResult mTaxResult;
-	
-	public ImpactOfIncrementFragment() { }
+	TaxResult mTaxResult;
 	
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        mRootView = inflater.inflate(R.layout.fragment_tax_impact, container, false);
-        
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		mTaxResult = (TaxResult) getArguments().getSerializable(AppConstants.TAX_RESULT);
+		
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		mRootView = inflater.inflate(R.layout.fragment_impact_goals,
+				container, false);
+		
 		mTabHost = (TabHost) mRootView.findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 
 		setupTab(new TextView(getActivity()), TAB_ANNUALLY);
 		setupTab(new TextView(getActivity()), TAB_MONTHLY);
 		
-		mCalcImpactButton = (Button) mRootView.findViewById(R.id.calc_impact_button);
-		mCalcImpactButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				ImpactFragment frag = (ImpactFragment) getFragmentManager()
-						.findFragmentById(R.id.display_content);
-
-				if (frag != null) {
-					TypefaceEditText incomeTxtField = frag.getIncomeTextField();
-					TypefaceEditText incrementTxtField = frag.getIncrementTextField();
-					
-					income = getValue(incomeTxtField);
-					increment = getValue(incrementTxtField);
-					
-					if (income <= 0 ) {
-						incomeTxtField.setError("Invalid Input");
-					} else {
-						mTaxResult = calculateImpactOfIncrement();
-
-						NavigationController.getInstance()
-								.startImpactGoalsActivity(getActivity(),
-										mTaxResult);
-					}
-				}
-			}
-
-			private Double getValue(TypefaceEditText TxtField) {
-				// if blank txtField Value then 0 value else convert to Double
-				// value and return
-				return (TxtField.getText().toString().equals("")) ? 0d
-						: Double.parseDouble(TxtField.getText()
-								.toString());
-			}
-
-			private TaxResult calculateImpactOfIncrement() {
-
-				if (mCurrentTab == 0) {
-					return TCManager.getInstance().calculateImpactOfIncrement(income, increment,
-							InputType.YEARLY, TaxAPIType.SALARIED, 2014);
-				} else {
-					return TCManager.getInstance().calculateImpactOfIncrement(income, increment,
-							InputType.MONTHLY, TaxAPIType.SALARIED, 2014);
-				}
-			}
-		});
 		
-        return mRootView;
-    }
-	
+		return mRootView;
+	}
+
 	private void setupTab(final View view, final String tag) {
 		View tabview = createTabView(mTabHost.getContext(), tag);
 	        TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview).setContent(new TabContentFactory() {
@@ -155,23 +105,23 @@ public class ImpactOfIncrementFragment extends Fragment implements OnTabChangeLi
 		Bundle args = new Bundle();
 
 		if(tabId == TAB_MONTHLY) {
-			fragment = new ImpactFragment();
+			fragment = new ImpactGoalsTabFragment();
 			args.putString("tabId", tabId);
 		}
 		else if(tabId == TAB_ANNUALLY) {
-			fragment = new ImpactFragment();
+			fragment = new ImpactGoalsTabFragment();
 			args.putString("tabId", tabId);
 		}
 		
+		// send the tax result 
+		args.putSerializable(AppConstants.TAX_RESULT, mTaxResult);
+		
 		fragment.setArguments(args);
+		
 
 		FragmentManager fm = getFragmentManager();
 		fm.beginTransaction()
 				.replace(R.id.display_content, fragment)
 				.commit();
 	}
-
-
 }
-
-

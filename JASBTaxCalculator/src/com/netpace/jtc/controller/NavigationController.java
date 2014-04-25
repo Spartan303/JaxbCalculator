@@ -1,6 +1,7 @@
 package com.netpace.jtc.controller;
 
 import com.netpace.jtc.R;
+import com.netpace.jtc.activity.ImpactGoalsActivity;
 import com.netpace.jtc.activity.TaxGoalsActivity;
 import com.netpace.jtc.api.TaxResult;
 
@@ -26,6 +27,13 @@ public class NavigationController {
 	public void startTaxGoalsActivity(FragmentActivity context, TaxResult mTaxResult) {
 		
 		Intent intent = new Intent(context, TaxGoalsActivity.class);
+		intent.putExtra("tax_result", mTaxResult);
+		startActivity(context, intent);
+	}
+	
+	public void startImpactGoalsActivity(FragmentActivity context, TaxResult mTaxResult) {
+		
+		Intent intent = new Intent(context, ImpactGoalsActivity.class);
 		intent.putExtra("tax_result", mTaxResult);
 		startActivity(context, intent);
 	}
