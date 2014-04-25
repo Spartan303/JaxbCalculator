@@ -1047,16 +1047,22 @@ containing a value of this type.
         public static final int splash_logo=0x7f02006b;
         public static final int square_box_bg=0x7f02006c;
         public static final int tab_active=0x7f02006d;
-        public static final int tab_bg_selected=0x7f02006e;
-        public static final int tab_bg_selector=0x7f02006f;
-        public static final int tab_bg_unselected=0x7f020070;
-        public static final int tab_content_active=0x7f020071;
-        public static final int tab_focused=0x7f020072;
-        public static final int tab_inactive=0x7f020073;
-        public static final int tab_pressed=0x7f020074;
-        public static final int tab_text_selector=0x7f020075;
-        public static final int txt_input=0x7f020076;
-        public static final int vertical_divider=0x7f020077;
+        public static final int tab_annually_active=0x7f02006e;
+        public static final int tab_annually_bg_selector=0x7f02006f;
+        public static final int tab_annually_inactive=0x7f020070;
+        public static final int tab_bg_selected=0x7f020071;
+        public static final int tab_bg_unselected=0x7f020072;
+        public static final int tab_content_active=0x7f020073;
+        public static final int tab_content_calculate=0x7f020074;
+        public static final int tab_focused=0x7f020075;
+        public static final int tab_inactive=0x7f020076;
+        public static final int tab_monthly_active=0x7f020077;
+        public static final int tab_monthly_bg_selector=0x7f020078;
+        public static final int tab_monthly_inactive=0x7f020079;
+        public static final int tab_pressed=0x7f02007a;
+        public static final int tab_text_selector=0x7f02007b;
+        public static final int txt_input=0x7f02007c;
+        public static final int vertical_divider=0x7f02007d;
     }
     public static final class id {
         public static final int EmailEditText=0x7f050048;
@@ -1224,8 +1230,9 @@ containing a value of this type.
         public static final int save_tax_list_item=0x7f03002a;
         public static final int splash_activity=0x7f03002b;
         public static final int support_simple_spinner_dropdown_item=0x7f03002c;
-        public static final int tab=0x7f03002d;
-        public static final int table_row=0x7f03002e;
+        public static final int tab_annually=0x7f03002d;
+        public static final int tab_monthly=0x7f03002e;
+        public static final int table_row=0x7f03002f;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -1328,7 +1335,6 @@ containing a value of this type.
          */
         public static final int AppBaseTheme=0x7f0b0083;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0b0084;
         /**  Mimic text appearance in select_dialog_item.xml 
