@@ -65,7 +65,9 @@ public class TaxGoalsFragment extends Fragment implements OnTabChangeListener {
 	}
 
 	private static View createTabView(final Context context, final String text) {
-		View view = LayoutInflater.from(context).inflate(R.layout.tab, null);
+		View view = (text.equals(AppConstants.TAB_ANNUALLY)) ? 
+				LayoutInflater.from(context).inflate(R.layout.tab_annually, null) : 
+				LayoutInflater.from(context).inflate(R.layout.tab_monthly, null);
 		TypefaceTextView tv = (TypefaceTextView) view.findViewById(R.id.tabsText);
 		tv.setText(text);
 		return view;

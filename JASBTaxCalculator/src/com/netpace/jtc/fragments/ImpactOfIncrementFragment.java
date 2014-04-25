@@ -5,6 +5,7 @@ import com.netpace.jtc.api.InputType;
 import com.netpace.jtc.api.TCManager;
 import com.netpace.jtc.api.TaxAPIType;
 import com.netpace.jtc.api.TaxResult;
+import com.netpace.jtc.constants.AppConstants;
 import com.netpace.jtc.controller.NavigationController;
 import com.netpace.jtc.ui.TypefaceEditText;
 import com.netpace.jtc.ui.TypefaceTextView;
@@ -115,7 +116,10 @@ public class ImpactOfIncrementFragment extends Fragment implements OnTabChangeLi
 	}
 
 	private static View createTabView(final Context context, final String text) {
-		View view = LayoutInflater.from(context).inflate(R.layout.tab, null);
+		View view = (text.equals(AppConstants.TAB_ANNUALLY)) ? 
+				LayoutInflater.from(context).inflate(R.layout.tab_annually, null) : 
+				LayoutInflater.from(context).inflate(R.layout.tab_monthly, null);
+				
 		TypefaceTextView tv = (TypefaceTextView) view.findViewById(R.id.tabsText);
 		tv.setText(text);
 		return view;
