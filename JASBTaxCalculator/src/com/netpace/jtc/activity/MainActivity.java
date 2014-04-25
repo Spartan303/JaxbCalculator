@@ -23,6 +23,7 @@ import com.netpace.jtc.fragments.ContactUsFragment;
 import com.netpace.jtc.fragments.HomeFragment;
 import com.netpace.jtc.fragments.ImpactOfIncrementFragment;
 import com.netpace.jtc.fragments.PlanSaveTaxFragment;
+import com.netpace.jtc.fragments.SaveTaxFragment;
 import com.netpace.jtc.fragments.TaxCalculatorFragment;
 import com.netpace.jtc.fragments.TermsFragment;
 import com.netpace.jtc.model.NavDrawerItem;
@@ -181,14 +182,17 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new ImpactOfIncrementFragment();
 			break;
 		case 3:
-			fragment = new PlanSaveTaxFragment();
+			fragment = new SaveTaxFragment();
 			break;
 		case 4:
-			fragment = new TermsFragment();
-			break;
+			fragment = new SaveTaxFragment();
+			break;			
 		case 5:
+			fragment = new PlanSaveTaxFragment();
+			break;			
+		case 6:
 			fragment = new ContactUsFragment();
-			break;
+			break;	
 
 		default:
 			break;
