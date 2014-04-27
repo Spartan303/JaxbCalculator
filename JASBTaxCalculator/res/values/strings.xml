@@ -75,8 +75,24 @@
     <string name="header_impact_goals">Impact Of Increment On Goals</string>
     <string name="title_activity_tax_result">TaxResultActivity</string>
     <string name="title_activity_impact_result">ImpactResultActivity</string>
+    <string name="salaried_goals">Salaried Individuals</string>
+    <string name="non_salaried_goals">Non-Salaried Individuals</string>
+    <string name="header_contact_us">Contact Us</string>
+    <string name="timing_heading">Timing</string>
+    <string name="address_heading">Address</string>
+    <string name="address_text">1104, Uni Tower, \n I.I Chundigar Road \n Karachi. \n PABX: +92-21-32468154-55 \n +92-21-32468158 \n Fax: +92-21-32468157 </string>
+    <string name="email_heading">Email: </string>
+    <string name="email_address">  <u>contact@jasb-associates.com</u></string>
     
-	<string name="salaried_goals">Salaried Individuals</string>
-	<string name="non_salaried_goals">Non-Salaried Individuals</string>
+    <string name="karachi_office">Karachi Office</string>
+    <string name="islamabad_office">Islamabad Office</string>
+    <string name="timing1_karachi_office">7:00 and 18:00</string>
+    <string name="timing2_karachi_office">9:00 and 15:00</string>
+    <string name="timing1_islamabad_office">8:00 and 19:00</string>
+    <string name="timing2_islamabad_office">9:00 and 16:00</string>
+    <string name="days1_karachi_office">Monday to Friday</string>
+    <string name="days2_karachi_office">Saturday</string>
+    <string name="days1_islamabad_office">Tuesday to Thursday</string>
+    <string name="days2_islamabad_office">Sunday</string>
 
 </resources>

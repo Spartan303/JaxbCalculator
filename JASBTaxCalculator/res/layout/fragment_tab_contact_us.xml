@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBgColor"
+    android:orientation="vertical" >
+
+    <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/timing_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:text="@string/timing_heading"
+        android:textColor="@color/sub_heading"
+        android:textSize="18sp"
+        custom:typeface="TradeGothicLT" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:background="@drawable/border" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <com.netpace.jtc.ui.TypefaceTextView
+                android:id="@+id/days_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="@string/days1_karachi_office"
+                android:textColor="@color/number_textview_color"
+                android:textSize="18sp"
+                custom:typeface="TradeGothicLT" />
+
+            <com.netpace.jtc.ui.TypefaceTextView
+                android:id="@+id/timing1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/days_text1"
+                android:padding="2dp"
+                android:text="@string/timing1_karachi_office"
+                android:textColor="@color/androidColorWhite"
+                android:textSize="18sp"
+                custom:typeface="TradeGothicLT" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <com.netpace.jtc.ui.TypefaceTextView
+                android:id="@+id/timing2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/days_text2"
+                android:padding="2dp"
+                android:text="@string/timing2_karachi_office"
+                android:textColor="@color/androidColorWhite"
+                android:textSize="18sp"
+                custom:typeface="TradeGothicLT" />
+
+            <com.netpace.jtc.ui.TypefaceTextView
+                android:id="@+id/days_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="@string/days2_karachi_office"
+                android:textColor="@color/number_textview_color"
+                android:textSize="18sp"
+                custom:typeface="TradeGothicLT" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/address_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/address_heading"
+        android:textColor="@color/sub_heading"
+        android:textSize="18sp"
+        custom:typeface="TradeGothicLT" />
+
+    <com.netpace.jtc.ui.TypefaceTextView
+        android:id="@+id/address_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/address_text"
+        android:textColor="@color/row_textview_color"
+        android:textSize="18sp"
+        custom:typeface="TradeGothicLT" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="5dp" >
+
+        <com.netpace.jtc.ui.TypefaceTextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_heading"
+            android:textColor="@color/row_textview_color"
+            android:textSize="18sp"
+            custom:typeface="TradeGothicLT" />
+
+        <com.netpace.jtc.ui.TypefaceTextView
+            android:id="@+id/email_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_address"
+            android:textColor="@color/androidColorWhite"
+            android:textSize="18sp"
+            custom:typeface="TradeGothicLT" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_margin="20dp"
+        android:background="@color/row_textview_color" />
+
+</LinearLayout>
